@@ -1678,13 +1678,6 @@
   /* smart lists popover */
   .slpop{position:absolute;width:320px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:8px;z-index:40;display:none}
   .slpop.open{display:block}
-  .tmorepop{position:absolute;min-width:180px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:4px;z-index:40;display:none}
-  .tmorepop.open{display:block}
-  .tmorepop > .tab{display:flex;align-items:center;height:32px;padding:0 10px;border-radius:6px;font-size:13px;color:var(--neutral-700);cursor:pointer;background:none;border:none;justify-content:flex-start}
-  .tmorepop > .tab:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  .tmorepop > .tab.active{background:#eef0fe;color:var(--neutral-900);font-weight:500}
-  .tab.tmore{display:inline-flex;align-items:center}
-  .tab.tmore.open{background:var(--neutral-200)}
   .slseg{display:flex;gap:2px;background:var(--neutral-100);border-radius:8px;padding:2px;margin:2px 2px 8px}
   .slsegbtn{flex:1;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--neutral-500);border-radius:6px;cursor:pointer}
   .slsegbtn.active{background:var(--white);color:var(--neutral-900);font-weight:500;box-shadow:var(--shadow-xs)}
@@ -6410,13 +6403,6 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
   /* smart lists popover */
   .slpop{position:absolute;width:290px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:8px;z-index:40;display:none}
   .slpop.open{display:block}
-  .tmorepop{position:absolute;min-width:180px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:4px;z-index:40;display:none}
-  .tmorepop.open{display:block}
-  .tmorepop > .tab{display:flex;align-items:center;height:32px;padding:0 10px;border-radius:6px;font-size:13px;color:var(--neutral-700);cursor:pointer;background:none;border:none;justify-content:flex-start}
-  .tmorepop > .tab:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  .tmorepop > .tab.active{background:#eef0fe;color:var(--neutral-900);font-weight:500}
-  .tab.tmore{display:inline-flex;align-items:center}
-  .tab.tmore.open{background:var(--neutral-200)}
   .slseg{display:flex;gap:2px;background:var(--neutral-100);border-radius:8px;padding:2px;margin:2px 2px 8px}
   .slsegbtn{flex:1;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--neutral-500);border-radius:6px;cursor:pointer}
   .slsegbtn.active{background:var(--white);color:var(--neutral-900);font-weight:500;box-shadow:var(--shadow-xs)}
@@ -7614,7 +7600,7 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
   .n2gh:hover{background:var(--neutral-50)}
   .n2gchev{width:14px;height:14px;stroke:var(--neutral-500);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .16s ease}
   .n2grp[data-open="true"] .n2gchev{transform:rotate(90deg)}
-  .n2addr{font-size:14px;font-weight:600;color:var(--neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;letter-spacing:-.005em;cursor:pointer}
+  .n2addr{font-size:14px;font-weight:600;font-variation-settings:"wght" 600;color:var(--neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;letter-spacing:-.005em;cursor:pointer}
   .n2st{flex:none;display:inline-flex;align-items:center;font-size:12px;color:var(--neutral-500)}
   .n2st i{display:none}
   .n2new{flex:none;font-size:11px;font-weight:500;color:#dc2626;background:#fde8e8;border-radius:9999px;padding:2px 9px;font-variant-numeric:tabular-nums;line-height:1.4}
@@ -8648,13 +8634,14 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
 
     <div class="tabs">
       <div class="tabseg">
-      <div class="tab active" data-tab="Pending">Pending</div>
-      <div class="tab" data-tab="Closing soon">Closing soon</div>
+      <div class="tab" data-tab="All">All</div>
       <div class="tab" data-tab="Active listings">Active listings</div>
+      <div class="tab active" data-tab="Pending">Pending</div>
+      <div class="tab" data-tab="Closing soon">Closing</div>
+      <div class="tab" data-tab="Closed">Closed</div>
+      <div class="tab" data-tab="Needs attention">Approvals</div>
       <div class="tab" data-tab="Referrals">Referrals</div>
       <div class="tab" data-tab="Drafts">Drafts</div>
-      <div class="tab" data-tab="Closed">Closed</div>
-      <div class="tab tmore" id="tx-tmore" role="button" tabindex="0" aria-haspopup="menu" aria-expanded="false">More<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px"><path d="m6 9 6 6 6-6"/></svg></div>
       </div>
       <div class="tab smarttab" id="tx-smarttab" style="display:none">+ Smart list</div>
       <div class="right">
@@ -8665,10 +8652,6 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
 
         </div>
       </div>
-    </div>
-    <div class="tmorepop" id="tx-tmorepop" role="menu">
-      <div class="tab" data-tab="All" role="menuitem">All</div>
-      <div class="tab" data-tab="Needs attention" role="menuitem">Needs my approval</div>
     </div>
     <div class="slpop" id="tx-slpop">
       <div class="slseg">
@@ -10502,34 +10485,13 @@ ovbtn.addEventListener('click',()=>{
 });
 
 /* ---------- tabs ---------- */
-const tmoreBtn=document.getElementById('tx-tmore'),tmorePop=document.getElementById('tx-tmorepop');
-const MORE_TABS=['All','Needs attention'];
-function closeTmore(){tmorePop.classList.remove('open');tmoreBtn.setAttribute('aria-expanded','false');tmoreBtn.classList.remove('open')}
-function syncMoreActive(){
-  const inMore=MORE_TABS.includes(tabTx);
-  tmoreBtn.classList.toggle('active',inMore);
-  tmorePop.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===tabTx));
-}
 root.querySelectorAll('.tab[data-tab]').forEach(t=>t.addEventListener('click',()=>{
   root.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
   tabTx=t.dataset.tab;
-  syncMoreActive();
-  closeTmore();
   closeMissingPop();
   renderTable();
 }));
-tmoreBtn.addEventListener('click',e=>{
-  e.stopPropagation();
-  const r=tmoreBtn.getBoundingClientRect(),c=root.getBoundingClientRect();
-  tmorePop.style.left=Math.max(8,r.right-c.left-180)+'px';
-  tmorePop.style.top=(r.bottom-c.top+6)+'px';
-  const open=tmorePop.classList.toggle('open');
-  tmoreBtn.classList.toggle('open',open);
-  tmoreBtn.setAttribute('aria-expanded',open?'true':'false');
-});
-document.addEventListener('click',e=>{if(!e.target.closest('#tx-tmorepop')&&!e.target.closest('#tx-tmore'))closeTmore()});
-syncMoreActive();
 
 /* ---------- table search ---------- */
 const schTx=document.getElementById('tx-search');
@@ -21488,7 +21450,7 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
   const SHORT={'All':'All','Active listings':'Active listings','Pending':'Pending','Closing soon':'Closing','Closed':'Closed','Needs attention':'Approvals','Referrals':'Referrals','Drafts':'Drafts'};
   const FULL={'All':'All','Active listings':'Active listings','Pending':'Pending','Closing soon':'Closing soon','Closed':'Closed','Needs attention':'Needs my approval','Referrals':'Referrals','Drafts':'Drafts'};
   const V={
-    '2a':{order:['All','Active listings','Pending','Closing soon','Closed','Needs attention','Referrals','Drafts'],show:6,labels:SHORT,trigger:'More'},
+    '2a':{order:['Pending','Closing soon','Active listings','Drafts','Closed','Needs attention','Referrals','All'],show:6,labels:FULL,trigger:'More'},
     '1a':{order:['All','Pending','Closing soon','Active listings','Referrals','Closed','Drafts','Needs attention'],show:4,labels:FULL,trigger:'More'},
     '1b':{order:['All','Pending','Closing soon','Active listings','Referrals','Closed','Drafts','Needs attention'],show:8,labels:SHORT,trigger:null},
     '1c':{order:['All','Active listings','Closed','Pending','Closing soon','Needs attention','Referrals','Drafts'],show:3,labels:SHORT,trigger:'Status'}
