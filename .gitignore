@@ -1,0 +1,8 @@
+# 192MB unreferenced recursive project copies — restore-only, never deployed
+uploads/
+screenshots/
+.thumbnail
+.DS_Store
+.vercel
+node_modules/
+.claude/

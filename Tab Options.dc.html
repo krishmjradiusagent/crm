@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/colors.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/typography.css">
+<style>body{margin:0;background:#FAFAFA;font-family:'Mona Sans',sans-serif;color:#0A0A0A}a{color:#5A5FF2}a:hover{color:#4A4FD8}</style>
+</helmet>
+<section style="display:flex;flex-direction:column;gap:28px;padding:40px;max-width:1040px">
+  <div id="2a" style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="background:#5A5FF2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:26px">2a</span><span style="font-size:13px;font-weight:600">Six single-word tabs + More</span></div>
+    <div style="background:#F5F5F5;border-radius:12px;padding:6px;display:inline-flex;gap:2px;align-items:center;width:fit-content">
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">All</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Active</span>
+      <span style="padding:7px 14px;font-size:14px;font-weight:600;background:#fff;border-radius:9px;box-shadow:0 1px 2px rgba(0,0,0,.08);cursor:pointer">Pending</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Closing</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Closed</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:6px">Approvals <span style="font-size:11px;background:#5A5FF2;color:#fff;border-radius:26px;padding:0 5px;font-variant-numeric:tabular-nums">2</span></span>
+      <span style="padding:7px 12px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:4px">More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span>
+    </div>
+    <div style="font-size:12px;color:#737373">Referrals · Drafts · Archived → More. All labels one word.</div>
+  </div>
+  <div id="1a" style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="background:#5A5FF2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:26px">1a</span><span style="font-size:13px;font-weight:600">Overflow — 4 hot tabs + More</span></div>
+    <div style="background:#F5F5F5;border-radius:12px;padding:6px;display:inline-flex;gap:2px;align-items:center;width:fit-content">
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">All</span>
+      <span style="padding:7px 14px;font-size:14px;font-weight:600;background:#fff;border-radius:9px;box-shadow:0 1px 2px rgba(0,0,0,.08);cursor:pointer">Pending</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Closing soon</span>
+      <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Active listings</span>
+      <span style="padding:7px 12px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:4px">More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span>
+    </div>
+    <div style="font-size:12px;color:#737373">Referrals · Closed · Drafts · Needs my approval → dropdown. Rarely-used = hidden. Row 40% shorter.</div>
+  </div>
+  <div id="1b" style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="background:#5A5FF2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:26px">1b</span><span style="font-size:13px;font-weight:600">Compact — shorter labels, tighter, counts</span></div>
+    <div style="background:#F5F5F5;border-radius:10px;padding:4px;display:inline-flex;gap:1px;align-items:center;width:fit-content">
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">All</span>
+      <span style="padding:5px 10px;font-size:13px;font-weight:600;background:#fff;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.08);cursor:pointer;display:inline-flex;gap:5px;align-items:center">Pending <span style="font-size:11px;color:#737373;font-variant-numeric:tabular-nums">12</span></span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">Closing</span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">Active</span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">Referrals</span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">Closed</span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer">Drafts</span>
+      <span style="padding:5px 10px;font-size:13px;color:#737373;border-radius:8px;cursor:pointer;display:inline-flex;gap:5px;align-items:center">Approvals <span style="font-size:11px;background:#5A5FF2;color:#fff;border-radius:26px;padding:0 5px;font-variant-numeric:tabular-nums">2</span></span>
+    </div>
+    <div style="font-size:12px;color:#737373">Keep all 8. 13px + tight padding + short words ("Closing", "Approvals"). ~35% narrower, zero clicks lost.</div>
+  </div>
+  <div id="1c" style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="background:#5A5FF2;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:26px">1c</span><span style="font-size:13px;font-weight:600">Split — 3 core tabs + status filter</span></div>
+    <div style="display:flex;gap:8px;align-items:center;width:fit-content">
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px;display:inline-flex;gap:2px;align-items:center">
+        <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">All</span>
+        <span style="padding:7px 14px;font-size:14px;font-weight:600;background:#fff;border-radius:9px;box-shadow:0 1px 2px rgba(0,0,0,.08);cursor:pointer">Active</span>
+        <span style="padding:7px 14px;font-size:14px;color:#737373;border-radius:9px;cursor:pointer">Closed</span>
+      </div>
+      <span style="border:1px solid #E5E5E5;background:#fff;border-radius:10px;padding:7px 12px;font-size:13px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.04)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>Status: Pending<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span>
+      <span style="border:1px dashed #E5E5E5;border-radius:10px;padding:7px 12px;font-size:13px;color:#737373;cursor:pointer">+ Filter</span>
+    </div>
+    <div style="font-size:12px;color:#737373">Tabs = lifecycle only. Pending/Closing/Drafts/Approvals/Referrals → filter chips. Scales forever, never crowds.</div>
+  </div>
+</section>
+</x-dc>
+</body>
+</html>
