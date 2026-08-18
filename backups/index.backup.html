@@ -15346,14 +15346,15 @@ function missingDetails(){let n=0;SECTIONS.forEach(s=>(s.fields||[]).forEach(f=>
 function renderNext(){
  const md=missingDetails();
  let txt=null,btn=null,act=null;
- if(md){txt=md+' detail'+(md>1?'s':'')+' missing — the deal can\'t close without them';btn='Add details';act=()=>goTab('details')} else if(uploadsLeft){txt=uploadsLeft+' documents still to upload';btn='View checklist';act=()=>goTab('check')}
+ /* missing-details banner hidden by request — tab counts still show md */
+ if(uploadsLeft){txt=uploadsLeft+' documents still to upload';btn='View checklist';act=()=>goTab('check')}
  else if(!envs.length){txt='Forms are ready to send for signature';btn='Create envelope';act=()=>goTab('envs')}
  else if(!reminded){txt='Awaiting signature from '+head.client+' — sent 2 days ago';btn='Remind';act=()=>{reminded=true;renderNext()}}
  const strip=$('txd-next');
  renderRail();
  if(!txt){strip.classList.add('gone');setTimeout(()=>{strip.classList.add('hide');strip.classList.remove('gone')},200);return}
  strip.classList.remove('hide','gone');
- strip.classList.toggle('block',!!md);
+ strip.classList.toggle('block',false);
  $('txd-nexttext').textContent=txt;$('txd-nextbtn').textContent=btn;$('txd-nextbtn').onclick=act;
  $('txd-detct').textContent=md;$('txd-detct').style.display=md?'':'none';
  $('txd-checkct').textContent=uploadsLeft;$('txd-checkct').style.display=uploadsLeft?'':'none';
