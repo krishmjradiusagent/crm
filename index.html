@@ -7511,10 +7511,10 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
   .nbell[data-unread="0"] + .ntip{display:none}
 
   body.npopen .melbar,body.npopen .melfade{opacity:0;pointer-events:none;transition:opacity .16s ease}
-  .nscrim{position:absolute;inset:0;background:rgba(10,10,10,.5);border-radius:var(--r-card);z-index:110;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s linear}
+  .nscrim{position:fixed;inset:0;background:rgba(10,10,10,.5);z-index:110;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s linear}
   .nscrim.open{opacity:1;visibility:visible}
   .melbar,.melfade{transition:opacity .16s ease}
-  .npanel{position:absolute;top:0;right:0;bottom:0;width:380px;background:var(--white);border-left:1px solid var(--neutral-200);border-radius:0 var(--r-card) var(--r-card) 0;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;z-index:120;transform:translateX(100%);visibility:hidden;transition:transform .18s cubic-bezier(.32,.72,0,1),visibility .18s linear}
+  .npanel{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:var(--white);border-left:1px solid var(--neutral-200);box-shadow:-10px 0 34px rgba(10,10,10,.10);display:flex;flex-direction:column;z-index:120;transform:translateX(100%);visibility:hidden;transition:transform .22s cubic-bezier(.32,.72,0,1),visibility .22s linear}
   .npanel.open{transform:none;visibility:visible;transition-duration:.22s,.22s}
   .nphead{height:48px;flex:none;display:flex;align-items:center;gap:10px;padding:0 12px 0 16px;border-bottom:1px solid var(--neutral-200)}
   .nptitle{font-size:14px;font-weight:500;color:var(--neutral-900)}
