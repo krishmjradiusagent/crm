@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mel · Marketing Studio — Feed post editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFA; --sf:#FFFFFF; --bd:#E4E4E7; --bd2:#EFEFF1;
+  --tx:#131316; --mu:#71717A; --mu2:#A1A1AA;
+  --pr:#5A5FF2; --pr-soft:#EEEFFE; --coral:#F08068;
+  --sand:#CFC9C0; --mist:#C7D0D2; --clay:#D6CEC4; --sage:#C3CCC5; --lilac:#CCC6CF; --ink:#2B3440;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:var(--tx);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+svg{display:block}
+
+/* ============ frame ============ */
+.frame{display:flex;height:100vh;overflow:hidden}
+.canvas{flex:1;position:relative;display:flex;align-items:center;justify-content:center;
+  background:#F6F6F8;
+  background-image:radial-gradient(rgba(90,95,242,.10) 1px,transparent 1px);
+  background-size:18px 18px;}
+.rail{width:404px;min-width:404px;background:var(--sf);border-left:1px solid var(--bd);overflow-y:auto;overscroll-behavior:contain}
+
+/* ============ top bar ============ */
+.topbar{position:absolute;top:18px;left:20px;right:20px;display:flex;align-items:center;gap:14px;z-index:5}
+.backbtn{width:40px;height:40px;border-radius:50%;background:var(--sf);border:1px solid var(--bd);display:grid;place-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:transform .15s}
+.backbtn:hover{transform:translateX(-2px)}
+.addr{font-weight:600;font-size:14px}
+.gstat{margin:0 auto;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--bd);border-radius:999px;padding:7px 15px 7px 10px;box-shadow:0 1px 3px rgba(0,0,0,.05);transition:opacity .4s}
+.gstat .txt{color:var(--mu);font-size:12.5px}
+.gstat .txt b{color:var(--tx);font-weight:600}
+.gsteps{display:flex;gap:6px;margin-left:4px}
+.gstep{font-size:11px;color:var(--mu2);padding:2px 8px;border-radius:999px;background:var(--bd2);transition:all .3s}
+.gstep.doing{color:var(--pr);background:var(--pr-soft)}
+.gstep.done{color:#16A34A;background:#F0FDF4}
+
+/* Mel ring */
+.mring{width:18px;height:18px;border-radius:50%;position:relative;flex:none;
+  background:conic-gradient(from 210deg,#5A5FF2,#9B7BF0,#F08068,#F6B26B,#5A5FF2);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.6px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.6px));}
+.mring.spin{animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ post artifact ============ */
+.stage{position:relative;width:460px}
+.post{background:#fff;border:1px solid var(--bd);border-radius:14px;overflow:hidden;
+  box-shadow:0 18px 44px -18px rgba(19,19,22,.18),0 2px 8px rgba(19,19,22,.05);
+  transition:box-shadow .3s}
+.zone{position:relative;cursor:pointer}
+.zone::before{content:'';position:absolute;inset:0;border:1.5px solid transparent;border-radius:2px;pointer-events:none;transition:border-color .12s;z-index:3}
+.zone:hover::before{border-color:var(--pr)}
+.zone .ztag{position:absolute;top:6px;left:6px;z-index:4;font-size:10px;font-weight:600;letter-spacing:.04em;color:#fff;background:var(--pr);padding:2px 7px;border-radius:5px;opacity:0;transform:translateY(-2px);transition:all .15s;pointer-events:none}
+.zone:hover .ztag{opacity:1;transform:none}
+.zone.flash::before{border-color:var(--pr);animation:zflash 1s}
+@keyframes zflash{0%,60%{box-shadow:0 0 0 4px rgba(90,95,242,.18)}100%{box-shadow:none}}
+
+/* image area — template variants */
+.pimg{position:relative;height:340px;overflow:hidden;background:var(--sage);transition:background .35s}
+.photo{position:absolute;inset:0;transition:opacity .3s}
+/* CSS "photos" */
+.photo.front{background:linear-gradient(160deg,#B8C4C0 0%,#DDE4E0 45%,#9FB0AA 100%)}
+.photo.front::after{content:'';position:absolute;left:12%;right:12%;bottom:0;top:34%;background:
+  linear-gradient(90deg,#E9EDEA 0 46%,#D3DAD6 46% 100%);
+  clip-path:polygon(0 22%,50% 0,100% 22%,100% 100%,0 100%)}
+.photo.living{background:linear-gradient(150deg,#D9CFC2 0%,#EFE7DC 55%,#C4B7A6 100%)}
+.photo.living::after{content:'';position:absolute;left:8%;bottom:12%;width:56%;height:30%;background:#B7A995;border-radius:10px;box-shadow:26px -34px 0 -6px #CBBFae}
+.photo.kitchen{background:linear-gradient(140deg,#CBD3D5 0%,#E8EDEE 50%,#AEBABD 100%)}
+.photo.kitchen::after{content:'';position:absolute;left:10%;right:10%;bottom:16%;height:22%;background:#93A2A6;border-radius:6px;box-shadow:0 -46px 0 -18px #B8C4C7}
+.photo.yard{background:linear-gradient(170deg,#BFD0C2 0%,#DEE9DF 40%,#8FA894 100%)}
+.photo.yard::after{content:'';position:absolute;right:14%;bottom:14%;width:34%;height:26%;background:#7E9B85;border-radius:50% 50% 8px 8px}
+.photo.suite{background:linear-gradient(150deg,#CFC8D4 0%,#EAE5EE 55%,#ABA1B4 100%)}
+.photo.suite::after{content:'';position:absolute;left:16%;right:16%;bottom:14%;height:30%;background:#9A8FA6;border-radius:8px 8px 4px 4px;box-shadow:0 -20px 0 -8px #B7ACC2}
+
+.scrim{position:absolute;inset:0;z-index:1;transition:all .3s}
+.hwrap{position:absolute;z-index:2;transition:all .3s}
+.hline{font-weight:700;line-height:1.08;letter-spacing:-.015em;transition:all .3s}
+.hprice{font-weight:600;transition:all .3s}
+.hsub{font-size:12px;opacity:.85;margin-top:6px;font-weight:500}
+.brandbar{position:absolute;z-index:2;transition:all .3s}
+
+/* template: wave (accent sign bottom-left) */
+.post[data-tpl=wave] .scrim{background:linear-gradient(185deg,transparent 40%,rgba(20,22,28,.55) 92%)}
+.post[data-tpl=wave] .hwrap{left:22px;bottom:20px;right:22px;color:#fff}
+.post[data-tpl=wave] .hline{font-size:29px;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.post[data-tpl=wave] .hprice{display:inline-block;margin-top:10px;background:var(--acc,#C3CCC5);color:#1E2420;padding:5px 12px;border-radius:999px;font-size:14px}
+.post[data-tpl=wave] .brandbar{top:16px;right:16px;background:rgba(255,255,255,.92);border-radius:8px;padding:5px 10px;font-size:10.5px;font-weight:600;letter-spacing:.05em}
+/* template: feature (band bottom) */
+.post[data-tpl=feature] .scrim{background:none}
+.post[data-tpl=feature] .hwrap{left:0;right:0;bottom:0;background:#232A36;color:#fff;padding:16px 22px}
+.post[data-tpl=feature] .hline{font-size:21px}
+.post[data-tpl=feature] .hprice{color:#E8C776;font-size:16px;margin-top:4px;display:block}
+.post[data-tpl=feature] .brandbar{top:16px;left:16px;background:#232A36;color:#fff;border-radius:8px;padding:5px 10px;font-size:10.5px;font-weight:600;letter-spacing:.05em}
+/* template: editorial (paper block) */
+.post[data-tpl=editorial] .pimg{height:290px}
+.post[data-tpl=editorial] .scrim{background:none}
+.post[data-tpl=editorial] .hwrap{left:0;right:0;bottom:0;background:#FBF9F4;color:#1F1D18;padding:18px 24px 16px;border-top:1px solid #E7E2D6}
+.post[data-tpl=editorial] .hline{font-size:24px;font-family:Newsreader,Georgia,serif;font-weight:600}
+.post[data-tpl=editorial] .hprice{margin-top:6px;display:block;font-size:13px;color:#6B6557;font-family:Newsreader,Georgia,serif;font-style:italic}
+.post[data-tpl=editorial] .brandbar{top:16px;right:16px;background:#FBF9F4;border-radius:8px;padding:5px 10px;font-size:10.5px;font-weight:600;letter-spacing:.05em}
+/* template: minimal (thin frame) */
+.post[data-tpl=minimal] .pimg{height:300px}
+.post[data-tpl=minimal] .photo{inset:16px;border:1px solid rgba(0,0,0,.14)}
+.post[data-tpl=minimal] .scrim{background:none}
+.post[data-tpl=minimal] .hwrap{left:22px;right:22px;bottom:16px;color:var(--tx);text-align:center}
+.post[data-tpl=minimal] .hline{font-size:16px;font-weight:600;letter-spacing:.01em}
+.post[data-tpl=minimal] .hprice{font-size:12.5px;color:var(--mu);margin-top:2px;display:block}
+.post[data-tpl=minimal] .brandbar{display:none}
+/* template: collage */
+.post[data-tpl=collage] .pimg{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:3px;background:#fff}
+.post[data-tpl=collage] .photo{position:relative;inset:auto}
+.post[data-tpl=collage] .photo.p1{grid-row:1/3}
+.post[data-tpl=collage] .scrim{display:none}
+.post[data-tpl=collage] .hwrap{position:absolute;left:0;bottom:0;right:41%;background:var(--acc,#C3CCC5);color:#22271F;padding:12px 16px}
+.post[data-tpl=collage] .hline{font-size:17px}
+.post[data-tpl=collage] .hprice{font-size:13px;margin-top:3px;display:block;opacity:.8}
+.post[data-tpl=collage] .brandbar{display:none}
+
+/* fonts */
+.post[data-font=inter] .hline{font-family:Inter,sans-serif}
+.post[data-font=serif] .hline{font-family:Newsreader,Georgia,serif;font-weight:600}
+.post[data-font=georgia] .hline{font-family:Georgia,'Times New Roman',serif;font-weight:600}
+.post[data-font=mono] .hline{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-weight:600;letter-spacing:-.03em}
+
+/* meta / caption / tags */
+.pmeta{display:flex;align-items:center;gap:9px;padding:11px 16px;border-top:1px solid var(--bd2)}
+.avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(140deg,#5A5FF2,#F08068);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}
+.handle{font-weight:600;font-size:12.5px}
+.pmeta .dots{margin-left:auto;color:var(--mu2);letter-spacing:2px}
+.pcap{padding:2px 16px 10px;font-size:13px;line-height:1.55;color:#26262B}
+.pcap b{font-weight:600}
+.ptags{padding:0 16px 14px;font-size:12.5px;color:var(--pr)}
+
+/* skeleton generation */
+.skl .photo,.skl .hwrap,.skl .brandbar{opacity:0}
+.skl .pimg{background:linear-gradient(100deg,#ECECEF 40%,#F6F6F8 50%,#ECECEF 60%);background-size:200% 100%;animation:shim 1.2s infinite}
+.sk-line{height:12px;border-radius:6px;background:linear-gradient(100deg,#ECECEF 40%,#F6F6F8 50%,#ECECEF 60%);background-size:200% 100%;animation:shim 1.2s infinite;margin:6px 16px}
+@keyframes shim{to{background-position:-200% 0}}
+.reveal{animation:pop .45s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+
+/* pager */
+.pager{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--bd);border-radius:999px;padding:6px 8px;box-shadow:0 4px 16px rgba(0,0,0,.07);z-index:5}
+.pager .pbtn{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--mu)}
+.pager .pbtn:hover{background:var(--bd2);color:var(--tx)}
+.pager .plabel{font-size:13px;padding:0 6px}
+.pager .plabel b{font-weight:600}
+.pager .plabel span{color:var(--mu)}
+
+/* ============ rail ============ */
+.rhead{padding:20px 22px 14px;position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);z-index:10;border-bottom:1px solid var(--bd2)}
+.eyebrow{display:flex;align-items:center;gap:7px;color:var(--pr);font-size:11px;font-weight:700;letter-spacing:.09em}
+.rtitle{display:flex;align-items:flex-start;gap:10px;margin-top:5px}
+.rtitle h1{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.rtitle .rsub{color:var(--mu);font-size:12.5px;margin-top:2px}
+.rico{margin-left:auto;display:flex;gap:8px}
+.icobtn{width:36px;height:36px;border-radius:9px;border:1px solid var(--bd);display:grid;place-items:center;color:var(--mu);position:relative}
+.icobtn:hover{border-color:var(--mu2);color:var(--tx)}
+.icobtn.prime{background:var(--pr);border-color:var(--pr);color:#fff}
+.icobtn.prime:hover{background:#4A4FE0}
+.icobtn .tip{position:absolute;top:calc(100% + 6px);right:0;background:var(--tx);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .12s;z-index:20}
+.icobtn:hover .tip{opacity:1}
+
+.rbody{padding:6px 22px 26px}
+.sec{padding:16px 0 14px;border-bottom:1px solid var(--bd2);scroll-margin-top:96px}
+.seclab{display:flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--mu);text-transform:uppercase;margin-bottom:10px}
+.sec.hot{animation:sechot 1.4s}
+@keyframes sechot{0%{background:var(--pr-soft);box-shadow:0 0 0 8px var(--pr-soft);border-radius:8px}100%{background:transparent;box-shadow:none}}
+
+/* packet contents */
+.pk-toggle{margin-left:auto;color:var(--mu2);transition:transform .2s}
+.pk-toggle.open{transform:rotate(180deg)}
+.pkgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;overflow:hidden;max-height:0;transition:max-height .3s ease}
+.pkgrid.open{max-height:520px}
+.pk{display:flex;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:8px;padding:8px 10px;font-size:12.5px;color:var(--mu);cursor:pointer;background:var(--sf)}
+.pk:hover{border-color:var(--mu2);color:var(--tx)}
+.pk.on{border-color:var(--pr);color:var(--tx);background:var(--pr-soft)}
+.pk .st{margin-left:auto;font-size:10px;font-weight:600}
+.pk .st.ready{color:#16A34A}.pk .st.gen{color:var(--coral)}.pk .st.q{color:var(--mu2)}
+.pk svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;fill:none;flex:none}
+.pksum{font-size:12px;color:var(--mu);margin-top:8px}
+.pkbar{height:4px;border-radius:2px;background:var(--bd2);margin-top:8px;overflow:hidden}
+.pkbar i{display:block;height:100%;width:37%;border-radius:2px;background:linear-gradient(90deg,var(--pr),#9B7BF0);transition:width .6s}
+
+/* insights */
+.ins{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.inchip{display:flex;align-items:center;gap:5px;font-size:12px;color:#3F3F46;background:#F4F4F5;border:1px solid var(--bd);border-radius:999px;padding:4px 10px}
+.inchip svg{width:12px;height:12px;stroke:var(--pr);stroke-width:2;fill:none}
+.melbtn{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;font-weight:600;font-size:13px;background:#fff;transition:all .15s}
+.melbtn:hover{border-color:var(--pr);background:var(--pr-soft)}
+.melnote{font-size:11.5px;color:var(--mu);margin-top:6px;line-height:1.5}
+.melwhy{display:none;margin-top:8px;font-size:12px;line-height:1.55;color:#3F3F46;background:var(--pr-soft);border:1px solid #DDDEFC;border-radius:8px;padding:9px 11px}
+.melwhy.show{display:block;animation:pop .3s}
+
+/* photo grid */
+.phgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.pht{position:relative;height:62px;border-radius:8px;border:1.5px solid var(--bd);overflow:hidden;cursor:pointer;transition:border-color .12s}
+.pht:hover{border-color:var(--mu2)}
+.pht.on{border-color:var(--pr);box-shadow:0 0 0 1px var(--pr)}
+.pht .pfill{position:absolute;inset:0}
+.pht .pn{position:absolute;left:0;right:0;bottom:0;font-size:9.5px;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.42));padding:8px 6px 3px;text-align:center}
+.pht.up{border-style:dashed;display:grid;place-items:center;color:var(--mu);font-size:11px;background:#FBFBFC}
+.hint{font-size:11px;color:var(--mu2);margin-top:7px}
+
+/* variant cards */
+.vc{position:relative;border:1.5px solid var(--bd);border-radius:10px;padding:11px 12px 10px;margin-bottom:7px;cursor:pointer;transition:all .13s;background:#fff}
+.vc:hover{border-color:var(--mu2)}
+.vc.on{border-color:var(--pr);background:var(--pr-soft)}
+.vc .vt{font-size:13px;line-height:1.45;color:#26262B;padding-right:20px}
+.vc .vwhy{font-size:11px;color:var(--mu);margin-top:4px;display:flex;align-items:center;gap:4px}
+.vc .vwhy svg{width:11px;height:11px;stroke:var(--pr);stroke-width:2.2;fill:none;flex:none}
+.vc .tick{position:absolute;top:10px;right:10px;width:17px;height:17px;border-radius:50%;border:1.5px solid var(--bd);display:grid;place-items:center;transition:all .13s}
+.vc.on .tick{background:var(--pr);border-color:var(--pr)}
+.vc .tick svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;opacity:0}
+.vc.on .tick svg{opacity:1}
+.vtag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--mu);background:var(--bd2);border-radius:5px;padding:1.5px 6px;margin-bottom:5px;text-transform:uppercase}
+.vc.on .vtag{color:var(--pr);background:#DFE0FD}
+
+/* rewrite + chips */
+.chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.rw{font-size:12px;border:1px solid var(--bd);border-radius:999px;padding:5px 11px;color:#3F3F46;transition:all .12s;background:#fff}
+.rw:hover{border-color:var(--pr);color:var(--pr)}
+.rw:active{transform:scale(.96)}
+.rw.mel{color:var(--pr);border-color:#D5D6FB}
+.tagchip{font-size:12px;border:1px solid var(--bd);border-radius:999px;padding:5px 11px;color:var(--mu);background:#fff;transition:all .12s}
+.tagchip.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.optchip{font-size:12.5px;border:1px solid var(--bd);border-radius:999px;padding:6px 13px;color:#3F3F46;background:#fff;transition:all .12s}
+.optchip:hover{border-color:var(--mu2)}
+.optchip.on{background:var(--pr);border-color:var(--pr);color:#fff;font-weight:500}
+.optchip .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid rgba(0,0,0,.12)}
+
+/* manual edit collapse */
+.manual{margin-top:8px}
+.manual summary{font-size:12px;color:var(--pr);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:4px}
+.manual summary::-webkit-details-marker{display:none}
+.manual textarea{width:100%;margin-top:8px;border:1px solid var(--bd);border-radius:8px;padding:9px 11px;font:inherit;font-size:12.5px;min-height:64px;resize:vertical;color:var(--tx)}
+.manual textarea:focus{outline:2px solid var(--pr-soft);border-color:var(--pr)}
+
+/* footer cta */
+.ctarow{display:flex;gap:9px;padding:16px 0 4px;position:relative}
+.btn{flex:1;border-radius:10px;padding:11px 0;font-weight:600;font-size:13.5px;text-align:center;transition:all .13s}
+.btn.ghost{border:1px solid var(--bd);color:#3F3F46}
+.btn.ghost:hover{border-color:var(--mu2)}
+.btn.prime{background:var(--pr);color:#fff;box-shadow:0 2px 8px rgba(90,95,242,.32)}
+.btn.prime:hover{background:#4A4FE0}
+.btn.prime:active{transform:scale(.985)}
+.trust{font-size:11.5px;color:var(--mu2);text-align:center;padding:8px 0 2px}
+
+/* schedule popover */
+.pop{position:absolute;bottom:calc(100% + 10px);right:0;left:0;background:#fff;border:1px solid var(--bd);border-radius:12px;box-shadow:0 16px 40px -12px rgba(19,19,22,.25);padding:14px;opacity:0;pointer-events:none;transform:translateY(6px);transition:all .18s;z-index:30}
+.pop.open{opacity:1;pointer-events:auto;transform:none}
+.pop h4{font-size:13px;margin-bottom:9px}
+.pop .slot{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:1.5px solid var(--bd);border-radius:9px;padding:9px 11px;margin-bottom:6px;font-size:12.5px;transition:all .12s}
+.pop .slot:hover{border-color:var(--pr)}
+.pop .slot b{font-weight:600}
+.pop .slot .why{margin-left:auto;font-size:11px;color:var(--pr)}
+.pop .cancel{width:100%;text-align:center;font-size:12px;color:var(--mu);padding:5px 0 0}
+
+/* toast */
+.toast{position:fixed;bottom:22px;right:428px;background:#fff;border:1px solid var(--bd);border-radius:12px;box-shadow:0 12px 34px -10px rgba(19,19,22,.28);padding:13px 16px;display:flex;gap:10px;align-items:center;font-size:13px;opacity:0;transform:translateY(10px);transition:all .25s;z-index:40}
+.toast.show{opacity:1;transform:none}
+.toast .tick2{width:22px;height:22px;border-radius:50%;background:#16A34A;display:grid;place-items:center;flex:none}
+.toast .tick2 svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none}
+.toast small{display:block;color:var(--mu);margin-top:1px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- ================= CANVAS ================= -->
+  <div class="canvas" id="canvas">
+    <div class="topbar">
+      <button class="backbtn" aria-label="Back to package">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#131316" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="addr">1420 Grove St</span>
+      <div class="gstat" id="gstat">
+        <span class="mring spin" id="gring"></span>
+        <span class="txt" id="gtxt"><b>Mel</b> is reading the listing…</span>
+        <span class="gsteps" id="gsteps">
+          <span class="gstep" data-s="0">Layout</span>
+          <span class="gstep" data-s="1">Photos</span>
+          <span class="gstep" data-s="2">Copy</span>
+        </span>
+      </div>
+      <span style="width:40px"></span>
+    </div>
+
+    <div class="stage">
+      <div class="post skl" id="post" data-tpl="wave" data-font="inter" style="--acc:#C3CCC5">
+        <!-- IMAGE -->
+        <div class="zone pimg" id="z-image" data-sec="sec-image">
+          <span class="ztag">Image · edit →</span>
+          <div class="photo front p1" id="photoA"></div>
+          <div class="photo living" id="photoB" style="opacity:0"></div>
+          <div class="photo kitchen" id="photoC" style="opacity:0"></div>
+          <div class="scrim"></div>
+          <div class="brandbar">MAYA KAPOOR · RADIUS</div>
+          <div class="hwrap zone" id="z-headline" data-sec="sec-headline" style="position:absolute">
+            <span class="ztag">Headline · edit →</span>
+            <div class="hline" id="hl">Just listed in Noe Valley</div>
+            <span class="hprice" id="hp">$1,285,000</span>
+            <div class="hsub" id="hs">3 bd · 2 ba · 1,510 sqft</div>
+          </div>
+        </div>
+        <!-- META -->
+        <div class="pmeta">
+          <span class="avatar">MK</span><span class="handle">maya.kapoor.realty</span>
+          <span class="dots">···</span>
+        </div>
+        <!-- CAPTION -->
+        <div class="zone pcap" id="z-caption" data-sec="sec-caption">
+          <span class="ztag">Caption · edit →</span>
+          <span><b>maya.kapoor.realty</b> <span id="cap">Just listed in Noe Valley — 3 bed, 2 bath with the light everyone asks for. 1,510 sqft, updated kitchen, walkable to everything. Showings start Thursday, send me a DM for a private tour.</span></span>
+        </div>
+        <!-- TAGS -->
+        <div class="zone ptags" id="z-tags" data-sec="sec-tags">
+          <span class="ztag">Hashtags · edit →</span>
+          <span id="tags">#justlisted #noevalley #sfrealestate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pager">
+      <button class="pbtn" aria-label="Previous asset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+      <span class="plabel"><b>Feed post</b> <span>· 1 of 8</span></span>
+      <button class="pbtn" aria-label="Next asset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+  </div>
+
+  <!-- ================= RAIL ================= -->
+  <aside class="rail" id="rail">
+    <div class="rhead">
+      <div class="eyebrow"><span class="mring" style="width:14px;height:14px"></span>MEL · ASSISTANT</div>
+      <div class="rtitle">
+        <div>
+          <h1>Feed post</h1>
+          <div class="rsub">Instagram · for 1420 Grove St</div>
+        </div>
+        <div class="rico">
+          <button class="icobtn" aria-label="Download PNG"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg><span class="tip">Download PNG</span></button>
+          <button class="icobtn prime" aria-label="Schedule"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg><span class="tip">Schedule</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="rbody">
+
+      <!-- PACKET CONTENTS -->
+      <div class="sec" style="padding-top:12px">
+        <button class="seclab" id="pkhead" style="width:100%;cursor:pointer">
+          Packet contents <span style="color:var(--tx);margin-left:6px">8</span>
+          <svg class="pk-toggle open" id="pkchev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="pkgrid open" id="pkgrid">
+          <button class="pk on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg>Feed post<span class="st gen">● EDITING</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>Property page<span class="st ready">✓ READY</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3"/></svg>Story<span class="st ready">✓ READY</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="m10 9 5 3-5 3z"/></svg>Photo reel<span class="st gen">◌ MAKING</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 1-3-3M12 15V3c1.4 2.6 3.1 3.7 5 4"/></svg>Walkthrough<span class="st q">QUEUED</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><path d="m4 4 16 16M20 4 4 20"/></svg>Listing tweet<span class="st q">QUEUED</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 8 9-8"/></svg>Email blast<span class="st q">QUEUED</span></button>
+          <button class="pk"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg>OH flyer<span class="st q">QUEUED</span></button>
+        </div>
+        <div class="pksum">3 of 8 ready · Mel keeps going while you edit</div>
+        <div class="pkbar"><i id="pkbar"></i></div>
+      </div>
+
+      <!-- MEL INSIGHTS -->
+      <div class="sec">
+        <div class="seclab">Mel read the listing</div>
+        <div class="ins">
+          <span class="inchip"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Price drop · Aug 12</span>
+          <span class="inchip"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5"/></svg>Open house Sat 1–4</span>
+          <span class="inchip"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/></svg>24 photos</span>
+        </div>
+        <button class="melbtn" id="melstyle"><span class="mring" style="width:15px;height:15px"></span>Let Mel style it</button>
+        <div class="melnote">One click — Mel picks the image, template and copy for this asset, and tells you why.</div>
+        <div class="melwhy" id="melwhy"></div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="sec" id="sec-image">
+        <div class="seclab">Image</div>
+        <div class="phgrid" id="phgrid">
+          <button class="pht on" data-ph="front"><span class="pfill photo front"></span><span class="pn">Front elevation</span></button>
+          <button class="pht" data-ph="living"><span class="pfill photo living"></span><span class="pn">Living room</span></button>
+          <button class="pht" data-ph="kitchen"><span class="pfill photo kitchen"></span><span class="pn">Kitchen</span></button>
+          <button class="pht" data-ph="yard"><span class="pfill photo yard"></span><span class="pn">Back yard</span></button>
+          <button class="pht" data-ph="suite"><span class="pfill photo suite"></span><span class="pn">Primary suite</span></button>
+          <button class="pht up">+ Your photo</button>
+        </div>
+        <div class="hint">Suggested from the MLS — or upload your own.</div>
+      </div>
+
+      <!-- HEADLINE -->
+      <div class="sec" id="sec-headline">
+        <div class="seclab">Headline — pick one</div>
+        <div id="hlist">
+          <div class="vc on" data-hl="Just listed in Noe Valley">
+            <div class="vt">Just listed in Noe Valley</div>
+            <div class="vwhy"><svg viewBox="0 0 24 24"><path d="M12 2 14 9l7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>Mel: neighborhood names pull the widest reach</div>
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </div>
+          <div class="vc" data-hl="New to market on Grove St">
+            <div class="vt">New to market on Grove St</div>
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </div>
+          <div class="vc" data-hl="Noe Valley, newly listed">
+            <div class="vt">Noe Valley, newly listed</div>
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </div>
+        </div>
+        <details class="manual"><summary>Write my own <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <textarea id="hlman" placeholder="Type a headline — the preview updates live."></textarea>
+        </details>
+      </div>
+
+      <!-- CAPTION -->
+      <div class="sec" id="sec-caption">
+        <div class="seclab">Caption — pick one</div>
+        <div id="clist">
+          <div class="vc on" data-cap="long">
+            <span class="vtag">Longer</span>
+            <div class="vt">Just listed in Noe Valley — 3 bed, 2 bath with the light everyone asks for. 1,510 sqft, updated kitchen, walkable to everything. Showings start Thursday, send me a DM for a private tour.</div>
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </div>
+          <div class="vc" data-cap="short">
+            <span class="vtag">Shorter</span>
+            <div class="vt">Just listed in Noe Valley. 3 bed, 2 bath, 1,510 sqft. Showings start Thursday — DM me.</div>
+            <span class="vwhy"><svg viewBox="0 0 24 24"><path d="M12 2 14 9l7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>Mel: short captions hold attention on feed</span>
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </div>
+        </div>
+        <div class="chiprow">
+          <button class="rw" data-rw="punchier">Punchier</button>
+          <button class="rw" data-rw="warmer">Warmer</button>
+          <button class="rw" data-rw="professional">Professional</button>
+          <button class="rw mel" data-rw="ai">+ Mel's CTA line</button>
+        </div>
+        <details class="manual"><summary>Edit manually <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <textarea id="capman" placeholder="Edit the caption — the preview updates live."></textarea>
+        </details>
+      </div>
+
+      <!-- HASHTAGS -->
+      <div class="sec" id="sec-tags">
+        <div class="seclab">Hashtags — tap to toggle</div>
+        <div class="chiprow" id="taglist" style="margin-top:0">
+          <button class="tagchip on" data-t="#justlisted">#justlisted</button>
+          <button class="tagchip on" data-t="#noevalley">#noevalley</button>
+          <button class="tagchip on" data-t="#sfrealestate">#sfrealestate</button>
+          <button class="tagchip" data-t="#radiusagent">#radiusagent</button>
+          <button class="tagchip" data-t="#openhouse">#openhouse</button>
+          <button class="tagchip" data-t="#pricedrop">#pricedrop</button>
+        </div>
+      </div>
+
+      <!-- FONT -->
+      <div class="sec" id="sec-font">
+        <div class="seclab">Font</div>
+        <div class="chiprow" style="margin-top:0" id="fontlist">
+          <button class="optchip on" data-f="inter">Inter</button>
+          <button class="optchip" data-f="serif" style="font-family:Newsreader,Georgia,serif">Newsreader</button>
+          <button class="optchip" data-f="georgia" style="font-family:Georgia,serif">Georgia</button>
+          <button class="optchip" data-f="mono" style="font-family:ui-monospace,Menlo,monospace">Mono</button>
+        </div>
+      </div>
+
+      <!-- TEMPLATE -->
+      <div class="sec" id="sec-template">
+        <div class="seclab">Template</div>
+        <div class="chiprow" style="margin-top:0" id="tpllist">
+          <button class="optchip on" data-tpl="wave">Wave</button>
+          <button class="optchip" data-tpl="feature">Feature sheet</button>
+          <button class="optchip" data-tpl="editorial">Editorial</button>
+          <button class="optchip" data-tpl="collage">Collage</button>
+          <button class="optchip" data-tpl="minimal">Minimal</button>
+        </div>
+      </div>
+
+      <!-- ACCENT -->
+      <div class="sec" id="sec-accent" style="border-bottom:none">
+        <div class="seclab">Accent</div>
+        <div class="chiprow" style="margin-top:0" id="acclist">
+          <button class="optchip" data-acc="#CFC9C0"><span class="sw" style="background:#CFC9C0"></span>Sand</button>
+          <button class="optchip on" data-acc="#C3CCC5"><span class="sw" style="background:#C3CCC5"></span>Sage</button>
+          <button class="optchip" data-acc="#CCC6CF"><span class="sw" style="background:#CCC6CF"></span>Lilac</button>
+          <button class="optchip" data-acc="#2B3440"><span class="sw" style="background:#2B3440"></span>Ink</button>
+          <button class="optchip" data-acc="#5A5FF2"><span class="sw" style="background:#5A5FF2"></span>Indigo</button>
+          <button class="optchip" data-acc="#F08068"><span class="sw" style="background:#F08068"></span>Coral</button>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="ctarow">
+        <div class="pop" id="pop">
+          <h4>When should Mel post it?</h4>
+          <button class="slot" data-when="now"><b>Post now</b></button>
+          <button class="slot" data-when="sat"><b>Saturday · 9:00 AM</b><span class="why">◌ Mel: best engagement</span></button>
+          <button class="slot" data-when="thu"><b>Thursday · 6:00 PM</b><span class="why">showings open</span></button>
+          <button class="cancel" id="popcancel">Cancel</button>
+        </div>
+        <button class="btn ghost" id="dl">Download</button>
+        <button class="btn prime" id="approve">Approve &amp; schedule</button>
+      </div>
+      <div class="trust">Nothing posts until you approve it here.</div>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast">
+  <span class="tick2"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+  <span id="toastmsg"><b>Scheduled for Saturday, 9:00 AM</b><small>Mel posts it and logs the result in Library.</small></span>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id), post=$('post');
+  const S={hl:'Just listed in Noe Valley',cap:'long',photo:'front',tpl:'wave',font:'inter',acc:'#C3CCC5',
+    tags:['#justlisted','#noevalley','#sfrealestate']};
+  const CAPS={
+    long:'Just listed in Noe Valley — 3 bed, 2 bath with the light everyone asks for. 1,510 sqft, updated kitchen, walkable to everything. Showings start Thursday, send me a DM for a private tour.',
+    short:'Just listed in Noe Valley. 3 bed, 2 bath, 1,510 sqft. Showings start Thursday — DM me.'};
+  let capText=CAPS.long;
+  const RW={
+    punchier:c=>c.split('. ').slice(0,2).join('. ').replace(/\.$/,'')+'. DM me.',
+    warmer:c=>/^Genuinely/.test(c)?c:'Genuinely proud of this one. '+c,
+    professional:c=>c.replace(/send me a DM for a private tour\.?/i,'contact me to arrange a private tour.').replace(/DM me\.?/i,'Contact me for details.'),
+    ai:c=>c.replace(/\s*(DM me\.|Contact me for details\.)\s*$/i,'').trim()+' DM me “tour” and I will hold a slot for you.'};
+
+  /* ---------- render ---------- */
+  function render(){
+    $('hl').textContent=S.hl;
+    $('cap').textContent=capText;
+    $('tags').textContent=S.tags.join(' ');
+    post.dataset.tpl=S.tpl; post.dataset.font=S.font;
+    post.style.setProperty('--acc',S.acc);
+    document.querySelectorAll('.photo').forEach(p=>{
+      if(p.closest('.pht'))return;
+      const want=p.classList.contains(S.photo);
+      if(S.tpl==='collage'){p.style.opacity=1}
+      else p.style.opacity=want?1:0;
+    });
+  }
+
+  /* ---------- generation intro ---------- */
+  const steps=[['Blocking out the layout…',0],['Placing the listing photos…',1],['Writing the copy…',2]];
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function gen(){
+    if(reduce){finish();return}
+    post.classList.add('skl');
+    let i=0;
+    const tick=()=>{
+      if(i>0) $('gsteps').children[i-1].className='gstep done';
+      if(i<steps.length){
+        $('gtxt').innerHTML='<b>Mel</b> · '+steps[i][0];
+        $('gsteps').children[i].className='gstep doing';
+        i++; setTimeout(tick,780);
+      } else finish();
+    };
+    setTimeout(tick,420);
+  }
+  function finish(){
+    post.classList.remove('skl'); post.classList.add('reveal');
+    $('gring').classList.remove('spin');
+    $('gtxt').innerHTML='<b>Feed post ready</b> — click any part of it to edit';
+    [...$('gsteps').children].forEach(c=>c.className='gstep done');
+    setTimeout(()=>{$('gsteps').style.display='none'},1600);
+    $('pkbar').style.width='37%';
+  }
+  gen();
+
+  /* ---------- zone sync ---------- */
+  document.querySelectorAll('.zone[data-sec]').forEach(z=>{
+    z.addEventListener('click',e=>{
+      e.stopPropagation();
+      const sec=$(z.dataset.sec); if(!sec)return;
+      sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      sec.classList.remove('hot'); void sec.offsetWidth; sec.classList.add('hot');
+      z.classList.remove('flash'); void z.offsetWidth; z.classList.add('flash');
+    });
+  });
+
+  /* ---------- pickers ---------- */
+  const pick=(wrap,sel,cb)=>{$(wrap).addEventListener('click',e=>{
+    const b=e.target.closest(sel); if(!b)return;
+    $(wrap).querySelectorAll(sel).forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); cb(b);});};
+
+  pick('phgrid','.pht:not(.up)',b=>{S.photo=b.dataset.ph;render()});
+  pick('hlist','.vc',b=>{S.hl=b.dataset.hl;render()});
+  pick('clist','.vc',b=>{S.cap=b.dataset.cap;capText=CAPS[S.cap];$('capman').value='';render()});
+  pick('fontlist','.optchip',b=>{S.font=b.dataset.f;render()});
+  pick('tpllist','.optchip',b=>{S.tpl=b.dataset.tpl;render()});
+  pick('acclist','.optchip',b=>{S.acc=b.dataset.acc;render()});
+
+  $('taglist').addEventListener('click',e=>{
+    const b=e.target.closest('.tagchip'); if(!b)return;
+    b.classList.toggle('on');
+    S.tags=[...document.querySelectorAll('.tagchip.on')].map(x=>x.dataset.t);
+    render();
+  });
+
+  document.querySelectorAll('.rw').forEach(b=>b.addEventListener('click',()=>{
+    capText=RW[b.dataset.rw](capText); render();
+    const sel=document.querySelector('#clist .vc.on .vt'); if(sel)sel.textContent=capText;
+  }));
+
+  $('hlman').addEventListener('input',e=>{if(e.target.value.trim()){S.hl=e.target.value;render()}});
+  $('capman').addEventListener('input',e=>{if(e.target.value.trim()){capText=e.target.value;render()}});
+
+  /* ---------- packet contents ---------- */
+  $('pkhead').addEventListener('click',()=>{
+    $('pkgrid').classList.toggle('open');
+    $('pkchev').classList.toggle('open');
+  });
+
+  /* ---------- Let Mel style it ---------- */
+  const MELPICKS=[
+    {tpl:'editorial',font:'serif',photo:'kitchen',acc:'#CFC9C0',hl:'Noe Valley, newly listed',
+     why:'This listing had a <b>price drop 6 days ago</b>, so I went Editorial — it reads considered, not salesy. Kitchen photo because updated kitchens are the top save-trigger in Noe Valley, and a serif headline to slow the scroll.'},
+    {tpl:'feature',font:'inter',photo:'front',acc:'#2B3440',hl:'Just listed in Noe Valley',
+     why:'Open house is <b>this Saturday</b>, so I led with the front elevation people will recognize from the street, and the Feature sheet band keeps the price visible even on mute autoplay.'},
+    {tpl:'wave',font:'inter',photo:'living',acc:'#F08068',hl:'New to market on Grove St',
+     why:'Your last three posts used cool tones — a coral accent breaks the pattern in-feed. Living room light is this listing\'s best photo by MLS view-count.'}];
+  let melN=0;
+  $('melstyle').addEventListener('click',()=>{
+    const p=MELPICKS[melN++%MELPICKS.length];
+    Object.assign(S,{tpl:p.tpl,font:p.font,photo:p.photo,acc:p.acc,hl:p.hl});
+    /* sync rail selections */
+    const sync=(wrap,sel,attr,val)=>{document.querySelectorAll('#'+wrap+' '+sel).forEach(x=>x.classList.toggle('on',x.dataset[attr]===val))};
+    sync('tpllist','.optchip','tpl',p.tpl); sync('fontlist','.optchip','f',p.font);
+    sync('phgrid','.pht','ph',p.photo); sync('acclist','.optchip','acc',p.acc);
+    sync('hlist','.vc','hl',p.hl);
+    post.classList.remove('reveal'); void post.offsetWidth; post.classList.add('reveal');
+    const w=$('melwhy'); w.innerHTML='◌ '+p.why; w.classList.add('show');
+    render();
+  });
+
+  /* ---------- approve / schedule / toast ---------- */
+  const pop=$('pop');
+  $('approve').addEventListener('click',()=>pop.classList.toggle('open'));
+  $('popcancel').addEventListener('click',()=>pop.classList.remove('open'));
+  pop.querySelectorAll('.slot').forEach(s=>s.addEventListener('click',()=>{
+    pop.classList.remove('open');
+    const msg={now:'<b>Posting now</b><small>Mel posts it and logs the result in Library.</small>',
+      sat:'<b>Scheduled for Saturday, 9:00 AM</b><small>Mel posts it and logs the result in Library.</small>',
+      thu:'<b>Scheduled for Thursday, 6:00 PM</b><small>Mel posts it and logs the result in Library.</small>'}[s.dataset.when];
+    $('toastmsg').innerHTML=msg;
+    $('toast').classList.add('show');
+    setTimeout(()=>$('toast').classList.remove('show'),3400);
+  }));
+  $('dl').addEventListener('click',()=>{
+    $('toastmsg').innerHTML='<b>Downloading feed-post.png</b><small>1080 × 1080 · ready for anywhere.</small>';
+    $('toast').classList.add('show');
+    setTimeout(()=>$('toast').classList.remove('show'),2600);
+  });
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('#pop')&&!e.target.closest('#approve'))pop.classList.remove('open');
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

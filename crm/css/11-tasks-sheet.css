@@ -1,0 +1,157 @@
+  /* ============ Tasks — Radius UI DS Sheet (side panel) ============
+     Visual reuse of My Work task styles (.mwtrow, .mwty, .mwgh, .mwlist, .link/.mwcw).
+     UX pattern per stakeholder mock: grouped by property, sub-tabs, bulk actions per group. */
+  .tkscrim{position:fixed;inset:0;background:rgba(10,10,10,.32);z-index:100;opacity:0;pointer-events:none;transition:opacity .16s ease}
+  .tkscrim.on{opacity:1;pointer-events:auto}
+  .tksheet.rds-sheet{width:480px;max-width:92vw;transform:translateX(100%);transition:transform .22s cubic-bezier(.23,1,.32,1);z-index:110;padding:0;display:flex;flex-direction:column}
+  .tksheet.rds-sheet.on{transform:translateX(0)}
+  /* header */
+  .tksheet .tksh{display:flex;align-items:center;gap:8px;padding:16px 20px 12px;border-bottom:1px solid var(--neutral-100)}
+  .tksheet .tksh .ptitle{font-size:18px;font-weight:700;color:var(--neutral-900);margin:0;letter-spacing:-.02em}
+  .tksheet .tksh .pcount{font-size:11px;padding:2px 7px;font-family:var(--mono);color:var(--neutral-500);background:var(--neutral-100);border-radius:9999px;font-variant-numeric:tabular-nums}
+  .tksheet .tkshsp{flex:1}
+  .tksheet .tkshbtn{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--white);border:1px solid var(--neutral-200);color:var(--neutral-600);cursor:pointer;padding:0}
+  .tksheet .tkshbtn:hover{background:var(--neutral-50);color:var(--neutral-900);border-color:var(--neutral-300)}
+  .tksheet .tkshbtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .tksheet .tksx{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--neutral-500);cursor:pointer;background:transparent;border:none;padding:0}
+  .tksheet .tksx:hover{background:var(--neutral-100);color:var(--neutral-900)}
+  .tksheet .tksx svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  /* sub-tabs (underline style, matches screenshot 2) */
+  .tksheet .tkstabs{display:flex;align-items:center;gap:16px;padding:0 20px;border-bottom:1px solid var(--neutral-100);flex-shrink:0}
+  .tkstab{background:transparent;border:none;padding:10px 0 9px;font-size:13px;font-weight:500;color:var(--neutral-500);cursor:pointer;border-bottom:2px solid transparent;font-family:inherit}
+  .tkstab:hover{color:var(--neutral-900)}
+  .tkstab.active{color:var(--neutral-900);border-bottom-color:var(--neutral-900)}
+  .tkstab .tkstn{font-family:var(--mono);font-size:11px;color:var(--neutral-500);margin-left:5px;font-variant-numeric:tabular-nums}
+  .tkstab.active .tkstn{color:var(--neutral-700)}
+  /* body */
+  .tksheet .tkbody{flex:1;overflow:auto;padding:8px 16px 88px;display:flex;flex-direction:column;gap:2px;min-width:0}
+  /* property group header (collapsible per property) */
+  .tkpgh{display:flex;align-items:center;gap:10px;padding:12px 8px;cursor:pointer;user-select:none;border-radius:8px;transition:background .12s ease}
+  .tkpgh:hover{background:var(--neutral-50)}
+  .tkpgh .tkpchev{width:14px;height:14px;stroke:var(--neutral-500);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .16s ease;flex:none}
+  .tkpgh[aria-expanded="true"] .tkpchev{transform:rotate(90deg)}
+  .tkpgh .tkpaddr{font-size:14px;font-weight:600;font-variation-settings:"wght" 600;color:var(--neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;letter-spacing:-.005em}
+  .tkpgh .tkpct{font-size:11px;font-weight:500;color:var(--primary);background:#eef0fe;border-radius:9999px;padding:2px 8px;font-variant-numeric:tabular-nums;flex:none}
+  .tkpgh.od .tkpct{color:var(--status-red);background:rgba(220,38,38,.10)}
+  /* expanded group body */
+  .tkpgroup{padding:0 0 8px}
+  .tkpgroup.collapsed{display:none}
+  .tkpgroup .mwlist{margin:0 0 6px}
+  /* bulk bar inside group (per screenshot 2) */
+  .tkpbulk{display:none;align-items:center;gap:6px;padding:8px 10px;margin:0 0 8px;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;font-size:12.5px;color:var(--neutral-900)}
+  .tkpbulk.on{display:flex}
+  .tkpbulk .tkpbcb{width:14px;height:14px;border-radius:3px;background:var(--primary);display:flex;align-items:center;justify-content:center;flex:none}
+  .tkpbulk .tkpbcb::after{content:"";width:7px;height:4px;border-left:1.8px solid #fff;border-bottom:1.8px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+  .tkpbulk .tkpblbl{font-weight:500;color:var(--neutral-900)}
+  .tkpbulk .tkpbsp{flex:1}
+  .tkpbulk .tkpbbtn{height:26px;border-radius:6px;padding:0 10px;font-size:12px;font-weight:500;background:var(--white);border:1px solid var(--neutral-200);color:var(--neutral-700);cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+  .tkpbulk .tkpbbtn:hover{background:var(--neutral-50);color:var(--neutral-900);border-color:var(--neutral-300)}
+  .tkpbulk .tkpbbtn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  /* +N more link (per screenshot 2) */
+  .tkpmore{background:transparent;border:none;color:var(--primary);font-size:12.5px;font-weight:500;padding:6px 10px;cursor:pointer;font-family:inherit}
+  .tkpmore:hover{text-decoration:underline}
+  /* footer */
+  .tksheet .tksfoot{padding:12px 20px;border-top:1px solid var(--neutral-100);display:flex;align-items:center;justify-content:center;background:var(--white)}
+  .tksall{color:var(--primary);font-size:13px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+  .tksall:hover{text-decoration:underline}
+  .tksall svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  /* empty */
+  .tkempty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:56px 20px;text-align:center}
+  .tkempty .tkeico{width:38px;height:38px;border-radius:10px;background:var(--neutral-50);display:flex;align-items:center;justify-content:center;border:1px solid var(--neutral-200);margin-bottom:4px}
+  .tkempty .tkeico svg{width:17px;height:17px;stroke:var(--neutral-500);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .tkempty .tket{font-size:13px;font-weight:500;color:var(--neutral-900)}
+  .tkempty .tkes{font-size:11.5px;color:var(--neutral-500);max-width:280px}
+  /* header pill button on tx phead — kept from earlier */
+  .tkpbtn{position:relative;padding-right:8px}
+  .tkpbtn .tkpbadge{min-width:16px;height:16px;padding:0 5px;border-radius:9999px;background:var(--primary);color:#fff;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;line-height:1;margin-left:4px}
+  .tkpbtn[data-count="0"] .tkpbadge{display:none}
+  /* signer sub-sheet */
+  .tksscrim{position:fixed;inset:0;background:rgba(10,10,10,.5);z-index:120;display:none}
+  .tksscrim.on{display:block}
+  .tkssheet{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:100vw;background:var(--white);border-left:1px solid var(--neutral-200);z-index:130;display:none;flex-direction:column;box-shadow:-16px 0 40px rgba(10,10,10,.10)}
+  .tkssheet.on{display:flex}
+  .tkssheet .tkshead{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--neutral-100)}
+  .tkssheet .tkstitle{font-size:15px;font-weight:600;color:var(--neutral-900)}
+  .tkssheet .tkssub{font-size:12px;color:var(--neutral-500);margin-top:2px}
+  .tkssheet .tksx{margin-left:auto}
+  .tkssheet .tksbody{flex:1;overflow:auto;padding:20px}
+  .tkssheet .tksdoc{border:1px solid var(--neutral-200);border-radius:12px;padding:24px;background:var(--neutral-50);font-size:13px;line-height:1.6;color:var(--neutral-700);min-height:280px}
+  .tkssheet .tksdoc h4{font-size:14px;color:var(--neutral-900);margin:0 0 12px;font-weight:600}
+  .tkssheet .tksdoc p{margin:0 0 10px}
+  .tkssheet .tkssig{margin-top:20px;padding:16px;border:1.5px dashed var(--neutral-300);border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center;min-height:70px;font-family:'Caveat',cursive;font-size:26px;color:var(--neutral-400)}
+  .tkssheet .tkssig.signed{border-style:solid;border-color:var(--primary);color:var(--primary);background:#fafbff}
+  .tkssheet .tksfoot{padding:14px 20px;border-top:1px solid var(--neutral-100);display:flex;align-items:center;gap:8px}
+  /* sheet: selection state on shared .mwtrow */
+  .tksheet .mwtrow.selected{background:#eef0fe}
+  .tksheet .mwtrow.selected .mwcb{background:var(--primary);border-color:var(--primary)}
+  .tksheet .mwtrow.selected .mwcb svg{opacity:1;transform:scale(1);stroke:#fff}
+  body.dark .tksheet .mwtrow.selected{background:#1e1b4b}
+  body.dark .tksheet.rds-sheet{background:#0a0a0a}
+  body.dark .tkpgh:hover{background:#171717}
+  body.dark .tkpbulk{background:#1e1b4b;border-color:#312e81;color:#fafafa}
+  body.dark .tkstab.active{color:#fafafa;border-bottom-color:#fafafa}
+  body.dark .tkssheet{background:#0a0a0a;border-color:#262626}
+  /* Filter popover on the Tasks sheet header */
+  .tksheet .tksh{position:relative}
+  .tkshbtn .tkfdot{position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--primary);pointer-events:none}
+  .tkshbtn[aria-expanded="true"]{background:var(--neutral-100);color:var(--neutral-900);border-color:var(--neutral-300)}
+  .tkfpop{position:absolute;top:calc(100% - 4px);right:52px;width:260px;background:var(--white);border:1px solid var(--neutral-200);border-radius:14px;box-shadow:0 10px 24px -8px rgba(10,10,10,.14),0 2px 6px -2px rgba(10,10,10,.08);padding:14px;z-index:5;display:flex;flex-direction:column;gap:12px}
+  .tkfpop[hidden]{display:none}
+  .tkfph{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600;color:var(--neutral-900);letter-spacing:.01em}
+  .tkfpclr{background:none;border:none;padding:0;font:inherit;font-size:12px;font-weight:500;color:var(--destructive,#dc2626);cursor:pointer}
+  .tkfpclr:hover{color:#b91c1c}
+  .tkfpsec{display:flex;flex-direction:column;gap:6px}
+  .tkfplbl{font-size:11px;font-weight:500;color:var(--neutral-500);letter-spacing:.02em;text-transform:uppercase}
+  .tkfpopts{display:flex;flex-wrap:wrap;gap:6px}
+  .tkfpopt{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:8px;border:1px solid var(--neutral-200);background:var(--white);font:500 12px var(--font);color:var(--neutral-700);cursor:pointer;transition:background .12s ease,border-color .12s ease,color .12s ease}
+  .tkfpopt:hover{background:var(--neutral-50);color:var(--neutral-900)}
+  .tkfpopt.on{background:color-mix(in oklab,var(--primary) 10%,#fff);border-color:var(--primary);color:var(--primary)}
+  body.dark .tkfpop{background:#171717;border-color:#262626}
+  body.dark .tkfpopt{background:#171717;border-color:#262626;color:#d4d4d4}
+  body.dark .tkfpopt:hover{background:#262626;color:#fafafa}
+  body.dark .tkfpopt.on{background:#1e1b4b;border-color:var(--primary);color:#c7d2fe}
+
+  /* New-task button + inline composer */
+  .tksheet .tknewbtn{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:8px;background:var(--primary);color:#fff;border:none;font:600 12px var(--font);cursor:pointer;transition:transform .12s ease,filter .12s ease;flex:none}
+  .tksheet .tknewbtn:hover{filter:brightness(1.06)}
+  .tksheet .tknewbtn:active{transform:scale(.98)}
+  .tksheet .tknewbtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .tknew{display:none;flex-direction:column;gap:10px;padding:14px 20px;border-bottom:1px solid var(--neutral-100);background:var(--neutral-50);flex:none}
+  .tknew.on{display:flex}
+  .tknew .tnrow{display:flex;gap:8px}
+  .tknew .tnfield{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+  .tknew .tnlbl{font-size:10px;font-weight:600;color:var(--neutral-500);letter-spacing:.04em;text-transform:uppercase}
+  .tknew input,.tknew select{height:32px;border:1px solid var(--neutral-200);border-radius:8px;padding:0 10px;font:400 13px var(--font);color:var(--neutral-900);background:var(--white);outline:none;min-width:0;width:100%;font-family:inherit}
+  .tknew select{padding-right:26px;-webkit-appearance:none;appearance:none;background:var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 10px center}
+  .tknew input:focus,.tknew select:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 15%,transparent)}
+  .tknew .tnttl{font-size:14px;font-weight:500}
+  .tknew .tnfoot{display:flex;justify-content:flex-end;gap:8px;padding-top:2px}
+  .tknew .tnbtn{height:30px;padding:0 14px;border-radius:8px;font:600 12px var(--font);cursor:pointer;border:1px solid var(--neutral-200);background:var(--white);color:var(--neutral-700);font-family:inherit}
+  .tknew .tnbtn:hover{background:var(--neutral-100)}
+  .tknew .tnbtn.p{background:var(--primary);border-color:var(--primary);color:#fff}
+  .tknew .tnbtn.p:hover{filter:brightness(1.06)}
+  .tknew .tnbtn.p:disabled{opacity:.5;cursor:not-allowed;filter:none}
+  body.dark .tknew{background:#0f0f0f;border-color:#262626}
+  body.dark .tknew input,body.dark .tknew select{background:#171717;border-color:#262626;color:#fafafa}
+  body.dark .tknew .tnbtn{background:#171717;border-color:#262626;color:#d4d4d4}
+  body.dark .tknew .tnbtn:hover{background:#262626}
+
+  /* Snooze menu (per-row + bulk) */
+  .tksnzmenu{position:fixed;z-index:140;min-width:200px;background:var(--white);border:1px solid var(--neutral-200);border-radius:10px;box-shadow:var(--shadow-md,0 12px 32px rgba(10,10,10,.12));padding:6px;display:none;flex-direction:column;gap:1px;font-family:inherit}
+  .tksnzmenu.on{display:flex;animation:tksnzin .12s ease}
+  @keyframes tksnzin{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:none}}
+  .tksnzmenu .tksnzh{padding:6px 10px 4px;font-size:10px;font-weight:600;color:var(--neutral-500);letter-spacing:.04em;text-transform:uppercase}
+  .tksnzmenu button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;height:32px;padding:0 10px;border-radius:6px;border:none;background:transparent;font:500 13px var(--font);color:var(--neutral-900);cursor:pointer;text-align:left;font-family:inherit}
+  .tksnzmenu button:hover{background:var(--neutral-100)}
+  .tksnzmenu button .tksnzsub{font-size:11px;color:var(--neutral-500);font-weight:400;font-variant-numeric:tabular-nums}
+  .tksnzmenu .tksnzsep{height:1px;background:var(--neutral-100);margin:4px 0}
+  .tksnzmenu .tksnzcustom{display:flex;gap:6px;padding:4px 6px}
+  .tksnzmenu .tksnzcustom input{flex:1;height:30px;border:1px solid var(--neutral-200);border-radius:6px;padding:0 8px;font:400 12px var(--font);font-family:inherit;background:var(--white);color:var(--neutral-900);outline:none;min-width:0}
+  .tksnzmenu .tksnzcustom input:focus{border-color:var(--primary);box-shadow:0 0 0 2px color-mix(in oklab,var(--primary) 15%,transparent)}
+  .tksnzmenu .tksnzcustom button{width:auto;flex:none;height:30px;padding:0 10px;background:var(--primary);color:#fff;font:600 12px var(--font);font-family:inherit;border-radius:6px}
+  .tksnzmenu .tksnzcustom button:hover{filter:brightness(1.06);background:var(--primary)}
+  body.dark .tksnzmenu{background:#171717;border-color:#262626}
+  body.dark .tksnzmenu button{color:#fafafa}
+  body.dark .tksnzmenu button:hover{background:#262626}
+  body.dark .tksnzmenu .tksnzsep{background:#262626}
+  body.dark .tksnzmenu .tksnzcustom input{background:#0f0f0f;border-color:#262626;color:#fafafa}

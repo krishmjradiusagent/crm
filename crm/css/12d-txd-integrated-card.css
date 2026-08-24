@@ -1,0 +1,167 @@
+/* ================= integrated transaction card ================= */
+.txd-card{margin:14px 20px 8px;background:var(--white);border:1px solid var(--neutral-200);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(10,10,10,.04);flex:none}
+.txd-cardtop{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #e4e4fa;background-image:linear-gradient(90deg,#ececfe 0%,#f7f7ff 100%)}
+body.txd-plaintop .txd-cardtop{background-image:none;background:var(--white);border-bottom-color:var(--neutral-200)}
+.txd-cardtop .txd-title{color:#1f1f45}
+.txd-cardtop .txd-hactions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.txd-cardtop .txd-idchips,.txd-cardtop #txd-more{display:none}
+.txd-pencil{flex:none;width:24px;height:24px;border:none;border-radius:7px;background:none;color:var(--primary);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.txd-pencil svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.txd-pencil:hover{background:rgba(90,95,242,.09)}
+.txd-cardbody{display:grid;grid-template-columns:360px minmax(0,1fr)}
+.txd-chkcol{display:flex;flex-direction:column;min-height:260px;box-sizing:border-box;padding:12px 15px;border-right:1px solid var(--neutral-100)}
+.txd-panel{display:grid;grid-template-columns:minmax(0,1fr);min-width:0}
+.txd-facts3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr 1fr 1fr auto;min-width:0}
+/* fact cells: flat, ruled, centred */
+.txd-facts3 .txd-m,.txd-facts3 .txd-f{background:none;border:none;border-radius:0;box-shadow:none;min-width:0;padding:7px 13px;border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;justify-content:center;gap:3px}
+.txd-facts3 .txd-m:hover,.txd-facts3 .txd-f:hover{box-shadow:none;border-color:#f0f0f0}
+.txd-facts3 .txd-m .l,.txd-facts3 .txd-f>.fl{font-size:11.5px;font-weight:500;color:#737373;line-height:1.2;margin-bottom:0}
+.txd-facts3 .txd-m .v{font-size:16px;font-weight:400;font-variation-settings:"wght" 400;letter-spacing:-.01em;line-height:1.2;color:#0a0a0a}
+.txd-facts3 .txd-f{font-size:13px}
+.txd-facts3 .txd-f>.fv{gap:7px;min-width:0}
+.txd-facts3 .txd-f .txd-av{width:19px;height:19px;font-size:9.5px}
+.txd-facts3 .txd-f .lnk{text-decoration:none}
+.txd-facts3 .txd-f .txd-repb{font-size:12.5px;height:20px;padding:1px 7px;background:#eef0ff;color:#3730a3;font-weight:500}
+.txd-npill{flex:none;display:inline-flex;align-items:center;gap:1px;height:19px;padding:0 4px 0 6px;border:1px solid var(--neutral-200);border-radius:9999px;background:var(--white);font-family:inherit;font-size:11px;color:var(--neutral-600);cursor:pointer;font-variant-numeric:tabular-nums}
+.txd-npill:hover{background:var(--neutral-50)}
+.txd-npill svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.txd-role{flex:none;height:18px;padding:0 5px;border-radius:5px;background:var(--neutral-100);color:var(--neutral-600);font-size:10.5px;display:inline-flex;align-items:center}
+.txd-facts3 .txd-metrics .txd-m:nth-child(1){grid-area:1/1}
+.txd-facts3 .txd-metrics .txd-m:nth-child(2){grid-area:1/2}
+.txd-facts3 .txd-metrics .txd-m:nth-child(3){grid-area:2/1}
+.txd-facts3 .txd-metrics .txd-m:nth-child(4){grid-area:2/2}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(1){grid-area:3/1}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(2){grid-area:3/2}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(3){grid-area:3/3;border-right:none}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(4){grid-area:1/3;border-right:none}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(5){grid-area:2/3;border-right:none}
+.txd-facts3 #txd-factstrip .txd-f:nth-child(5) .txd-tt{max-width:100%;background:none;padding:0;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.txd-panel>.txd-hero{display:none}
+/* control row */
+.txd-ctrl{grid-area:4/1/4/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;min-width:0;border-top:1px solid #f0f0f0}
+.txd-ctrl .cb{flex:1 1 auto;white-space:nowrap;position:relative;font-size:12.5px}
+.txd-ctrl .cb svg{stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.txd-ctrl .cb .cdot{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--destructive);box-shadow:0 0 0 2px var(--white)}
+body.txd-nocomments .txd-ctrl .cb .cdot{display:none}
+.txd-ctrl .st-listing,.txd-ctrl .st-pending,.txd-ctrl .st-paid{display:none}
+body.txs-listing .txd-ctrl .st-listing,body.txs-pending .txd-ctrl .st-pending,body.txs-paid .txd-ctrl .st-paid{display:inline-flex}
+body.txs-listing .txd-ctrl #txd-lock .lb,body.txs-listing .txd-ctrl #txd-comments .lb,body.txs-listing .txd-ctrl #txd-edit .lb{display:none}
+body.txs-listing .txd-ctrl #txd-lock,body.txs-listing .txd-ctrl #txd-comments,body.txs-listing .txd-ctrl #txd-edit{flex:none;width:32px;padding:0}
+body.txd-priv .txd-ctrl #txd-lock{border-color:#c9c9f5;background:#f3f3fe;color:#3730a3}
+body.txd-priv .txd-ctrl #txd-lock .shk{display:none}
+.txd-ctrl #txd-lock .shko{display:none}
+/* one-line action row: icon-only utilities, icon+label actions, full-text status */
+.txd-ctrl{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+.txd-ctrl::-webkit-scrollbar{display:none}
+.txd-ctrl .cb{flex:0 0 auto}
+/* sidebar expanded → utilities are icon-only so the action row stays on one line */
+.txd-ctrl .cb.ico{width:32px;min-width:32px;padding:0;gap:0;justify-content:center}
+.txd-ctrl .cb.ico .lb{display:none}
+/* labels never come back on the utilities — only Auditing comments carries text, so the row cannot break when the sidebar is minimized */
+.txd-ctrl #txd-comments.cb.ico{width:auto;min-width:0;padding:0 12px;gap:6px}
+.txd-ctrl #txd-comments.cb.ico .lb,body.txs-listing .txd-ctrl #txd-comments .lb{display:inline}
+body.txs-listing .txd-ctrl #txd-comments{flex:0 0 auto;width:auto;padding:0 12px}
+.txd-ctrl .cb.noico>svg{display:none}
+/* sidebar minimized → spare width, so edit and the bell carry their labels */
+.app.collapsed .txd-ctrl #txd-edit.cb.ico{width:auto;min-width:0;padding:0 12px;gap:6px}
+.app.collapsed .txd-ctrl #txd-edit.cb.ico .lb{display:inline}
+.txd-ctrl .txd-ctrlgb{justify-content:center}
+.txd-ctrl .cbcar{width:13px;height:13px;margin-left:2px;stroke:var(--neutral-400);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.txd-ctrl .txd-ctrlst{height:auto;min-height:32px;padding:0 8px 0 10px;justify-content:center;flex:0 0 auto;max-width:none;white-space:nowrap}
+.txd-ctrl .txd-ctrlst>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txd-ctrl .txd-ctrlst .stcar{margin-left:2px}
+/* status + contract actions now live in the header action group; tasks + bell moved to the control row */
+.txd-hactions .cb{flex:none;white-space:nowrap;position:relative;font-size:12.5px;height:32px}
+.txd-hactions .cb svg{stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.txd-hactions .cb.noico>svg{display:none}
+/* Accept contract — treasury button: white surface, green border + green label */
+.txd-hactions #txd-accept.rds-btn{background:var(--white);color:#4C7A2E;border:1px solid #6DA544;box-shadow:0 1px 2px rgba(10,10,10,.04)}
+.txd-hactions #txd-accept.rds-btn:hover{background:#F3F9EE;border-color:#5C9137;color:#3F6626}
+.txd-hactions #txd-accept.rds-btn:active{transform:scale(.98)}
+/* Cancel listing — same outline treatment, red */
+.txd-hactions #txd-cancell.rds-btn,.txd-hactions #txd-cancelc.rds-btn{background:var(--white);color:#DC2626;border:1px solid #DC2626;box-shadow:0 1px 2px rgba(10,10,10,.04)}
+.txd-hactions #txd-cancell.rds-btn:hover,.txd-hactions #txd-cancelc.rds-btn:hover{background:#FEF2F2;border-color:#B91C1C;color:#B91C1C}
+.txd-hactions #txd-cancell.rds-btn:active,.txd-hactions #txd-cancelc.rds-btn:active{transform:scale(.98)}
+.txd-hactions .txd-ctrlst{height:32px;min-height:32px;padding:0 8px 0 10px;white-space:nowrap;max-width:none}
+.txd-hactions .st-listing,.txd-hactions .st-pending,.txd-hactions .st-paid{display:none}
+body.txs-listing .txd-hactions .st-listing,body.txs-pending .txd-hactions .st-pending,body.txs-paid .txd-hactions .st-paid{display:inline-flex}
+/* contract actions — listing-based sides (Seller / Landlord / Seller & Buyer) only.
+   Before the contract is accepted: Accept contract + Cancel listing.
+   After it is accepted (body.txd-cxa): Cancel contract, and no Cancel listing.
+   Buy-side (Buyer / Tenant) and Referral never see Accept contract or Cancel listing. */
+body.txd-lside:not(.txd-cxa):not(.txs-paid) #txd-accept,
+body.txd-lside:not(.txd-cxa):not(.txs-paid) #txd-cancell{display:inline-flex}
+body.txd-lside:not(.txd-cxa) #txd-cancelc{display:none}
+body:not(.txd-lside) #txd-accept,body:not(.txd-lside) #txd-cancell,
+body.txd-cxa #txd-accept,body.txd-cxa #txd-cancell{display:none}
+body.txd-cxa:not(.txs-paid) #txd-cancelc,
+body:not(.txd-lside):not(.txs-paid) #txd-cancelc{display:inline-flex}
+.txd-ctrl .txd-tk,.txd-ctrl .nbellwrap{flex:0 0 auto}
+.txd-ctrl .nbell{width:32px;min-width:32px;padding:0;gap:0;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;white-space:nowrap}
+.txd-ctrl .nbell .lb{display:none}
+.app.collapsed .txd-ctrl .nbell{width:auto;min-width:0;padding:0 12px;gap:6px}
+.app.collapsed .txd-ctrl .nbell .lb{display:inline}
+body.txd-priv .txd-ctrl #txd-lock .shko{display:block}
+/* checklist column — open list */
+.txd-chkcol .ch{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.txd-chkcol .ch h4{margin:0;font-size:14px;font-weight:500;font-variation-settings:"wght" 500,"wdth" 100;letter-spacing:-.01em;line-height:1.2;color:#0a0a0a}
+.txd-chkcol .cn{margin-left:auto;flex:none;font-size:11.5px;font-weight:600;color:#a06714;font-variant-numeric:tabular-nums}
+.txd-chkcol .cn.ok{height:19px;padding:0 7px;border-radius:9999px;background:#e9f6ef;border:1px solid #cfe9dd;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#0f6d47;display:inline-flex;align-items:center}
+.txd-chkcol .cn.idle{color:var(--neutral-500)}
+.txd-chkcol .cl{display:flex;flex-direction:column;gap:11px}
+.txd-chkcol .ch{margin-bottom:12px}
+.txd-chkcol .cl span.g{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.2}
+.txd-chkcol .cl span.g.done{color:#525252;font-weight:400}
+.txd-chkcol .cl span.g.wait{font-weight:500;font-variation-settings:"wght" 500,"wdth" 100;color:#0a0a0a}
+.txd-chkcol .cl svg{width:15px;height:15px;flex:none;stroke:#17855c;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;margin:0}
+.txd-chkcol .cl i.ring{flex:none;width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1.8px #e39c2a;margin:0 .5px}
+.txd-chkcol .cl b.tag{margin-left:auto;font-size:11.5px;font-weight:400;color:#a06714}
+.txd-chkcol .cl b.tag.rel{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#0f6d47}
+.txd-chknote{margin-top:auto;padding-top:10px}
+.txd-chknote>div{display:flex;flex-direction:column;gap:2px;padding:8px 10px;background:#fffaf1;border:1px solid #f5e5c8;border-radius:9px}
+.txd-chknote.paid>div{background:#f3faf6;border-color:#dcefe6}
+.txd-chknote .t{font-size:12.5px;font-weight:500;font-variation-settings:"wght" 500,"wdth" 100;color:#0a0a0a;line-height:1.2}
+.txd-chknote .b{font-size:11.5px;line-height:1.35;color:#7a5312;text-wrap:pretty}
+.txd-chknote.paid .b{color:#2f6b52}
+.txd-chknote .b strong{font-weight:700;font-variation-settings:"wght" 700,"wdth" 100;color:var(--neutral-900)}
+/* ---- dialog-in-a-dropdown: anchored panel with dialog chrome, no scrim, no blocking ---- */
+.txd-dpop{position:fixed;top:0;left:0;z-index:140;display:none;flex-direction:column;width:380px;max-width:calc(100vw - 24px);background:var(--white);border:1px solid var(--neutral-200);border-radius:14px;box-shadow:0 14px 34px rgba(10,10,10,.13),0 2px 6px rgba(10,10,10,.06);overflow:hidden}
+.txd-dpop.on{display:flex;animation:dpopin 150ms cubic-bezier(.16,1,.3,1)}
+@keyframes dpopin{from{opacity:0;transform:translateY(-5px) scale(.985)}to{opacity:1;transform:none}}
+.txd-dpop .dph{display:flex;align-items:center;gap:10px;padding:15px 16px 10px}
+.txd-dpop .dph h3{margin:0;font-size:15px;font-weight:700;font-variation-settings:"wght" 700,"wdth" 100;letter-spacing:-.01em;line-height:1.25;color:var(--neutral-900)}
+.txd-dpop .dph p{margin:3px 0 0;font-size:12px;line-height:1.4;color:var(--neutral-500);text-wrap:pretty}
+.txd-dpop .dpx{flex:none;width:26px;height:26px;margin:0 -4px 0 0;padding:0;border:none;background:none;border-radius:7px;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .12s ease,color .12s ease}
+.txd-dpop .dpx:hover{background:var(--neutral-100);color:var(--neutral-900)}
+.txd-dpop .dpx svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.txd-dpop .dpb{padding:0 16px 16px;max-height:min(58vh,520px);overflow:auto}
+.txd-dpop .dpsplit{display:flex;flex-direction:column;padding-bottom:12px;border-bottom:1px solid var(--neutral-200)}
+.txd-dpop .kv{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:26px;font-size:12.5px;color:var(--neutral-600)}
+.txd-dpop .kv b{font-weight:500;color:var(--neutral-900);font-variant-numeric:tabular-nums}
+.txd-dpop .kv.tot{margin-top:6px;padding-top:8px;border-top:1px solid var(--neutral-100);color:var(--neutral-900);font-weight:500}
+.txd-dpop .kv.tot b{font-weight:600}
+.txd-dpop .dpcn{flex:none;margin-top:0;font-size:11.5px;font-weight:600;color:#a06714;font-variant-numeric:tabular-nums;margin-left:auto}
+.txd-dpop .dpcn.ok{height:19px;padding:0 7px;border-radius:9999px;background:#e9f6ef;border:1px solid #cfe9dd;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#0f6d47;display:inline-flex;align-items:center}
+.txd-dpop .txd-chkcol{min-height:0;padding:2px 0;border-right:none}
+.txd-dpop .txd-chkcol .ch{display:none}
+body .txd-dpop .txd-chkcol{display:flex;border-bottom:none}
+.txd-dpop .txd-chkcol .cl{gap:10px}
+.txd-dpop .txd-chknote{margin-top:12px;padding-top:0}
+.txd-dpop .dpf{display:flex;align-items:center;gap:8px;padding:11px 16px;border-top:1px solid var(--neutral-200);background:var(--neutral-50)}
+.txd-dpop .dpfn{margin-right:auto;font-size:11.5px;color:var(--neutral-500)}
+.txd-dpop .dpbtn{height:30px;padding:0 12px;font-size:12.5px;border-radius:10px;display:inline-flex;align-items:center;text-decoration:none;cursor:pointer}
+.txd-dpop .dpbtn:active{transform:scale(.98)}
+/* checklist attention dot survives the comments-dot kill switch */
+body.txd-nocomments .txd-ctrl .cb .cdot.cdot-chk{display:block}
+.txd-ctrl .cb .cdot.cdot-chk.off{display:none}
+/* floating design switcher */
+.txd-switch{position:fixed;right:16px;bottom:16px;z-index:120;display:flex;align-items:center;gap:7px;height:32px;padding:0 6px 0 11px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--neutral-200);border-radius:9999px;box-shadow:0 4px 14px -6px rgba(10,10,10,.22);font-size:12px;color:var(--neutral-500)}
+.txd-switch select{height:24px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:500;color:var(--neutral-900);cursor:pointer;outline:none;padding:0 2px}
+@media (max-width:1080px){
+  .txd-cardbody{grid-template-columns:1fr}
+  .txd-chkcol{height:auto;border-right:none;border-bottom:1px solid var(--neutral-100)}
+  .txd-panel{grid-template-columns:1fr}
+  .txd-facts3{grid-template-columns:1fr 1fr;grid-template-rows:auto;border-right:none}
+  .txd-facts3 .txd-metrics .txd-m:nth-child(1),.txd-facts3 .txd-metrics .txd-m:nth-child(2),.txd-facts3 .txd-metrics .txd-m:nth-child(3),.txd-facts3 .txd-metrics .txd-m:nth-child(4),.txd-facts3 #txd-factstrip .txd-f:nth-child(1),.txd-facts3 #txd-factstrip .txd-f:nth-child(2),.txd-facts3 #txd-factstrip .txd-f:nth-child(3),.txd-facts3 #txd-factstrip .txd-f:nth-child(4),.txd-facts3 #txd-factstrip .txd-f:nth-child(5){grid-area:auto}
+  .txd-ctrl{grid-area:auto/1/auto/-1;flex-wrap:wrap}
+}

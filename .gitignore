@@ -1,0 +1,7 @@
+# Restore-only backups (never referenced by the app)
+backups/
+
+# OS / editor cruft
+.DS_Store
+*.thumbnail
+.thumbnail

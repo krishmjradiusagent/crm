@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,-apple-system,sans-serif}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-tsub{margin:0 0 22px;font:12px/1.6 system-ui,sans-serif;color:rgba(0,0,0,.5);max-width:900px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px;width:404px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.14);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#5A5FF2;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.nt{margin:2px 0 0;padding:0;list-style:none;font:400 11.5px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.62)}
+.nt li{padding-left:14px;position:relative}
+.nt li:before{content:"–";position:absolute;left:2px;color:rgba(0,0,0,.3)}
+.hand{font-family:Caveat,cursive;font-size:15px;color:#8a5a1a}
+
+/* ---- wireframe panel kit (low-fi, greyscale) ---- */
+.pan{display:flex;min-height:620px;background:#fff}
+.col>*{flex:none}
+.rail{width:58px;flex:none;border-right:1px solid #d8d8d8;background:#f6f6f6;display:flex;flex-direction:column;gap:2px;padding:8px 6px}
+.ri{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0 6px;border-radius:8px;font:500 8.5px/1 system-ui,sans-serif;color:#8a8a8a}
+.ri i{display:block;width:20px;height:20px;border:1.4px solid #b4b4b4;border-radius:5px}
+.ri.on{background:#ededfd;color:#5A5FF2}
+.ri.on i{border-color:#5A5FF2}
+.col{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;padding:14px}
+.lab{font:600 9px/1 system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#9a9a9a}
+.bx{border:1.4px solid #cfcfcf;border-radius:8px;background:#fff}
+.bx.d{border-style:dashed}
+.h32{height:32px}
+.srch{display:flex;align-items:center;gap:7px;padding:0 10px;font:400 12px/1 system-ui,sans-serif;color:#a8a8a8}
+.srch b{width:11px;height:11px;border:1.4px solid #b4b4b4;border-radius:50%;flex:none;display:block}
+.btn{display:flex;align-items:center;justify-content:center;height:32px;border-radius:8px;font:600 12px/1 system-ui,sans-serif}
+.btn.pri{background:#5A5FF2;color:#fff}
+.btn.gh{border:1.4px solid #cfcfcf;color:#6a6a6a}
+.row{display:flex;gap:6px}
+.row>*{min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{height:24px;padding:0 9px;border:1.2px solid #cfcfcf;border-radius:7px;font:500 11px/24px system-ui,sans-serif;color:#7a7a7a;white-space:nowrap}
+.chip.on{border-color:#5A5FF2;color:#5A5FF2;background:#f2f2fe}
+.melc{border:1.2px solid #E4E4FB;border-radius:12px;background:linear-gradient(100deg,#F7F7FE 0%,#FCFAFD 48%,#FFFBF8 100%);padding:9px 10px;display:flex;flex-direction:column;gap:7px}
+.melc .who{display:flex;align-items:center;gap:6px;font:600 9px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#6D6EF3}
+.melc .who i{width:11px;height:11px;border:1.4px solid #6D6EF3;border-radius:50%;display:block}
+.melc p{margin:0;font:400 11.5px/1.45 system-ui,sans-serif;color:#4a4a4a}
+.msc{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:4px 11px 4px 9px;border:1.2px solid #E4E4FB;border-radius:11px;background:#fff;font:500 11.5px/1.3 system-ui,sans-serif;color:#6D6EF3}
+.msc s{width:10px;height:10px;flex:none;background:#6D6EF3;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);text-decoration:none}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.th{aspect-ratio:1;border:1.4px solid #cfcfcf;border-radius:7px;background:repeating-linear-gradient(45deg,#fafafa 0 6px,#f0f0f0 6px 12px);position:relative;overflow:hidden}
+.th.sel{border:2px solid #5A5FF2}
+.th u{position:absolute;top:4px;right:4px;width:13px;height:13px;border:1.4px solid #b4b4b4;border-radius:4px;background:#fff;text-decoration:none}
+.th.sel u{background:#5A5FF2;border-color:#5A5FF2}
+.th em{position:absolute;left:0;right:0;bottom:0;padding:2px 4px;font:400 8.5px/1.3 system-ui,sans-serif;font-style:normal;color:#8a8a8a;background:rgba(255,255,255,.9);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.th.vid:after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;color:#b0b0b0}
+.lst{display:flex;flex-direction:column;gap:6px}
+.lrow{display:flex;align-items:center;gap:8px;padding:6px;border:1.2px solid #e2e2e2;border-radius:8px}
+.lrow i{width:34px;height:34px;flex:none;border:1.3px solid #cfcfcf;border-radius:6px;background:repeating-linear-gradient(45deg,#fafafa 0 6px,#f0f0f0 6px 12px);display:block}
+.lrow span{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.lrow b{font:500 11.5px/1.2 system-ui,sans-serif;color:#4a4a4a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lrow em{font:400 10px/1.2 system-ui,sans-serif;font-style:normal;color:#a0a0a0}
+.drop{border:1.4px dashed #cfcfcf;border-radius:10px;padding:12px 10px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.drop p{margin:0;font:400 11.5px/1.4 system-ui,sans-serif;color:#8a8a8a;text-align:center}
+.src{display:flex;gap:6px}
+.src i{width:30px;height:30px;border:1.3px solid #d8d8d8;border-radius:7px;display:block}
+.seg{display:flex;gap:2px;border-bottom:1.2px solid #e2e2e2}
+.seg span{padding:0 8px 6px;font:500 11.5px/1 system-ui,sans-serif;color:#9a9a9a}
+.seg span.on{color:#0a0a0a;box-shadow:inset 0 -2px 0 #5A5FF2}
+.fld{display:flex;align-items:center;gap:6px;height:26px;padding:0 9px;border:1.2px solid #cfcfcf;border-radius:7px;font:500 11px/1 system-ui,sans-serif;color:#7a7a7a;white-space:nowrap}
+.fld i{width:11px;height:9px;border:1.3px solid #b4b4b4;border-radius:2px;display:block;flex:none}
+.spacer{flex:1;min-height:6px}
+.foot{border-top:1.2px solid #e2e2e2;padding-top:9px;display:flex;gap:6px}
+.foot>*{flex:1}
+.cap{padding:8px 12px;border-top:1px solid #eee;font:400 10.5px/1.5 system-ui,sans-serif;color:#9a9a9a;background:#fcfcfc}
+/* brand kit bits */
+.kv{display:flex;align-items:center;gap:9px;padding:8px 9px;border:1.2px solid #e2e2e2;border-radius:9px;min-width:0}
+.kv>b{font:500 11.5px/1.2 system-ui,sans-serif;color:#4a4a4a;white-space:nowrap}
+.kv>em{font:400 10.5px/1.2 system-ui,sans-serif;font-style:normal;color:#a0a0a0;margin-left:auto;white-space:nowrap}
+.kv .sw{display:flex;gap:3px}
+.kv .sw i{width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.08);display:block}
+.kv .lg{width:38px;height:22px;border:1.2px dashed #cfcfcf;border-radius:4px;display:block;flex:none}
+.kv .ty{font:600 12px/1 system-ui,sans-serif;color:#6a6a6a}
+.tog{display:flex;align-items:center;gap:8px;padding:8px 9px;border:1.2px solid #e2e2e2;border-radius:9px;font:500 11.5px/1.3 system-ui,sans-serif;color:#4a4a4a}
+.tog s{margin-left:auto;width:30px;height:18px;border-radius:9px;background:#5A5FF2;position:relative;flex:none;text-decoration:none}
+.tog s:after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.tog.off s{background:#d8d8d8}
+.tog.off s:after{left:2px;right:auto}
+.rule{display:flex;align-items:flex-start;gap:7px;padding:7px 9px;border:1.2px solid #e2e2e2;border-radius:9px;font:400 11px/1.4 system-ui,sans-serif;color:#5a5a5a}
+.rule i{width:12px;height:12px;flex:none;margin-top:1px;border:1.3px solid #b4b4b4;border-radius:3px;display:block}
+.learn{display:flex;flex-direction:column;gap:6px;padding:9px 10px;border:1.2px solid #E4E4FB;border-radius:11px;background:#fbfbff}
+.learn b{font:600 11px/1.2 system-ui,sans-serif;color:#4a4a4a}
+.learn p{margin:0;font:400 10.5px/1.45 system-ui,sans-serif;color:#8a8a8a}
+</style></helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Brand tab — the agent's own kit, taught to Mel once and reused everywhere</span></div>
+<p class="dv-tsub">A "Brand" rail item above Uploads. Whatever is set here becomes the default for every asset Mel makes — feed post, story, reel, listing page, email, flier. Same 404px panel, same containment maths as <a class="dv-oid" href="#t1">turn 1</a>.</p>
+<div class="dv-opts">
+
+  <div class="dv-opt" id="2a">
+    <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Kit list — every part of the brand as a row</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Brand</div>
+          <div class="ri"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>Your kit is 4 of 6 parts filled. Add a logo and a voice sample and I can run every asset on brand without asking.</p>
+            <div class="chips"><span class="msc"><s></s>Finish my kit</span><span class="msc"><s></s>Learn from my website</span></div>
+          </div>
+          <div class="tog">Use my brand on every asset<s></s></div>
+          <div class="lab">Brand kit · Maya Ellison</div>
+          <div class="lst">
+            <div class="kv"><span class="lg"></span><b>Logo</b><em>2 files</em></div>
+            <div class="kv"><span class="sw"><i style="background:#5A5FF2"></i><i style="background:#0A0A0A"></i><i style="background:#E8E3DA"></i></span><b>Colours</b><em>3 set</em></div>
+            <div class="kv"><span class="ty">Aa</span><b>Fonts</b><em>Hubot · Mona</em></div>
+            <div class="kv"><span class="ty">“”</span><b>Brand voice</b><em>Not set</em></div>
+            <div class="kv"><span class="lg"></span><b>Photos</b><em>12 files</em></div>
+            <div class="kv"><span class="ty">PDF</span><b>Guidelines</b><em>Not set</em></div>
+          </div>
+          <div class="lab">Mel learned</div>
+          <div class="learn">
+            <b>From maya.radius.com</b>
+            <p>Indigo accent, all-lowercase headlines, price never in the first line, no emoji.</p>
+            <div class="chips"><span class="chip">Edit</span><span class="chip">Re-learn</span></div>
+          </div>
+          <div class="spacer"></div>
+        </div>
+      </div>
+      <div class="cap">Each row opens a sub-view in the same panel (colours → swatch editor, voice → 3 sample captions). "Not set" is honest, no fake completeness.</div>
+    </div>
+    <ul class="nt">
+      <li>One switch decides whether brand or per-asset choices win.</li>
+      <li>Accent / Font tabs show "from your brand" once the kit is on.</li>
+      <li class="hand">Most legible. Six taps to a full kit.</li>
+    </ul>
+  </div>
+
+  <div class="dv-opt" id="2b">
+    <div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Teach Mel first — one input, she extracts the kit</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Brand</div>
+          <div class="ri"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>Give me one thing — your site, a flier you like, or your guidelines PDF — and I will pull the colours, type and voice out of it.</p>
+            <div class="chips"><span class="msc"><s></s>Use my website</span><span class="msc"><s></s>Upload guidelines</span><span class="msc"><s></s>Copy a past post</span></div>
+          </div>
+          <div class="bx h32 srch"><b></b>maya.radius.com</div>
+          <div class="btn pri">Learn my brand</div>
+          <div class="lab">What Mel found · review before saving</div>
+          <div class="lst">
+            <div class="kv"><span class="sw"><i style="background:#5A5FF2"></i><i style="background:#0A0A0A"></i><i style="background:#E8E3DA"></i></span><b>Colours</b><em>Keep</em></div>
+            <div class="kv"><span class="ty">Aa</span><b>Headline face</b><em>Keep</em></div>
+            <div class="kv"><span class="ty">“”</span><b>Voice: plain, no hype</b><em>Keep</em></div>
+            <div class="kv"><span class="lg"></span><b>Logo, dark + light</b><em>Keep</em></div>
+          </div>
+          <div class="learn">
+            <b>Sample caption in your voice</b>
+            <p>"just listed in noe valley. three beds, a real kitchen, and a yard that gets sun until six."</p>
+            <div class="chips"><span class="chip on">Sounds right</span><span class="chip">Not me</span></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="foot"><div class="btn pri">Save as my brand</div><div class="btn gh" style="flex:0 0 84px">Skip</div></div>
+        </div>
+      </div>
+      <div class="cap">Nothing is saved until the review is accepted. Every extracted value stays editable as a row afterwards (falls back to 2a's list).</div>
+    </div>
+    <ul class="nt">
+      <li>Fastest to a full kit; needs the extraction to be believable.</li>
+      <li>The voice sample is the proof — agents judge tone, not hex codes.</li>
+      <li class="hand">Best first-run. Pairs with 2a as the steady state.</li>
+    </ul>
+  </div>
+
+  <div class="dv-opt" id="2c">
+    <div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Kit + rules — brand as guardrails Mel must follow</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Brand</div>
+          <div class="ri"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>These are the rules I follow on every asset. Turn one off and I will stop applying it.</p>
+            <div class="chips"><span class="msc"><s></s>Add a rule</span></div>
+          </div>
+          <div class="seg"><span class="on">Rules 6</span><span>Assets 4</span><span>Voice</span></div>
+          <div class="lst">
+            <div class="rule"><i></i>Headlines in Hubot Sans, sentence case</div>
+            <div class="rule"><i></i>Accent is indigo #5A5FF2 — never a photo-matched colour</div>
+            <div class="rule"><i></i>Price never sits in the first line of a caption</div>
+            <div class="rule"><i></i>No emoji, ever</div>
+            <div class="rule"><i></i>Logo bottom-left, 24px clear space</div>
+            <div class="rule"><i></i>Always close with "dm to see it"</div>
+          </div>
+          <div class="lab">Kit</div>
+          <div class="chips">
+            <span class="fld"><i></i>Logo 2</span><span class="fld"><i></i>Colours 3</span><span class="fld"><i></i>Fonts 2</span><span class="fld"><i></i>Photos 12</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="foot"><div class="btn pri">Apply to all 8 assets</div></div>
+        </div>
+      </div>
+      <div class="cap">Rules are the model Mel is taught; the kit is just the material. Violations surface as a flag on the asset ("logo has no clear space").</div>
+    </div>
+    <ul class="nt">
+      <li>Strongest control, most reading. Good for teams with a brand book.</li>
+      <li>Assets tab lists where the brand is already applied.</li>
+      <li class="hand">Could be a second screen inside 2a rather than its own option.</li>
+    </ul>
+  </div>
+
+</div>
+<p class="dv-next">Try next: "build <a class="dv-oid" href="#2b">2b</a> then <a class="dv-oid" href="#2a">2a</a> as the saved state" · "put <a class="dv-oid" href="#2c">2c</a>'s rules inside <a class="dv-oid" href="#2a">2a</a>" · "brand should be a full page, not a panel tab"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Uploads as a rail tab — Mel editor panel (404px, rail 58 + content 346, 14px padding → 318px of content; 3-up thumbs = 100px each)</span></div>
+<p class="dv-tsub">Wireframe only — greyscale, no real photos. Uploads sits directly under Photo in the rail, because it feeds the same image slot. Radius rules applied: no illustration, no gradient surfaces, flat indigo for selected, Mel gradient only on the Mel card and its chips.</p>
+<div class="dv-opts">
+
+  <div class="dv-opt" id="1a">
+    <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Library grid — search, source chips, 3-up grid</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>You have 34 files. These three shoot best in a square — twilight front, kitchen, back yard.</p>
+            <div class="chips"><span class="msc"><s></s>Use these 3</span><span class="msc"><s></s>Only twilight shots</span></div>
+          </div>
+          <div class="bx h32 srch"><b></b>Search your uploads</div>
+          <div class="row"><div class="btn pri" style="flex:1">Upload files</div><div class="btn gh" style="width:36px">···</div></div>
+          <div class="chips">
+            <span class="chip on">All 34</span><span class="chip">Photos 28</span><span class="chip">Video 4</span><span class="chip">Docs 2</span>
+          </div>
+          <div class="lab">This listing · 1420 Grove St</div>
+          <div class="g3">
+            <div class="th sel"><u></u><em>twilight-01</em></div>
+            <div class="th sel"><u></u><em>kitchen-04</em></div>
+            <div class="th"><u></u><em>yard-02</em></div>
+            <div class="th"><u></u><em>living-07</em></div>
+            <div class="th vid"><u></u><em>walkthru.mp4</em></div>
+            <div class="th"><u></u><em>bath-01</em></div>
+          </div>
+          <div class="lab">All uploads</div>
+          <div class="g3">
+            <div class="th"><u></u><em>headshot</em></div>
+            <div class="th"><u></u><em>logo-dark</em></div>
+            <div class="th"><u></u><em>oak-ave-03</em></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="foot"><div class="btn pri">Use 2 photos</div><div class="btn gh" style="flex:0 0 96px">Clear</div></div>
+        </div>
+      </div>
+      <div class="cap">Click a tile = place into the active asset's photo slot. Multi-select fills multi-photo templates in order. Footer bar only appears with a selection.</div>
+    </div>
+    <ul class="nt">
+      <li>Search filters by filename, tag and listing.</li>
+      <li>Counts live on the type chips — no separate stats.</li>
+      <li>"···" = rename / delete / new folder / connect a source.</li>
+      <li class="hand">Closest to the reference tool, densest of the three.</li>
+    </ul>
+  </div>
+
+  <div class="dv-opt" id="1b">
+    <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Mel-first — she proposes a set, library is secondary</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>Out of your 34 files I would run these three for the square. Swap any of them and I re-crop.</p>
+            <div class="g3">
+              <div class="th sel"><em>twilight-01</em></div>
+              <div class="th sel"><em>kitchen-04</em></div>
+              <div class="th sel"><em>yard-02</em></div>
+            </div>
+            <div class="chips"><span class="msc"><s></s>Use this set</span><span class="msc"><s></s>Show me 3 others</span></div>
+          </div>
+          <div class="bx h32 srch"><b></b>Search your uploads</div>
+          <div class="lab">Recently used</div>
+          <div class="lst">
+            <div class="lrow"><i></i><span><b>living-07.jpg</b><em>1420 Grove St · used 2d ago</em></span></div>
+            <div class="lrow"><i></i><span><b>walkthru.mp4</b><em>0:38 · Reel cover</em></span></div>
+            <div class="lrow"><i></i><span><b>agent-headshot.png</b><em>Brand · used on 12 assets</em></span></div>
+          </div>
+          <div class="lab">Folders</div>
+          <div class="chips"><span class="fld"><i></i>1420 Grove St 18</span><span class="fld"><i></i>Brand 6</span><span class="fld"><i></i>Oak Ave 10</span></div>
+          <div class="spacer"></div>
+          <div class="drop">
+            <p>Drop files here</p>
+            <div class="row"><div class="btn pri" style="padding:0 14px">Upload files</div><div class="btn gh" style="padding:0 12px">Connect a source</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cap">Grid lives one level down (a folder chip or search opens it). The panel opens on a decision, not on a file browser.</div>
+    </div>
+    <ul class="nt">
+      <li>Fewest clicks to a good post; weakest for "find that one photo".</li>
+      <li>Drop zone parked at the bottom, always reachable.</li>
+      <li class="hand">Most Mel-native. Needs the folder view built too.</li>
+    </ul>
+  </div>
+
+  <div class="dv-opt" id="1c">
+    <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Tabs + folders — library first, Mel as a strip</div>
+    <div class="dv-card">
+      <div class="pan">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="row"><div class="bx h32 srch" style="flex:1"><b></b>Search your uploads</div><div class="btn gh" style="width:36px">···</div></div>
+          <div class="seg"><span class="on">Photos 28</span><span>Video 4</span><span>Docs 2</span><span>Sources</span></div>
+          <div class="chips"><span class="fld"><i></i>1420 Grove St 18</span><span class="fld"><i></i>Brand 6</span><span class="fld"><i></i>Oak Ave 10</span></div>
+          <div class="melc" style="padding:8px 10px">
+            <div class="who"><i></i>Mel suggests</div>
+            <div class="chips"><span class="msc"><s></s>Best 3 for a square</span><span class="msc"><s></s>Twilight only</span></div>
+          </div>
+          <div class="g2">
+            <div class="th sel"><u></u><em>twilight-01.jpg</em></div>
+            <div class="th"><u></u><em>kitchen-04.jpg</em></div>
+            <div class="th"><u></u><em>yard-02.jpg</em></div>
+            <div class="th"><u></u><em>living-07.jpg</em></div>
+            <div class="th"><u></u><em>bath-01.jpg</em></div>
+            <div class="th"><u></u><em>entry-03.jpg</em></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="foot"><div class="btn pri">Use 1 photo</div><div class="btn gh" style="flex:0 0 110px">Upload files</div></div>
+        </div>
+      </div>
+      <div class="cap">2-up tiles (155px) so filenames read without truncation; type tabs carry counts, folders are a scrollable chip row under them.</div>
+    </div>
+    <ul class="nt">
+      <li>Best for agents with a big library; least Mel-forward.</li>
+      <li>"Sources" is a tab, not a drop-zone icon row.</li>
+      <li class="hand">Bigger tiles, half the files per screen.</li>
+    </ul>
+  </div>
+
+  <div class="dv-opt" id="1d">
+    <div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Empty state — shared by all three</div>
+    <div class="dv-card">
+      <div class="pan" style="min-height:420px">
+        <div class="rail">
+          <div class="ri"><i></i>Photo</div>
+          <div class="ri on"><i></i>Uploads</div>
+          <div class="ri"><i></i>Accent</div>
+          <div class="ri"><i></i>Font</div>
+          <div class="ri"><i></i>Template</div>
+          <div class="ri"><i></i>Caption</div>
+          <div class="ri"><i></i>Tags</div>
+        </div>
+        <div class="col">
+          <div class="melc">
+            <div class="who"><i></i>Mel suggests</div>
+            <p>Nothing uploaded yet. I am using the 12 MLS photos — add your own and I will prefer yours.</p>
+            <div class="chips"><span class="msc"><s></s>Pull from the MLS</span></div>
+          </div>
+          <div class="lab">Your files</div>
+          <div class="drop" style="padding:18px 12px">
+            <p>Drop photos, video or a PDF here</p>
+            <div class="btn pri" style="padding:0 16px">Upload files</div>
+            <p style="font-size:10.5px">or connect a source</p>
+            <div class="src"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <p class="nt" style="margin:0;font-size:10.5px;color:#a0a0a0">JPG, PNG, HEIC, MP4 · up to 8 at a time</p>
+          <div class="spacer"></div>
+        </div>
+      </div>
+      <div class="cap">No illustration (Radius is dense/pro). Source tiles are real brand marks: Drive, Photos, Dropbox, Instagram.</div>
+    </div>
+    <ul class="nt">
+      <li>Empty is honest about the MLS fallback already in the Photo tab.</li>
+      <li>Same drop zone reused as the bottom block in <a class="dv-oid" href="#1b">1b</a>.</li>
+    </ul>
+  </div>
+
+</div>
+<p class="dv-next">Try next: "build <a class="dv-oid" href="#1a">1a</a>" · "<a class="dv-oid" href="#1a">1a</a> but with <a class="dv-oid" href="#1b">1b</a>'s Mel set on top" · "drop the folders row"</p>
+</section>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/colors.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/typography.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/radius.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/base.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/components/components.css">
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/styles.css">
+<script src="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/_ds_bundle.js"></script>
+<style>
+  body{margin:0;background:#FAFAFA;font-family:Inter,system-ui,sans-serif;color:#0A0A0A}
+  a{color:#5A5FF2;text-decoration:none}
+  a:hover{color:#4B50E0}
+</style>
+</helmet>
+
+<section style="padding:48px 56px 96px;display:flex;flex-direction:column;gap:14px">
+  <div style="display:flex;flex-direction:column;gap:6px;max-width:900px">
+    <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#737373;font-weight:600">Turn 1 · Clients — list tabs</div>
+    <div style="font-size:28px;font-weight:600;letter-spacing:-.01em">Home is permanent. Lists open as tabs. Overflow never wraps.</div>
+    <div style="font-size:14px;color:#525252;line-height:1.55;text-wrap:pretty">Home = unfiltered clients, always first, never closable. Opening a smart list or list adds a tab after Home. Visible tabs are capped by width (~4–5); everything else collapses into one <strong>More</strong> button with a searchable menu, so 20+ lists never wrap or scroll the row. Pinned lists always claim the visible slots; unpinned ones open as a single temporary tab that gets replaced.</div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:20px">
+
+    <!-- 1a -->
+    <div id="1a" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1a</span><span style="font-size:13px;font-weight:600">Default — no lists yet</span><span style="font-size:13px;color:#737373">Home alone, no segmented pill around a single tab</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="display:flex;align-items:center;gap:2px">
+            <div style="font-size:14px;font-weight:600;color:#0A0A0A;padding:7px 12px;border-radius:8px;background:#F5F5F5">Home</div>
+          </div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 10px;border-radius:8px">+ Smart list</div>
+          <div style="flex:1"></div>
+          <div style="font-size:13px;color:#A3A3A3;border:1px solid #E5E5E5;border-radius:8px;padding:7px 12px;min-width:190px">Search clients</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Home shows every client. No filter chips, no “All clients” duplicate.</div>
+    </div>
+
+    <!-- 1b -->
+    <div id="1b" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1b</span><span style="font-size:13px;font-weight:600">2–4 lists open</span><span style="font-size:13px;color:#737373">Everything fits — no More button</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Home</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px;border-radius:8px">Hot clients<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">24</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px;border-radius:8px">Buyers · SF<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">112</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px;border-radius:8px">No activity 30d<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">8</span></div>
+          </div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 10px;border-radius:8px">+ Smart list</div>
+          <div style="flex:1"></div>
+          <div style="font-size:13px;color:#A3A3A3;border:1px solid #E5E5E5;border-radius:8px;padding:7px 12px;min-width:190px">Search clients</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Counts are the payload, not the headline — mono, muted, secondary weight.</div>
+    </div>
+
+    <!-- 1c -->
+    <div id="1c" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1c</span><span style="font-size:13px;font-weight:600">23 lists — the real case</span><span style="font-size:13px;color:#737373">4 pinned visible, rest collapse into one button</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Home</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px">Hot clients<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">24</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px">Buyers · SF<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">112</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Referral — Q3 nurtu…</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;color:#525252;padding:6px 10px 6px 12px">No activity 30d<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">8</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:14px;color:#525252;border:1px solid #E5E5E5;border-radius:10px;padding:6px 11px;box-shadow:0 1px 2px rgba(0,0,0,.04)">19 more<span style="font-size:11px;color:#737373">▾</span></div>
+          <div style="width:1px;height:20px;background:#E5E5E5"></div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 8px">+ Smart list</div>
+          <div style="flex:1"></div>
+          <div style="font-size:13px;color:#A3A3A3;border:1px solid #E5E5E5;border-radius:8px;padding:7px 12px;min-width:190px">Search clients</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Row never wraps and never scrolls horizontally. Long names truncate at 160px with tooltip on hover.</div>
+    </div>
+
+    <!-- 1d -->
+    <div id="1d" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1d</span><span style="font-size:13px;font-weight:600">More menu open</span><span style="font-size:13px;color:#737373">Search + pin. This is the scale answer.</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px 0;position:relative;height:430px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Home</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Hot clients</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Buyers · SF</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Referral — Q3</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">No activity 30d</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:14px;color:#0A0A0A;font-weight:500;background:#F5F5F5;border:1px solid #D4D4D4;border-radius:10px;padding:6px 11px">19 more<span style="font-size:11px;color:#525252">▾</span></div>
+          <div style="width:1px;height:20px;background:#E5E5E5"></div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 8px">+ Smart list</div>
+        </div>
+
+        <div style="position:absolute;left:399px;top:58px;width:340px;background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 8px 24px rgba(10,10,10,.12);padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:8px;border:1px solid #E5E5E5;border-radius:8px;padding:7px 10px;margin:2px">
+            <span style="font-size:13px;color:#A3A3A3">⌕</span><span style="font-size:13px;color:#A3A3A3">Search lists</span>
+          </div>
+          <div style="display:flex;gap:4px;background:#F5F5F5;border-radius:8px;padding:3px;margin:0 2px">
+            <div style="flex:1;text-align:center;font-size:13px;font-weight:500;background:#FFF;border-radius:6px;padding:5px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Smart lists <span style="font-family:'Geist Mono',ui-monospace,monospace;color:#737373">17</span></div>
+            <div style="flex:1;text-align:center;font-size:13px;color:#737373;padding:5px">Lists <span style="font-family:'Geist Mono',ui-monospace,monospace">6</span></div>
+          </div>
+          <div style="font-size:11px;font-weight:600;color:#737373;letter-spacing:.04em;padding:6px 10px 2px">PINNED</div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;background:#F5F5F5">
+              <span style="color:#5A5FF2;font-size:12px">◆</span><span style="flex:1;font-size:14px">Hot clients</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">24</span><span style="font-size:12px;color:#525252">📌</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px">
+              <span style="color:#5A5FF2;font-size:12px">◆</span><span style="flex:1;font-size:14px">Buyers · SF</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">112</span><span style="font-size:12px;color:#525252">📌</span>
+            </div>
+          </div>
+          <div style="height:1px;background:#E5E5E5;margin:4px 2px"></div>
+          <div style="font-size:11px;font-weight:600;color:#737373;letter-spacing:.04em;padding:2px 10px 2px">ALL SMART LISTS</div>
+          <div style="display:flex;flex-direction:column;max-height:150px;overflow:hidden">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px"><span style="color:#A3A3A3;font-size:12px">◆</span><span style="flex:1;font-size:14px">Cash buyers</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">41</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px"><span style="color:#A3A3A3;font-size:12px">◆</span><span style="flex:1;font-size:14px">Closing this month</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">9</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px"><span style="color:#A3A3A3;font-size:12px">◆</span><span style="flex:1;font-size:14px">Expired listings</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">33</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;opacity:.5"><span style="color:#A3A3A3;font-size:12px">◆</span><span style="flex:1;font-size:14px">Investors — multi-unit</span><span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">17</span></div>
+          </div>
+          <div style="height:1px;background:#E5E5E5;margin:4px 2px"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px">
+            <span style="font-size:14px;font-weight:500;color:#5A5FF2">+ New smart list</span>
+            <span style="font-size:13px;color:#525252">Manage</span>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Pinning is the only thing that changes the visible row — clicking a list just opens it. Max 4 pins enforced; pinning a 5th prompts to swap.</div>
+    </div>
+
+    <!-- 1e -->
+    <div id="1e" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1e</span><span style="font-size:13px;font-weight:600">Opened an unpinned list</span><span style="font-size:13px;color:#737373">One temporary tab, closable, italic-free but dashed</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Home</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Hot clients</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Buyers · SF</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Referral — Q3</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;background:#FFF;border:1px dashed #A3A3A3;border-radius:8px;padding:5px 8px 5px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Cash buyers<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">41</span><span style="font-size:13px;color:#737373">✕</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:14px;color:#525252;border:1px solid #E5E5E5;border-radius:10px;padding:6px 11px">18 more<span style="font-size:11px;color:#737373">▾</span></div>
+          <div style="width:1px;height:20px;background:#E5E5E5"></div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 8px">+ Smart list</div>
+          <div style="flex:1"></div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#0A0A0A;border:1px solid #E5E5E5;border-radius:8px;padding:7px 11px">📌 Pin this list</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Dashed border = temporary. Opening another unpinned list replaces this tab instead of stacking. “Pin this list” makes it permanent.</div>
+    </div>
+
+    <!-- 1f -->
+    <div id="1f" style="display:flex;flex-direction:column;gap:8px;width:1000px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1f</span><span style="font-size:13px;font-weight:600">Edge — filters edited inside a smart list</span><span style="font-size:13px;color:#737373">Unsaved state must be obvious, not silent</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px 18px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Home</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Hot clients<span style="width:6px;height:6px;border-radius:50%;background:#EA580C"></span></div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Buyers · SF</div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:13px;color:#737373">Filters changed</span>
+            <div style="font-size:13px;color:#525252;border:1px solid #E5E5E5;border-radius:8px;padding:6px 11px">Reset</div>
+            <div style="font-size:13px;font-weight:500;color:#FAFAFA;background:#171717;border-radius:10px;padding:7px 12px">Save to list</div>
+          </div>
+        </div>
+        <div style="height:1px;background:#E5E5E5;margin:14px -20px 14px"></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="font-size:12px;background:#F5F5F5;border-radius:6px;padding:4px 9px;color:#525252">Stage: Active</div>
+          <div style="font-size:12px;background:#EEF0FE;border-radius:6px;padding:4px 9px;color:#5A5FF2;font-weight:500">+ Last touch &lt; 7d</div>
+          <div style="font-size:12px;color:#737373">2 filters · 31 clients</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#737373">Orange dot on the tab + explicit Save/Reset. Leaving the tab keeps edits for the session and warns before discard.</div>
+    </div>
+
+    <!-- 1g -->
+    <div id="1g" style="display:flex;flex-direction:column;gap:8px;width:490px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1g</span><span style="font-size:13px;font-weight:600">Edge — list returns zero</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px 28px">
+        <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px;width:fit-content">
+          <div style="font-size:14px;color:#525252;padding:6px 12px">Home</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Expired listings<span style="font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:#737373">0</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:38px 20px 6px;text-align:center">
+          <div style="font-size:16px;font-weight:600">No clients match this list right now</div>
+          <div style="font-size:13px;color:#737373;max-width:320px;line-height:1.5">The rules still run — clients appear here as soon as they qualify.</div>
+          <div style="display:flex;gap:8px;padding-top:8px">
+            <div style="font-size:13px;color:#525252;border:1px solid #E5E5E5;border-radius:10px;padding:7px 12px">Edit rules</div>
+            <div style="font-size:13px;font-weight:500;color:#FAFAFA;background:#171717;border-radius:10px;padding:7px 12px">Back to Home</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1h -->
+    <div id="1h" style="display:flex;flex-direction:column;gap:8px;width:490px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:700;background:#171717;color:#FAFAFA;border-radius:6px;padding:2px 7px">1h</span><span style="font-size:13px;font-weight:600">Edge — narrow viewport / deleted list</span></div>
+      <div style="background:#FFF;border:1px solid #E5E5E5;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="display:flex;align-items:center;gap:4px;background:#F5F5F5;border-radius:10px;padding:3px">
+            <div style="font-size:14px;font-weight:600;background:#FFF;border-radius:8px;padding:6px 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)">Home</div>
+            <div style="font-size:14px;color:#525252;padding:6px 12px">Hot clients</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:14px;color:#525252;border:1px solid #E5E5E5;border-radius:10px;padding:6px 11px">22 more<span style="font-size:11px;color:#737373">▾</span></div>
+          <div style="font-size:14px;font-weight:500;color:#5A5FF2;padding:7px 6px">+</div>
+        </div>
+        <div style="font-size:12px;color:#737373;line-height:1.5">Below ~900px the row drops to Home + 1 pinned + More. Home is the last tab to ever collapse.</div>
+        <div style="height:1px;background:#E5E5E5;margin:0 -20px"></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:10px 12px">
+          <span style="color:#DC2626;font-size:13px">!</span>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div style="font-size:13px;font-weight:600;color:#0A0A0A">“Buyers · SF” was deleted by Priya</div>
+            <div style="font-size:12px;color:#737373">Tab removed. You’re back on Home.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:2100,&quot;height&quot;:1500}}"></script>
+</body>
+</html>

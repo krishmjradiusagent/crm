@@ -1,0 +1,65 @@
+/* ============ Full-page loaders (boot + per page + per tab) ============ */
+.rload{position:fixed;z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--white,#fff);opacity:1;transition:opacity .28s ease;overflow:hidden}
+.rload--boot{inset:0;background:#fafafa}
+/* Mel's dot field, held still — only a slow scale + breath */
+.rload::before{content:"";position:absolute;left:-10%;top:-10%;width:120%;height:120%;pointer-events:none;
+  background-image:radial-gradient(rgba(90,95,242,.10) 1px,transparent 1px);background-size:11px 11px;
+  background-position:0 0;
+  -webkit-mask:radial-gradient(60% 60% at 50% 50%,#000 45%,rgba(0,0,0,.62) 75%,rgba(0,0,0,.34) 100%);
+          mask:radial-gradient(60% 60% at 50% 50%,#000 45%,rgba(0,0,0,.62) 75%,rgba(0,0,0,.34) 100%);
+  animation:rlDotBreath 7s ease-in-out infinite}
+@keyframes rlDotBreath{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.05);opacity:.5}}
+body.dark .rload::before{background-image:radial-gradient(rgba(123,127,245,.16) 1px,transparent 1px)}
+.rload--page{border-radius:var(--r-card,14px)}
+.rload.out{opacity:0}
+body.dark .rload{background:#171717}
+body.dark .rload--boot{background:#0a0a0a}
+
+.rlbrand{position:absolute;top:32px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px}
+.rlbrand img{height:32px;width:auto;display:block}
+
+.rlcluster{position:relative;z-index:1;width:var(--cw);height:var(--ch);
+  animation:rlClusterIn .6s cubic-bezier(.22,1,.36,1) both}
+@keyframes rlClusterIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+
+.rlhex{position:absolute;left:50%;top:50%;width:var(--w);height:var(--h);
+  margin:calc(var(--h) / -2) 0 0 calc(var(--w) / -2);
+  translate:var(--x) var(--y);transform:scale(var(--s,1));
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:var(--neutral-100,#f5f5f5);display:grid;place-items:center;
+  transition:transform .34s cubic-bezier(.22,1,.36,1),background .28s ease;
+  animation:rlPop .52s cubic-bezier(.22,1,.36,1) backwards;animation-delay:var(--d,0ms)}
+@keyframes rlPop{from{transform:scale(.62);opacity:0}to{transform:scale(1);opacity:1}}
+.rlhex.on{--s:1.1;background:var(--neutral-200,#e5e5e5)}
+.rlhex--faint{background:var(--neutral-100,#f5f5f5);opacity:.3}
+.rlhex--c{background:#5A5FF2;
+  animation:rlPop .52s cubic-bezier(.22,1,.36,1) backwards,rlBreathe 2.6s ease-in-out .55s infinite}
+@keyframes rlBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+.rlhex svg{width:var(--ic)!important;height:var(--ic)!important;fill:none;
+  stroke:var(--neutral-500,#737373);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rlhex i{font-size:calc(var(--ic) * 1.12)!important;width:var(--ic)!important;height:var(--ic)!important;
+  color:var(--neutral-500,#737373)!important}
+.rlhex--c i{color:#fff!important}
+.rlhex--c svg{stroke:#fff;stroke-width:1.9}
+.rlico{display:grid;place-items:center;line-height:0}
+.rlico.sw{animation:rlIcoSw .38s cubic-bezier(.22,1,.36,1)}
+@keyframes rlIcoSw{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+
+.rldot{display:none;position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:999px;
+  translate:var(--x) var(--y);background:var(--white,#fff);border:1.5px solid var(--neutral-200,#e5e5e5);
+  display:grid;place-items:center;animation:rlPop .5s cubic-bezier(.22,1,.36,1) .3s backwards}
+.rldot::before{content:"";width:3px;height:3px;border-radius:999px;background:#5A5FF2}
+
+.rlstatus{position:relative;z-index:1;margin-top:-24px;font-family:"Mona Sans",var(--font);font-weight:600;font-size:20px;line-height:1.3;
+  letter-spacing:-.02em;color:var(--neutral-900,#171717);text-align:center;font-variation-settings:"wght" 600,"wdth" 100;
+  animation:rlPulse 1.6s ease-in-out infinite}
+@keyframes rlPulse{0%,100%{opacity:1}50%{opacity:.45}}
+.rlstatus.sw{animation:rlTextIn .34s cubic-bezier(.22,1,.36,1)}
+@keyframes rlTextIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rlbar{position:relative;z-index:1;margin-top:8px;height:6px;border-radius:999px;background:var(--neutral-200,#e5e5e5);overflow:hidden}
+.rlfill{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#5A5FF2 0%,#7B7FF5 50%,#5A5FF2 100%);background-size:200% 100%;
+  animation:rlShimmer 1.6s linear infinite;
+  transition:width .45s cubic-bezier(.4,0,.2,1)}
+@keyframes rlShimmer{from{background-position:200% 0}to{background-position:0 0}}

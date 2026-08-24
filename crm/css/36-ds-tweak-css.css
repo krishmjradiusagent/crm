@@ -1,0 +1,20 @@
+/* Radius UI DS tweak — flip on <body>: txd-ds-metrics / txd-ds-tabs */
+body.txd-ds-metrics .txd-facts3{grid-template-columns:1fr 1fr;gap:10px;padding:10px;background:none;border-right:none}
+body.txd-ds-metrics .txd-facts3 .txd-m,body.txd-ds-metrics .txd-facts3 .txd-f{background:var(--background,#fff);border:1px solid var(--border,#E5E5E5);border-radius:var(--radius-card,14px);box-shadow:var(--shadow-sm);padding:14px 16px;gap:6px;min-width:0}
+body.txd-ds-metrics .txd-facts3 .txd-m .l,body.txd-ds-metrics .txd-facts3 .txd-f>.fl{font-size:var(--text-body-sm,13px);font-weight:500;color:var(--muted-foreground,#737373);margin-bottom:4px}
+body.txd-ds-metrics .txd-facts3 .txd-m .v{font-family:var(--font-sans);font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--foreground,#0A0A0A);font-variant-numeric:tabular-nums;line-height:1.15}
+body.txd-ds-metrics .txd-metrics .txd-m:nth-child(2) .v{color:var(--tint-green-fg,#0F6D47)}
+
+body.txd-ds-tabs .txd-tabs{gap:var(--space-4,16px);border-bottom:1px solid var(--border,#E5E5E5)}
+body.txd-ds-tabs .txd-tb{height:36px;color:var(--muted-foreground,#737373);border-bottom:2px solid transparent;font-family:var(--font-sans);font-size:var(--text-body-sm,13px);font-weight:500;padding:0 var(--space-1,4px)}
+body.txd-ds-tabs .txd-tb:hover{color:var(--foreground,#0A0A0A)}
+body.txd-ds-tabs .txd-tb.on{color:var(--foreground,#0A0A0A);border-bottom-color:var(--primary,#5A5FF2);background:transparent;font-weight:500}
+body.txd-ds-tabs .txd-tb.on .ct{background:color-mix(in srgb,var(--primary,#5A5FF2) 12%,transparent);color:var(--primary,#5A5FF2)}
+
+/* floating tweak chip */
+#ds-tweak-chip{position:fixed;right:16px;bottom:16px;z-index:2000;display:flex;align-items:center;gap:6px;padding:8px 10px;background:#0A0A0A;color:#fff;border-radius:12px;font:12px/1 var(--font-sans,"Mona Sans",system-ui,sans-serif);box-shadow:0 8px 24px rgba(10,10,10,.25);user-select:none}
+#ds-tweak-chip .lbl{opacity:.7;padding-right:4px;border-right:1px solid rgba(255,255,255,.15);margin-right:4px}
+#ds-tweak-chip button{all:unset;cursor:pointer;padding:5px 8px;border-radius:8px;color:#fff;background:rgba(255,255,255,.08)}
+#ds-tweak-chip button.on{background:var(--primary,#5A5FF2)}
+#ds-tweak-chip button:hover{background:rgba(255,255,255,.16)}
+#ds-tweak-chip button.on:hover{background:#4a4fea}

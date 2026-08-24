@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Transaction — header</title>
+<link rel="stylesheet" href="_ds/radius-ui-design-system-c7220bb1-3534-4549-94e9-dd1c4d80b981/tokens/fonts.css">
+<style>
+:root{
+  --neutral-50:#fafafa; --neutral-100:#f5f5f5; --neutral-200:#e5e5e5; --neutral-300:#d4d4d4;
+  --neutral-400:#a3a3a3; --neutral-500:#737373; --neutral-600:#525252; --neutral-700:#404040;
+  --neutral-900:#171717; --white:#fff;
+  --primary:#5a5ff2; --primary-hover:color-mix(in srgb, var(--primary) 90%, black);
+  --status-red:#dc2626; --status-yellow:#d9a514;
+  --shadow-xs:0 1px 2px 0 rgba(0,0,0,.05);
+  --shadow-sm:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);
+  --r-badge:6px; --r-input:8px; --r-button:10px; --r-card:14px;
+  --font:"Mona Sans","Mona Sans Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:14px/20px var(--font);color:var(--neutral-900);background:var(--white);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+svg{flex:none}
+
+/* ================= transaction detail header (txd) ================= */
+.txd-back{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--r-input);color:var(--neutral-400);cursor:pointer;border:none;background:none;padding:0}
+.txd-back:hover{color:var(--neutral-900);background:var(--neutral-100)}
+.txd-back:active{transform:scale(.94)}
+.txd-back svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.txd-h1{display:flex;align-items:center;gap:10px;padding:12px 20px 0}
+.txd-h1 .txd-back{margin-left:-6px;margin-right:-2px}
+.txd-title{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.txd-st{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 8px 0 10px;border-radius:var(--r-button);border:1px solid transparent;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;background:#eef0ff;color:#3f3fbf}
+.txd-st:hover{filter:brightness(.97)}
+.txd-st:active{transform:scale(.98)}
+.txd-st i{width:7px;height:7px;border-radius:50%;flex:none}
+.txd-st .stcar{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.txd-hactions{margin-left:auto;display:flex;align-items:center;gap:6px}
+.txd-gb{height:30px;padding:0 10px;border-radius:var(--r-button);border:1px solid var(--neutral-200);background:var(--white);color:var(--neutral-700);font-size:13px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-family:inherit;box-shadow:var(--shadow-xs)}
+.txd-gb:hover{background:var(--neutral-50)}
+.txd-gb:active{transform:scale(.98)}
+.txd-gb svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.txd-gb.icon{width:30px;padding:0;justify-content:center}
+
+/* metrics + facts + hero — innovative nested plate layout (body.txd-inv) */
+.txd-headcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,.8fr) 200px;gap:10px;padding:10px;margin:14px 20px 12px 8px;background:var(--neutral-100);border-radius:16px;
+  grid-template-areas:"price comm acc close collab photo" "client agent rep txtype txtype photo"}
+.txd-metrics,.txd-facts{display:contents}
+
+.txd-m{display:flex;flex-direction:column;min-width:0;background:var(--white);border:1px solid var(--neutral-200);border-radius:12px;padding:14px 14px 13px;transition:border-color .14s ease,box-shadow .14s ease}
+.txd-m:hover{border-color:var(--neutral-300);box-shadow:0 4px 12px -6px rgba(10,10,10,.16)}
+.txd-m .l{margin-bottom:9px;font-size:11.5px;font-weight:500;line-height:1.25;color:var(--neutral-500)}
+.txd-m .v{font-size:24px;font-weight:600;letter-spacing:-.02em;color:var(--neutral-900);font-variant-numeric:tabular-nums;line-height:1.15;border-radius:var(--r-badge);padding:1px 4px;margin:-1px -4px;cursor:pointer;transition:background .12s ease}
+.txd-m .v:hover{background:var(--neutral-100)}
+
+.txd-f{display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-width:0;background:var(--white);border:1px solid var(--neutral-200);border-radius:12px;padding:14px 14px 13px;font-size:15px;color:var(--neutral-900);transition:border-color .14s ease,box-shadow .14s ease}
+.txd-f:hover{border-color:var(--neutral-300);box-shadow:0 4px 12px -6px rgba(10,10,10,.16)}
+.txd-f>.fl{font-size:11.5px;font-weight:500;line-height:1.25;color:var(--neutral-500)}
+.txd-f>.fv{display:flex;align-items:center;gap:7px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.txd-f b{font-weight:400;color:var(--neutral-900);font-variant-numeric:tabular-nums;border-radius:6px;padding:2px 4px;margin:-2px -4px;cursor:pointer}
+.txd-f b:hover{background:var(--neutral-100)}
+.txd-f .lnk{color:var(--neutral-900);text-decoration:underline;text-decoration-color:var(--neutral-300);text-underline-offset:3px;cursor:pointer}
+.txd-f .lnk:hover{text-decoration-color:var(--neutral-500)}
+.txd-f .txd-av{width:22px;height:22px;font-size:10px}
+.txd-f .txd-tt{font-size:12px;line-height:1.25;color:var(--neutral-900);background:var(--neutral-100);border-radius:var(--r-badge);padding:3px 8px;white-space:normal;display:inline-block}
+.txd-f .txd-repb{font-size:13px}
+
+.txd-av{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;overflow:hidden;flex:none;position:relative}
+.txd-grp{display:inline-flex;align-items:center;cursor:pointer}
+.txd-grp .txd-av{margin-left:-6px;box-shadow:0 0 0 2px var(--white)}
+.txd-grp .txd-av:first-child{margin-left:0}
+.txd-more{font-size:11px;color:var(--neutral-600);background:var(--neutral-100);margin-left:6px;border-radius:9999px;padding:1px 6px;font-weight:500;font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;height:18px}
+.txd-repb{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:var(--r-badge);background:var(--neutral-100);color:var(--neutral-700);font-size:12px;font-weight:500}
+
+.txd-metrics .txd-m:nth-child(1){grid-area:price}
+.txd-metrics .txd-m:nth-child(2){grid-area:comm}
+.txd-metrics .txd-m:nth-child(3){grid-area:acc}
+.txd-metrics .txd-m:nth-child(4){grid-area:close}
+.txd-facts .txd-f:nth-child(1){grid-area:client}
+.txd-facts .txd-f:nth-child(2){grid-area:agent}
+.txd-facts .txd-f:nth-child(3){grid-area:collab;justify-content:flex-start;gap:8px}
+.txd-facts .txd-f:nth-child(4){grid-area:rep}
+.txd-facts .txd-f:nth-child(5){grid-area:txtype}
+.txd-facts .txd-f:nth-child(5)>.fv{white-space:nowrap;align-items:center}
+
+/* property photo hero */
+.txd-hero{grid-area:photo;position:relative;min-width:0;border-radius:12px;overflow:hidden;border:1px solid var(--neutral-200);background:var(--neutral-100);cursor:zoom-in}
+.txd-hero img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s cubic-bezier(.23,1,.32,1)}
+.txd-hero:hover img{transform:scale(1.04)}
+.txd-hero .hct{position:absolute;top:8px;right:8px;height:22px;padding:0 8px;border-radius:9999px;background:rgba(10,10,10,.6);color:#fff;font-size:11px;font-weight:500;display:inline-flex;align-items:center;gap:5px;font-variant-numeric:tabular-nums;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.txd-hero .hct svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.txd-hero .hst{position:absolute;left:8px;bottom:8px;height:22px;padding:0 8px;border-radius:var(--r-badge);font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:5px;background:var(--white);color:var(--neutral-900);box-shadow:0 1px 4px rgba(10,10,10,.25)}
+.txd-hero .hst i{width:6px;height:6px;border-radius:50%;flex:none;background:#5a5ff2}
+.txd-hero .hgo{position:absolute;right:8px;bottom:8px;width:32px;height:32px;border-radius:50%;border:none;background:var(--primary);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(10,10,10,.35);transition:transform .16s cubic-bezier(.23,1,.32,1)}
+.txd-hero .hgo:hover{transform:scale(1.06)}
+.txd-hero .hgo:active{transform:scale(.95)}
+.txd-hero .hgo svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* empty-photo state */
+.txd-hero.empty{background:var(--neutral-100);border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--neutral-500);cursor:pointer}
+.txd-hero.empty .phi{width:22px;height:22px;stroke:var(--neutral-400);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.txd-hero.empty .pht{font-size:13px;font-weight:500;color:var(--neutral-600)}
+.txd-hero.empty .phs{font-size:12px;color:var(--neutral-500)}
+.txd-hero.empty .phs u{color:var(--neutral-700);text-decoration-color:var(--neutral-300);text-underline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="txd-h1">
+  <button class="txd-back" title="Back to transactions" aria-label="Back to transactions"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+  <span class="txd-title">5670 Kearny Mesa Road, Suite 210, San Diego</span>
+  <span class="txd-repb">Sale</span>
+  <div class="txd-hactions">
+    <button class="txd-st"><i style="background:#5a5ff2"></i><span>Pending</span><svg class="stcar" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+    <button class="txd-gb">Commission breakdown</button>
+    <button class="txd-gb icon" title="Comments" aria-label="Comments"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+    <button class="txd-gb icon" title="More"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+  </div>
+</div>
+
+<div class="txd-headcards">
+  <div class="txd-metrics">
+    <div class="txd-m"><div class="l">Sale price</div><div class="v">$1,450,000</div></div>
+    <div class="txd-m"><div class="l">Gross commission</div><div class="v">$14,500</div></div>
+    <div class="txd-m"><div class="l">Acceptance date</div><div class="v">Jul 23</div></div>
+    <div class="txd-m"><div class="l">Closing date</div><div class="v">Jul 23</div></div>
+  </div>
+
+  <div class="txd-facts">
+    <div class="txd-f">
+      <div class="fl">Sellers</div>
+      <div class="fv"><span class="lnk">Nora Collins</span><span class="txd-more">+2</span></div>
+    </div>
+    <div class="txd-f">
+      <div class="fl">Agent</div>
+      <div class="fv">
+        <span class="txd-av" style="background:#e0e7ff;color:#3730a3">ER</span>
+        <b>Emily Robinson</b>
+      </div>
+    </div>
+    <div class="txd-f">
+      <div class="fl">Collaborators</div>
+      <div class="fv">
+        <span class="txd-grp">
+          <span class="txd-av" style="background:#dcfce7;color:#166534">DP</span>
+          <span class="txd-av" style="background:#fef9c3;color:#854d0e">TC</span>
+        </span>
+        <span class="txd-more">+13</span>
+      </div>
+    </div>
+    <div class="txd-f">
+      <div class="fl">Representation</div>
+      <div class="fv"><span class="txd-repb">Seller</span></div>
+    </div>
+    <div class="txd-f">
+      <div class="fl">Transaction type</div>
+      <div class="fv"><span class="txd-tt">Nor Cal Standard Residential Purchase</span></div>
+    </div>
+  </div>
+
+  <div class="txd-hero" title="View 12 photos">
+    <img crossorigin="anonymous" src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=700" alt="5670 Kearny Mesa Road">
+    <span class="hct"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 5-5 4 4 2-2 3 3"/></svg>1/12</span>
+    <span class="hst"><i></i>Pending</span>
+    <button class="hgo" title="Open property page" aria-label="Open property page"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+  </div>
+</div>
+
+</body>
+</html>

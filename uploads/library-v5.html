@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library v5</title>
+<style>
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #5A5FF2;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+  --ring-offset: #ffffff;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #5A5FF2;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a3a3a3;
+  --chart-1: #ea580c;
+  --chart-2: #0d9488;
+  --chart-3: #164e63;
+  --chart-4: #fbbf24;
+  --chart-5: #f59e0b;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-3xl: 22px;
+  --radius-4xl: 26px;
+  --radius: 10px;
+  --font: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #262626;
+  --popover-foreground: #fafafa;
+  --primary: #5A5FF2;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #404040;
+  --accent-foreground: #fafafa;
+  --destructive: #f87171;
+  --destructive-foreground: #fef2f2;
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #737373;
+  --ring-offset: #0a0a0a;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #5A5FF2;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
+  --sidebar-ring: #525252;
+  --chart-1: #1d4ed8;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #a855f7;
+  --chart-5: #f43f5e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--background); color: var(--foreground); padding: 44px; display: flex; justify-content: center; }
+.wrap { width: 920px; }
+.crumb { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
+.crumb .dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid transparent; background: linear-gradient(var(--background),var(--background)) padding-box, linear-gradient(135deg,#5A5FF2,#ea580c) border-box; }
+h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.sub { font-size: 13.5px; color: var(--muted-foreground); line-height: 1.55; max-width: 560px; margin-bottom: 20px; }
+.chips { display: flex; gap: 8px; margin-bottom: 26px; }
+.fchip { font-family: var(--font); font-size: 12.5px; font-weight: 600; padding: 6px 13px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--card); color: var(--secondary-foreground); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.fchip .n { font-size: 11px; color: var(--muted-foreground); font-weight: 600; }
+.fchip:hover { background: var(--secondary); }
+.fchip.on { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+.fchip.on .n { color: rgba(255,255,255,.75); }
+.lsec { margin-bottom: 30px; }
+.lhead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.laddr { display: flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; }
+.laddr::before { content: ""; width: 3px; height: 13px; background: var(--primary); border-radius: 2px; }
+.lmeta { font-size: 11.5px; color: var(--muted-foreground); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--card); overflow: hidden; cursor: pointer; transition: border-color .15s ease; }
+.tile:hover { border-color: rgba(90,95,242,0.45); }
+.tile:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.tile.hide { display: none; }
+
+.ph { position: relative; height: 178px; background: #eceef2; overflow: hidden; }
+.th { position: absolute; inset: 0; }
+.t-center { display: flex; align-items: center; justify-content: center; }
+.ph-svg { position: absolute; inset: 0; }
+.ph-svg svg { width: 100%; height: 100%; display: block; }
+
+/* wave feed overlay */
+.wave-ov { position: absolute; left: 12px; bottom: 34px; color: #fff; text-shadow: 0 1px 8px rgba(10,12,30,.55); }
+.wv-price { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.wv-addr { font-size: 10.5px; font-weight: 500; opacity: .92; }
+
+/* story */
+.story-fr { position: relative; width: 88px; height: 152px; border-radius: 9px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,22,46,.22); }
+.story-fr svg { width: 100%; height: 100%; display: block; }
+.s-dot { position: absolute; top: 6px; left: 6px; right: 6px; height: 2.5px; border-radius: 2px; background: rgba(255,255,255,.8); }
+.s-price { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; color: #fff; font-size: 11px; font-weight: 700; text-shadow: 0 1px 6px rgba(10,12,30,.6); }
+
+/* reel */
+.play { position: absolute; width: 34px; height: 34px; border-radius: 50%; background: rgba(10,10,10,.5); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+
+/* email + website */
+.t-mail { display: flex; flex-direction: column; background: #fff; }
+.em-head { padding: 8px 12px; border-bottom: 1px solid #eceef2; }
+.em-subj { font-size: 10px; font-weight: 600; color: var(--secondary-foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.em-hero, .web-hero { position: relative; flex: 1; overflow: hidden; }
+.em-hero svg, .web-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.em-txt { padding: 9px 12px 26px 12px; }
+.l { display: block; border-radius: 2px; background: #d7d9e6; }
+.l1 { width: 62%; height: 7px; background: #5A5FF2; opacity: .8; margin-bottom: 5px; }
+.l2 { width: 42%; height: 5px; }
+.l3 { width: 55%; height: 5px; margin-top: 4px; }
+.web-bar { display: flex; align-items: center; gap: 4px; padding: 7px 10px; border-bottom: 1px solid #eceef2; }
+.web-bar i { width: 6px; height: 6px; border-radius: 50%; background: #d7d9e6; display: block; }
+.web-url { margin-left: 6px; font-size: 9px; color: var(--muted-foreground); background: var(--secondary); border-radius: 3px; padding: 1.5px 7px; }
+
+/* flyer */
+.fl-doc { width: 104px; background: #fff; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,22,46,.16); }
+.fl-photo { position: relative; height: 70px; }
+.fl-photo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fl-body { padding: 8px 10px 10px 10px; }
+.fl-body b { display: block; font-size: 8.5px; letter-spacing: .1em; color: #d97706; margin-bottom: 5px; }
+
+/* package (kept) */
+.t-pack-bg { background: linear-gradient(135deg, rgba(90,95,242,.07), rgba(139,92,246,.07)); }
+.stack { position: relative; width: 130px; height: 128px; }
+.stk { position: absolute; width: 90px; height: 90px; border-radius: 6px; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(20,22,46,.16); overflow: hidden; }
+.stk svg { width: 100%; height: 100%; display: block; }
+.stk1 { left: 0; top: 20px; transform: rotate(-5deg); }
+.stk2 { left: 20px; top: 8px; transform: rotate(2deg); }
+.stk3 { left: 38px; top: 22px; transform: rotate(7deg); }
+
+.type { position: absolute; bottom: 8px; left: 8px; font-size: 10.5px; font-weight: 700; letter-spacing: .03em; color: #fff; padding: 3px 8px; border-radius: var(--radius-xs); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.type.t-feed { background: rgba(90,95,242,.9); }
+.type.t-story { background: rgba(139,92,246,.9); }
+.type.t-reel { background: rgba(219,39,119,.9); }
+.type.t-email { background: rgba(13,148,136,.9); }
+.type.t-flyer { background: rgba(217,119,6,.9); }
+.type.t-web { background: rgba(2,132,199,.9); }
+.type.t-pack { background: linear-gradient(90deg, rgba(90,95,242,.95), rgba(139,92,246,.95)); }
+.status { position: absolute; top: 8px; right: 8px; font-size: 10px; font-weight: 700; letter-spacing: .02em; padding: 2.5px 7px; border-radius: var(--radius-xs); }
+.open { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 600; color: #fff; background: rgba(20,22,46,.45); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); opacity: 0; transition: opacity .15s ease; }
+.tile:hover .open, .tile:focus-visible .open { opacity: 1; }
+
+.t-meta { padding: 9px 10px 10px 10px; height: 58px; display: flex; flex-direction: column; justify-content: space-between; }
+.t-top { display: flex; align-items: center; }
+.tpl { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-plats { margin-left: auto; flex: none; padding-left: 8px; }
+.pl { display: inline-flex; align-items: center; justify-content: center; width: 19px; height: 19px; border-radius: 5px; }
+.pl.ig { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.pl.fb { background: #1877F2; }
+.pl.em { background: #0d9488; }
+.pl.web { background: #0284c7; }
+.t-bot { display: flex; align-items: center; gap: 8px; min-height: 16px; }
+.t-time { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted-foreground); }
+
+.empty { display: none; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); padding: 34px; text-align: center; color: var(--muted-foreground); font-size: 13px; }
+body[data-empty="1"] .empty { display: block; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="crumb"><span class="dot"></span> Library</div>
+    <h1>Everything you have made</h1>
+    <div class="sub">Drafts save themselves as you work. Scheduled items need nothing from you — Mel posts them and logs the result.</div>
+    <div class="chips">
+      <button class="fchip on" data-f="all">All</button>
+      <button class="fchip" data-f="draft">Drafts <span class="n">2</span></button>
+      <button class="fchip" data-f="scheduled">Scheduled <span class="n">1</span></button>
+      <button class="fchip" data-f="posted">Posted <span class="n">5</span></button>
+      <button class="fchip" data-f="archived">Archived <span class="n">1</span></button>
+    </div>
+    
+    <div class="lsec">
+      <div class="lhead">
+        <span class="laddr">1420 GROVE ST</span>
+        <span class="lmeta">Noe Valley · 5 assets · 3 live</span>
+      </div>
+      <div class="grid">
+      <div class="tile" data-status="posted" tabindex="0">
+        <div class="ph">
+          <div class="th t-pack-bg t-center"><div class="stack">
+            <span class="stk stk1"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e3c9"/><stop offset="1" stop-color="#f9f1e2"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyd)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#8a7358" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#a8927a" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" />
+<rect x="0" y="92" width="100" height="8" fill="#5d6b4f"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#5d6b4f" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#5d6b4f" opacity=".85"/>
+</svg></span>
+            <span class="stk stk2"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skya" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3c9a8"/><stop offset="1" stop-color="#8e9dc9"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skya)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#3d4a63" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#55647f" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" />
+<rect x="0" y="92" width="100" height="8" fill="#2e3b34"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#2e3b34" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#2e3b34" opacity=".85"/>
+</svg></span>
+            <span class="stk stk3"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff0e4"/><stop offset="1" stop-color="#f2f8f0"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyc)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#5d7a68" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#7e9a88" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" />
+<rect x="0" y="92" width="100" height="8" fill="#3f5c49"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#3f5c49" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#3f5c49" opacity=".85"/>
+</svg></span>
+          </div></div>
+          <span class="type t-pack">Listing package</span>
+          <span class="status" style="color:#15803d;background:#dcfce7;border:1px solid #86efac;">2 of 3 live</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Launch pack · Post, Story, Email</span>
+            <span class="t-plats"></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Created Thu · runs through Sat</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="posted" tabindex="0">
+        <div class="ph">
+          <div class="th t-full"><div class="ph-svg" ><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skya" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3c9a8"/><stop offset="1" stop-color="#8e9dc9"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skya)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#3d4a63" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#55647f" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" />
+<rect x="0" y="92" width="100" height="8" fill="#2e3b34"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#2e3b34" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#2e3b34" opacity=".85"/>
+</svg></div>
+          <div class="wave-ov"><div class="wv-price">$1,285,000</div><div class="wv-addr">1420 Grove St</div></div></div>
+          <span class="type t-feed">Feed post</span>
+          <span class="status" style="color:#15803d;background:#dcfce7;border:1px solid #86efac;">Posted</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Wave · Loud price on photo</span>
+            <span class="t-plats"><span class="pl ig"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="5"/><circle cx="12" cy="12" r="3.5"/><line x1="17" x2="17.01" y1="7" y2="7"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Posted Thu · 9:02 AM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="scheduled" tabindex="0">
+        <div class="ph">
+          <div class="th t-center"><div class="story-fr"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skye" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9e2f5"/><stop offset="1" stop-color="#eef1fb"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skye)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#5a668f" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#7c88b3" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" />
+<rect x="0" y="92" width="100" height="8" fill="#44554c"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#44554c" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#44554c" opacity=".85"/>
+</svg><i class="s-dot"></i><div class="s-price">$1,285,000</div></div></div>
+          <span class="type t-story">Story</span>
+          <span class="status" style="color:#b45309;background:#fef3c7;border:1px solid #fcd34d;">Scheduled</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Open House · Countdown</span>
+            <span class="t-plats"><span class="pl ig"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="5"/><circle cx="12" cy="12" r="3.5"/><line x1="17" x2="17.01" y1="7" y2="7"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Tue 9:00 AM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="draft" tabindex="0">
+        <div class="ph">
+          <div class="th t-mail"><div class="em-head"><span class="em-subj">Your weekly update · 1420 Grove St</span></div><div class="em-hero"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3ef"/><stop offset="1" stop-color="#eef4f8"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyb)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#6b8296" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#8fa5b5" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" />
+<rect x="0" y="92" width="100" height="8" fill="#4f6b52"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#4f6b52" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#4f6b52" opacity=".85"/>
+</svg></div><div class="em-txt"><i class="l l1"></i><i class="l l2"></i></div></div>
+          <span class="type t-email">Email</span>
+          <span class="status" style="color:#525252;background:#f5f5f5;border:1px solid #e5e5e5;">Draft</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Seller update · Weekly</span>
+            <span class="t-plats"><span class="pl em"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="m21 7-8.1 5.1a1.8 1.8 0 0 1-1.8 0L3 7"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Saved today, 11:40 AM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="posted" tabindex="0">
+        <div class="ph">
+          <div class="th t-mail"><div class="web-bar"><i></i><i></i><i></i><span class="web-url">1420grove.com</span></div><div class="web-hero"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3ef"/><stop offset="1" stop-color="#eef4f8"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyb)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#6b8296" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#8fa5b5" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" />
+<rect x="0" y="92" width="100" height="8" fill="#4f6b52"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#4f6b52" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#4f6b52" opacity=".85"/>
+</svg></div><div class="em-txt"><i class="l l1"></i><i class="l l2"></i></div></div>
+          <span class="type t-web">Website</span>
+          <span class="status" style="color:#15803d;background:#dcfce7;border:1px solid #86efac;">Live</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Property site · Single page</span>
+            <span class="t-plats"><span class="pl web"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a13 13 0 0 0 0 18 13 13 0 0 0 0-18"/><path d="M3 12h18"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Live since Thu · 1420grove.com</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="lsec">
+      <div class="lhead">
+        <span class="laddr">412 MAPLE AVE</span>
+        <span class="lmeta">Rockridge · 3 assets · 1 published</span>
+      </div>
+      <div class="grid">
+      <div class="tile" data-status="draft" tabindex="0">
+        <div class="ph">
+          <div class="th t-full"><div class="ph-svg" ><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff0e4"/><stop offset="1" stop-color="#f2f8f0"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyc)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#5d7a68" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#7e9a88" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" />
+<rect x="0" y="92" width="100" height="8" fill="#3f5c49"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#3f5c49" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#3f5c49" opacity=".85"/>
+</svg></div>
+          <div class="wave-ov"><div class="wv-price">$1,285,000</div><div class="wv-addr">412 Maple Ave</div></div></div>
+          <span class="type t-feed">Feed post</span>
+          <span class="status" style="color:#525252;background:#f5f5f5;border:1px solid #e5e5e5;">Draft</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Feature sheet · Specs up front</span>
+            <span class="t-plats"><span class="pl fb"><svg width="11" height="11" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Saved yesterday, 4:12 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="posted" tabindex="0">
+        <div class="ph">
+          <div class="th t-full"><div class="ph-svg" ><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e3c9"/><stop offset="1" stop-color="#f9f1e2"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyd)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#8a7358" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#a8927a" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" />
+<rect x="0" y="92" width="100" height="8" fill="#5d6b4f"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#5d6b4f" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#5d6b4f" opacity=".85"/>
+</svg></div><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M7 4.5v15l13-7.5z"/></svg></span></div>
+          <span class="type t-reel">Reel</span>
+          <span class="status" style="color:#15803d;background:#dcfce7;border:1px solid #86efac;">Posted</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Walkthrough · 15s</span>
+            <span class="t-plats"><span class="pl ig"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="5"/><circle cx="12" cy="12" r="3.5"/><line x1="17" x2="17.01" y1="7" y2="7"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Posted Mon · 6:15 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="failed" tabindex="0">
+        <div class="ph">
+          <div class="th t-full"><div class="ph-svg" ><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skya" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3c9a8"/><stop offset="1" stop-color="#8e9dc9"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skya)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#3d4a63" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#55647f" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" />
+<rect x="0" y="92" width="100" height="8" fill="#2e3b34"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#2e3b34" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#2e3b34" opacity=".85"/>
+</svg></div>
+          <div class="wave-ov"><div class="wv-price">$1,285,000</div><div class="wv-addr">412 Maple Ave</div></div></div>
+          <span class="type t-feed">Feed post</span>
+          <span class="status" style="color:#b91c1c;background:#fee2e2;border:1px solid #fca5a5;">Failed</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Wave · Loud price on photo</span>
+            <span class="t-plats"><span class="pl fb"><svg width="11" height="11" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Failed Sun · retry available</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="lsec">
+      <div class="lhead">
+        <span class="laddr">88 PINE ST, UNIT 12B</span>
+        <span class="lmeta">Financial District · 2 assets · 1 published</span>
+      </div>
+      <div class="grid">
+      <div class="tile" data-status="posted" tabindex="0">
+        <div class="ph">
+          <div class="th t-full"><div class="ph-svg" ><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skye" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9e2f5"/><stop offset="1" stop-color="#eef1fb"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skye)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#5a668f" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#7c88b3" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.9" />
+<rect x="0" y="92" width="100" height="8" fill="#44554c"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#44554c" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#44554c" opacity=".85"/>
+</svg></div>
+          <div class="wave-ov"><div class="wv-price">$1,285,000</div><div class="wv-addr">88 Pine St</div></div></div>
+          <span class="type t-feed">Feed post</span>
+          <span class="status" style="color:#15803d;background:#dcfce7;border:1px solid #86efac;">Posted</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Editorial · Serif kicker</span>
+            <span class="t-plats"><span class="pl fb"><svg width="11" height="11" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Posted Aug 14</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile" data-status="archived" tabindex="0">
+        <div class="ph">
+          <div class="th t-center"><div class="fl-doc"><div class="fl-photo"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e3c9"/><stop offset="1" stop-color="#f9f1e2"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="url(#skyd)"/>
+<circle cx="78" cy="18" r="10" fill="#ffffff" opacity=".35"/>
+<rect x="8" y="48" width="40" height="52" fill="#8a7358" rx="1"/>
+<rect x="52" y="60" width="34" height="40" fill="#a8927a" rx="1"/>
+<rect x="9.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="52.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="9.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="19.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="61.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="29.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="39.4" y="70.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="19.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="29.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="39.4" y="79.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="9.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="19.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="29.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="39.4" y="88.0" width="7.2" height="5.4" fill="#dfe9f0" opacity="0.9" /><rect x="53.4" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="64.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="53.4" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="64.7" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="73.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="76.1" y="82.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="53.4" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" /><rect x="64.7" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.5" /><rect x="76.1" y="91.0" width="8.5" height="5.4" fill="#dfe9f0" opacity="0.7" />
+<rect x="0" y="92" width="100" height="8" fill="#5d6b4f"/>
+<ellipse cx="14" cy="93" rx="10" ry="4" fill="#5d6b4f" opacity=".85"/>
+<ellipse cx="90" cy="94" rx="12" ry="5" fill="#5d6b4f" opacity=".85"/>
+</svg></div><div class="fl-body"><b>OPEN HOUSE</b><i class="l l2"></i><i class="l l3"></i></div></div></div>
+          <span class="type t-flyer">Flyer</span>
+          <span class="status" style="color:#525252;background:#f5f5f5;border:1px solid #e5e5e5;">Archived</span>
+          <span class="open">Open in Studio
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="t-meta">
+          <div class="t-top">
+            <span class="tpl">Open House · Print A5</span>
+            <span class="t-plats"></span>
+          </div>
+          <div class="t-bot">
+            <span class="t-time">Archived Aug 2</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="empty">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="url(#aiGrad)" stroke="none"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"/></svg>
+      <div>Nothing here yet. Anything you make with Mel lands in this view.</div>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute;"><defs><linearGradient id="aiGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5A5FF2"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ea580c"/></linearGradient></defs></svg>
+<script>
+const chips = document.querySelectorAll('.fchip');
+chips.forEach(c => c.addEventListener('click', () => {
+  chips.forEach(x => x.classList.remove('on'));
+  c.classList.add('on');
+  const f = c.dataset.f;
+  let visible = 0;
+  document.querySelectorAll('.tile').forEach(t => {
+    const show = (f === 'all') || (t.dataset.status === f);
+    t.classList.toggle('hide', !show);
+    if (show) visible++;
+  });
+  document.querySelectorAll('.lsec').forEach(s => {
+    const any = [...s.querySelectorAll('.tile')].some(t => !t.classList.contains('hide'));
+    s.style.display = any ? '' : 'none';
+  });
+  document.body.dataset.empty = visible === 0 ? '1' : '0';
+}));
+</script>
+</body>
+</html>

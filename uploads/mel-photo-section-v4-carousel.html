@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mel Photo Section v2 — Suggests + Grid</title>
+<style>
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #5A5FF2;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+  --ring-offset: #ffffff;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #5A5FF2;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a3a3a3;
+  --chart-1: #ea580c;
+  --chart-2: #0d9488;
+  --chart-3: #164e63;
+  --chart-4: #fbbf24;
+  --chart-5: #f59e0b;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-3xl: 22px;
+  --radius-4xl: 26px;
+  --radius: 10px;
+  --font: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #262626;
+  --popover-foreground: #fafafa;
+  --primary: #5A5FF2;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #404040;
+  --accent-foreground: #fafafa;
+  --destructive: #f87171;
+  --destructive-foreground: #fef2f2;
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #737373;
+  --ring-offset: #0a0a0a;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #5A5FF2;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
+  --sidebar-ring: #525252;
+  --chart-1: #1d4ed8;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #a855f7;
+  --chart-5: #f43f5e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--background); color: var(--foreground); padding: 40px; display: flex; justify-content: center; }
+.wrap { width: 560px; }
+.mel-head { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: .09em; color: var(--muted-foreground); margin-bottom: 8px; }
+.mel-head .dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid transparent; background: linear-gradient(var(--background),var(--background)) padding-box, linear-gradient(135deg,#5A5FF2,#ea580c) border-box; }
+.mel-say { font-size: 16px; font-weight: 600; line-height: 1.45; margin-bottom: 14px; }
+
+.v2-card {
+  background:
+    radial-gradient(120% 90% at 0% 0%,   rgba(90, 95, 242, 0.10) 0%, rgba(90, 95, 242, 0) 55%),
+    radial-gradient(110% 80% at 100% 0%, rgba(234, 88, 12, 0.08) 0%, rgba(234, 88, 12, 0) 55%),
+    radial-gradient(120% 90% at 50% 110%, rgba(13, 148, 136, 0.08) 0%, rgba(13, 148, 136, 0) 55%),
+    var(--card);
+  border: 1px solid rgba(90, 95, 242, 0.22);
+  border-radius: var(--radius-sm);
+  overflow: hidden; margin-bottom: 12px;
+  transition: border-color .15s ease;
+}
+.v2-card:hover { border-color: rgba(90, 95, 242, 0.45); }
+.v2-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 0 14px; }
+.v2-cat {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+  color: var(--primary); background: rgba(90,95,242,0.10);
+  border-radius: var(--radius-xs); padding: 3px 8px;
+}
+.v2-match {
+  font-size: 10.5px; font-weight: 600;
+  color: var(--muted-foreground); background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs); padding: 2px 7px;
+}
+.v2-body { display: flex; gap: 12px; padding: 10px 14px 0 14px; }
+.v2-thumb { width: 56px; height: 56px; flex: none; border-radius: var(--radius-sm); }
+.v2-text h3 { font-size: 14px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+.v2-text p {
+  font-size: 12.5px; line-height: 1.55; font-weight: 500;
+  background: linear-gradient(90deg, #5A5FF2 0%, #8b5cf6 45%, #ea580c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.chip {
+  background: color-mix(in srgb, var(--c) 10%, white);
+  border: 1px solid color-mix(in srgb, var(--c) 35%, white);
+  border-radius: var(--radius-xs); padding: 0 5px;
+  font-weight: 700; color: var(--c); font-size: 11.5px;
+  white-space: nowrap;
+  -webkit-background-clip: border-box; background-clip: border-box;
+}
+.v2-evidence {
+  display: flex; align-items: center; gap: 8px;
+  margin: 12px 14px 0 14px; padding: 8px 10px;
+  background: linear-gradient(90deg, rgba(90,95,242,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(234,88,12,0.06) 100%), rgba(255,255,255,0.45);
+  -webkit-backdrop-filter: blur(8px) saturate(1.4);
+  backdrop-filter: blur(8px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.65);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 3px rgba(90,95,242,0.08);
+  border-radius: var(--radius-lg);
+  font-size: 11.5px; color: var(--secondary-foreground);
+}
+.v2-evidence b { color: #16a34a; }
+.v2-evidence svg { flex: none; }
+.v2-foot { display: flex; align-items: center; gap: 8px; padding: 12px 14px 14px 14px; }
+.btn-primary {
+  font-family: var(--font); font-size: 12.5px; font-weight: 600;
+  padding: 7px 16px; border-radius: var(--radius-sm); border: none;
+  background: var(--primary); color: var(--primary-foreground);
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  transition: filter .15s ease;
+}
+.btn-primary:hover { filter: brightness(1.06); }
+.btn-primary:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.btn-ghost {
+  font-family: var(--font); font-size: 12.5px; font-weight: 500;
+  padding: 7px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--card); color: var(--foreground); cursor: pointer;
+}
+.btn-ghost:hover { background: var(--secondary); }
+.v2-foot .hint { margin-left: auto; font-size: 11px; color: var(--muted-foreground); }
+
+.tier-row { display: flex; align-items: center; margin: 18px 0 10px 0; }
+.tier-label { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: .09em; color: var(--primary); }
+.tier-label::before { content: ""; width: 3px; height: 13px; background: var(--primary); border-radius: 2px; }
+.count { margin-left: auto; font-size: 11.5px; color: var(--muted-foreground); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tile { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--card); cursor: pointer; transition: border-color .15s ease; }
+.tile:hover { border-color: var(--ring); }
+.tile.sel { border: 2px solid var(--primary); }
+.ph { position: relative; height: 92px; }
+.check { position: absolute; top: 6px; left: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.pick-tag { position: absolute; bottom: 6px; right: 6px; font-size: 9px; font-weight: 700; letter-spacing: .04em; color: #fff; padding: 2px 6px; border-radius: var(--radius-xs); background: linear-gradient(90deg,#5A5FF2,#8b5cf6); }
+.cap { font-size: 12px; font-weight: 500; text-align: center; padding: 7px 6px; color: var(--secondary-foreground); }
+.tile.sel .cap { font-weight: 600; color: var(--primary); }
+.upload { border: 1.5px dashed var(--border); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--muted-foreground); font-size: 12.5px; font-weight: 500; min-height: 126px; cursor: pointer; }
+.upload:hover { border-color: var(--primary); color: var(--primary); }
+
+
+.carousel { margin-bottom: 6px; }
+.car-track { display: flex; transition: transform .28s cubic-bezier(.4,0,.2,1); }
+.carousel { overflow: hidden; }
+.car-slide { flex: 0 0 100%; min-width: 0; padding: 1px; }
+.car-slide .v2-card { margin-bottom: 0; }
+.car-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px; }
+.car-btn { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--foreground); cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font); }
+.car-btn:hover { background: var(--secondary); }
+.dots { display: flex; gap: 6px; }
+.dot-i { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: all .2s ease; }
+.dot-i.on { background: var(--primary); width: 16px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <linearGradient id="aiGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5A5FF2"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ea580c"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="wrap">
+    <div class="mel-head"><span class="dot"></span> MEL SUGGESTS</div>
+    <div class="mel-say">Front elevation is in and it is my pick. If you want a different read, these three are the next best.</div>
+    
+    
+    <div class="carousel">
+      <div class="car-track" id="track">
+        <div class="car-slide"><div class="v2-card">
+      <div class="v2-head">
+        <span class="v2-cat"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>PHOTO</span>
+        <span class="v2-match">89% match</span>
+      </div>
+      <div class="v2-body">
+        <div class="v2-thumb" style="background:linear-gradient(160deg,#c9bfa8,#8f8468 60%,#4d4636);"></div>
+        <div class="v2-text">
+          <h3>Living room</h3>
+          <p><span class="chip" style="--c:#d97706;">Warmer light</span> reads better at night, when your feed peaks.</p>
+        </div>
+      </div>
+      <div class="v2-evidence">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="url(#aiGrad)" stroke="none"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"/></svg>
+        <span><b>+24% saves</b> on warm interiors posted after 6pm</span>
+      </div>
+      <div class="v2-foot">
+        <button class="btn-primary">Use photo
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost">Skip</button>
+        <span class="hint">Updates preview instantly</span>
+      </div>
+    </div>
+    </div>
+        <div class="car-slide"><div class="v2-card">
+      <div class="v2-head">
+        <span class="v2-cat"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>PHOTO</span>
+        <span class="v2-match">85% match</span>
+      </div>
+      <div class="v2-body">
+        <div class="v2-thumb" style="background:linear-gradient(160deg,#aac4b2,#6e8f78 60%,#3a5443);"></div>
+        <div class="v2-text">
+          <h3>Kitchen</h3>
+          <p>The <span class="chip" style="--c:#0d9488;">renovation</span> is the selling point for this listing.</p>
+        </div>
+      </div>
+      <div class="v2-evidence">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="url(#aiGrad)" stroke="none"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"/></svg>
+        <span><b>2.1× comments</b> on renovated-kitchen leads in your area</span>
+      </div>
+      <div class="v2-foot">
+        <button class="btn-primary">Use photo
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost">Skip</button>
+        <span class="hint">Updates preview instantly</span>
+      </div>
+    </div>
+    </div>
+        <div class="car-slide"><div class="v2-card">
+      <div class="v2-head">
+        <span class="v2-cat"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>PHOTO</span>
+        <span class="v2-match">81% match</span>
+      </div>
+      <div class="v2-body">
+        <div class="v2-thumb" style="background:linear-gradient(160deg,#c7b9c9,#94809a 60%,#57455e);"></div>
+        <div class="v2-text">
+          <h3>Back yard</h3>
+          <p>Sells the <span class="chip" style="--c:#8b5cf6;">outdoor space</span> — rare for this block.</p>
+        </div>
+      </div>
+      <div class="v2-evidence">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="url(#aiGrad)" stroke="none"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"/></svg>
+        <span><b>+17% saves</b> when outdoor space leads the post</span>
+      </div>
+      <div class="v2-foot">
+        <button class="btn-primary">Use photo
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost">Skip</button>
+        <span class="hint">Updates preview instantly</span>
+      </div>
+    </div>
+  
+    </div>
+      </div>
+      <div class="car-nav">
+        <button class="car-btn" onclick="go(-1)" aria-label="Previous">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="dots" id="dots"><span class="dot-i on"></span><span class="dot-i"></span><span class="dot-i"></span></div>
+        <button class="car-btn" onclick="go(1)" aria-label="Next">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="tier-row">
+      <span class="tier-label">PHOTO &middot; FRONT ELEVATION</span>
+      <span class="count">1 of 12 selected</span>
+    </div>
+    <div class="grid">
+      <div class="tile sel"><div class="ph" style="background:linear-gradient(160deg,#9fb4c7,#5d7a94 60%,#31465c);"><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="pick-tag">Mel’s pick</span></div><div class="cap">Front elevation</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#c9bfa8,#8f8468 60%,#4d4636);"></div><div class="cap">Living room</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#aac4b2,#6e8f78 60%,#3a5443);"></div><div class="cap">Kitchen</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#c7b9c9,#94809a 60%,#57455e);"></div><div class="cap">Back yard</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#b9c0e6,#7d86c4 60%,#3a3f6e);"></div><div class="cap">Primary suite</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#c9c2b0,#98917c 60%,#5a5344);"></div><div class="cap">Primary bath</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#a8bfc9,#6d8d9c 60%,#3b5461);"></div><div class="cap">Dining area</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#c4b3a4,#8f7c6b 60%,#544539);"></div><div class="cap">Balcony</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#b3c9b8,#7a9a83 60%,#43604b);"></div><div class="cap">Entry hall</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#c0b6d6,#8a7dab 60%,#4e4368);"></div><div class="cap">Second bedroom</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#ccc0a4,#9a8e6f 60%,#5c5340);"></div><div class="cap">Home office</div></div><div class="tile"><div class="ph" style="background:linear-gradient(160deg,#a9b6c9,#71839c 60%,#3d4b61);"></div><div class="cap">Street view</div></div>
+      <div class="upload">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 21H3"/></svg>
+        Upload
+      </div>
+    </div>
+</div>
+
+<script>
+let idx = 0;
+function go(d) {
+  idx = Math.min(2, Math.max(0, idx + d));
+  document.getElementById('track').style.transform = 'translateX(' + (-idx * 100) + '%)';
+  document.querySelectorAll('.dot-i').forEach((el, i) => el.classList.toggle('on', i === idx));
+}
+</script>
+</body>
+</html>
