@@ -1,7 +1,6 @@
-# Restore-only backups (never referenced by the app)
-backups/
-
-# OS / editor cruft
-.DS_Store
-*.thumbnail
+uploads/
+screenshots/
 .thumbnail
+.DS_Store
+.vercel
+node_modules/
