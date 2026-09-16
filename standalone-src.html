@@ -2,12 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Radius CRM (Radius UI 3.0)</title>
+<title>Radius CRM — Transactions (Radius UI 3.0)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- Radius UI 3.0 tokens + components, concatenated into one request (was 8 blocking requests) -->
+<meta name="ext-resource-dependency" content="assets/mel-icon.svg" data-resource-id="melIcon">
+<meta name="ext-resource-dependency" content="assets/mel-orb.svg" data-resource-id="melOrb">
+<meta name="ext-resource-dependency" content="assets/avatars/a2.svg" data-resource-id="avA2">
+<meta name="ext-resource-dependency" content="assets/prop/s1.jpg" data-resource-id="p1">
+<meta name="ext-resource-dependency" content="assets/prop/s2.jpg" data-resource-id="p2">
+<meta name="ext-resource-dependency" content="assets/prop/s3.jpg" data-resource-id="p3">
+<meta name="ext-resource-dependency" content="assets/prop/s4.jpg" data-resource-id="p4">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px106399">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1396122">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px2724749">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1643383">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1571460">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/2404843/pexels-photo-2404843.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px2404843">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1080721">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px2062431">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1428348">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/3935350/pexels-photo-3935350.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px3935350">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" data-resource-id="px1918291">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav415829">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav91227">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav220453">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav614810">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav1239291">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav1043471">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav1130626">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav1587009">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav1222271">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav712513">
+<meta name="ext-resource-dependency" content="https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=96&amp;h=96&amp;fit=crop" data-resource-id="cav697509">
 <link rel="stylesheet" href="website-builder.css?v=15">
 <style id="mel-copilot-css">
   /* ================= Mel Copilot page ================= */
@@ -60,7 +89,6 @@
   /* main column */
   .melmain{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0}
   .melhead .ptitle{display:flex;align-items:center;gap:8px;white-space:nowrap;position:relative}
-  .melhead #mel-close i{font-size:15px;line-height:1}
   .melhead .tname{font-size:14px;font-weight:400;color:var(--neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
   .tnamebtn{display:flex;align-items:center;gap:5px;height:32px;padding:0 8px;border:none;background:none;border-radius:8px;cursor:pointer;min-width:0;transition:background .15s ease}
   .tnamebtn:hover{background:var(--neutral-100)}
@@ -1985,10 +2013,7 @@
   .lock{width:13px;height:13px;stroke:var(--neutral-400);fill:none;stroke-width:1.8;vertical-align:-2px;margin-left:6px}
   .rowmenu{opacity:0;color:var(--neutral-400);cursor:pointer;font-weight:600}
   tr:hover .rowmenu{opacity:1}
-  /* legacy native checkboxes only. Unscoped, this beats .rds-checkbox on
-     specificity (0,1,1 > 0,1,0) and silently shrinks every Radius UI Checkbox
-     to 14px. Keep the :not() — the DS component owns its own size. */
-  input[type=checkbox]:not(.rds-checkbox){width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
+  input[type=checkbox]{width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
 
   /* filter popover */
   .fpop{position:absolute;width:280px;background:var(--white);border:1px solid var(--neutral-200);border-radius:14px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);padding:16px;z-index:40;display:none}
@@ -3241,10 +3266,7 @@
   .rowmenu{opacity:0;color:var(--neutral-400);cursor:pointer;font-weight:600;padding:2px 6px;border-radius:6px}
   tr:hover .rowmenu{opacity:1}
   .rowmenu:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  /* legacy native checkboxes only. Unscoped, this beats .rds-checkbox on
-     specificity (0,1,1 > 0,1,0) and silently shrinks every Radius UI Checkbox
-     to 14px. Keep the :not() — the DS component owns its own size. */
-  input[type=checkbox]:not(.rds-checkbox){width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
+  input[type=checkbox]{width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
 
   /* row ⋮ menu popover (Open / toggle private / Archive) */
   .rmpop{position:fixed;min-width:180px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:6px;display:none;z-index:200}
@@ -5690,21 +5712,14 @@ a:hover { text-decoration: underline; text-decoration-color: var(--muted-foregro
 .rds-field__error{font-size:var(--text-body-sm);color:var(--destructive);line-height:18px}
 
 /* ============================== Checkbox / Radio ============================== */
-.rds-checkbox,.rds-radio{appearance:none;-webkit-appearance:none;margin:0;width:16px;height:16px;flex-shrink:0;border:1px solid var(--neutral-400);background:var(--background);cursor:pointer;display:inline-grid;place-content:center;transition:background .15s ease,border-color .15s ease,box-shadow .15s ease}
-/* Geometry + states mirror the shadcn/Base UI Checkbox reference:
-   size-4 · rounded-[4px] · border · shadow-xs · data-[checked]:bg-primary ·
-   indicator icon size-3.5 · focus-visible:border-ring + ring-[3px] ·
-   aria-invalid:border-destructive. Colours stay Radius tokens. */
-.rds-checkbox{border-radius:4px;box-shadow:var(--shadow-xs)}
-.rds-radio{border-radius:var(--radius-full);box-shadow:var(--shadow-xs)}
+.rds-checkbox,.rds-radio{appearance:none;-webkit-appearance:none;margin:0;width:16px;height:16px;flex-shrink:0;border:1px solid var(--neutral-400);background:var(--background);cursor:pointer;display:inline-grid;place-content:center;transition:background .15s ease,border-color .15s ease}
+.rds-checkbox{border-radius:var(--radius-xs)}
+.rds-radio{border-radius:var(--radius-full)}
 .rds-checkbox:hover,.rds-radio:hover{border-color:var(--neutral-500)}
 .rds-checkbox:checked,.rds-radio:checked{background:var(--primary);border-color:var(--primary)}
-/* Phosphor check glyph (ph-check, \e182) — the project's only icon set. */
-.rds-checkbox:checked::after{content:"\e182";font-family:"Phosphor";font-size:14px;line-height:1;font-weight:400;color:var(--primary-foreground);-webkit-font-smoothing:antialiased}
+.rds-checkbox:checked::after{content:"";width:9px;height:9px;background:var(--primary-foreground);clip-path:polygon(14% 44%,0 65%,40% 100%,100% 16%,84% 0,39% 60%)}
 .rds-radio:checked::after{content:"";width:6px;height:6px;border-radius:var(--radius-full);background:var(--primary-foreground)}
-.rds-checkbox:focus-visible,.rds-radio:focus-visible{outline:none;border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 22%,transparent),var(--shadow-xs)}
-.rds-checkbox[aria-invalid="true"],.rds-radio[aria-invalid="true"]{border-color:var(--destructive)}
-.rds-checkbox[aria-invalid="true"]:focus-visible,.rds-radio[aria-invalid="true"]:focus-visible{border-color:var(--destructive);box-shadow:0 0 0 3px color-mix(in srgb,var(--destructive) 20%,transparent),var(--shadow-xs)}
+.rds-checkbox:focus-visible,.rds-radio:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 22%,transparent)}
 .rds-checkbox:disabled,.rds-radio:disabled{opacity:.5;cursor:not-allowed}
 .rds-choice{display:inline-flex;align-items:flex-start;gap:var(--space-2);font-size:var(--text-body);color:var(--foreground);cursor:pointer}
 
@@ -6865,10 +6880,7 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   @media (prefers-reduced-motion:reduce){.lkdlg{transform:none}}
   .rowmenu{opacity:0;color:var(--neutral-400);cursor:pointer;font-weight:600}
   tr:hover .rowmenu{opacity:1}
-  /* legacy native checkboxes only. Unscoped, this beats .rds-checkbox on
-     specificity (0,1,1 > 0,1,0) and silently shrinks every Radius UI Checkbox
-     to 14px. Keep the :not() — the DS component owns its own size. */
-  input[type=checkbox]:not(.rds-checkbox){width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
+  input[type=checkbox]{width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
 
   /* filter popover */
   .fpop{position:absolute;width:280px;background:var(--popover);color:var(--popover-foreground);border:1px solid var(--border);border-radius:var(--radius-card);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:40;display:none}
@@ -7285,7 +7297,6 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   .fltfoot .fltapply:hover{background:#4B50D9}
   .fltfoot .fltapply:active{transform:scale(.98)}
 
-  .fo .fosub{margin-left:6px;color:var(--neutral-500);font-weight:400}
   /* ===== Filters side sheet (right edge, same shell as the Tasks sheet) ===== */
   .fscrim{position:fixed;inset:0;background:rgba(10,10,10,.32);z-index:100;opacity:0;pointer-events:none;transition:opacity .16s ease}
   .fscrim.on{opacity:1;pointer-events:auto}
@@ -7755,10 +7766,7 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   .rowmenu{opacity:0;color:var(--neutral-400);cursor:pointer;font-weight:600;padding:2px 6px;border-radius:6px}
   tr:hover .rowmenu{opacity:1}
   .rowmenu:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  /* legacy native checkboxes only. Unscoped, this beats .rds-checkbox on
-     specificity (0,1,1 > 0,1,0) and silently shrinks every Radius UI Checkbox
-     to 14px. Keep the :not() — the DS component owns its own size. */
-  input[type=checkbox]:not(.rds-checkbox){width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
+  input[type=checkbox]{width:14px;height:14px;accent-color:var(--primary);cursor:pointer}
 
   /* row ⋮ menu popover (Open / toggle private / Archive) */
   .rmpop{position:fixed;min-width:180px;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:6px;display:none;z-index:200}
@@ -8115,13 +8123,6 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   .mwtmeta .mwdue.red{color:var(--status-red)}
   .mwtyi{width:12px;height:12px;stroke-width:2}
   .mwty{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 7px;border-radius:var(--r-badge);font-size:11px;font-weight:500;flex:none}
-  .mwty.general{background:#f5f5f5;color:#404040}
-  body.dark .mwty.general{background:#262626;color:#d4d4d4}
-  .mwty .mwtyph{font-size:12px;line-height:1}
-  .mwta .mwtaph{font-size:15px;line-height:1}
-  .mwrem{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px 0 6px;border-radius:var(--r-badge);background:#eef0fe;color:#3f3fa8;font-size:11px;font-weight:500;flex:none;white-space:nowrap}
-  .mwrem i{font-size:12px;line-height:1}
-  body.dark .mwrem{background:#1e1b4b;color:#a5a8ff}
   .mwty.email{background:#dbeafe;color:#1e40af}
   .mwty.email .mwtyi{stroke:#2563eb}
   .mwty.call{background:#e8f2dd;color:#3f5c26}
@@ -8530,12 +8531,6 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   .tknew.on{display:flex}
   .tknew .tnrow{display:flex;gap:8px}
   .tknew .tnfield{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
-  .tknew .tnnotif{display:flex;align-items:center;gap:6px;height:32px}
-  .tknew .tnchk{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--neutral-200);border-radius:8px;background:var(--white);font:500 12px var(--font);color:var(--neutral-600);cursor:pointer;min-width:0}
-  .tknew .tnchk input{width:14px;height:14px;margin:0;accent-color:var(--primary);cursor:pointer}
-  .tknew .tnchk:has(input:checked){border-color:var(--primary);color:var(--primary);background:color-mix(in oklab,var(--primary) 8%,#fff)}
-  body.dark .tknew .tnchk{background:#171717;border-color:#262626;color:#d4d4d4}
-  body.dark .tknew .tnchk:has(input:checked){background:#1e1b4b;border-color:var(--primary);color:#c7d2fe}
   .tknew .tnlbl{font-size:10px;font-weight:600;color:var(--neutral-500);letter-spacing:.04em;text-transform:uppercase}
   .tknew input,.tknew select{height:32px;border:1px solid var(--neutral-200);border-radius:8px;padding:0 10px;font:400 13px var(--font);color:var(--neutral-900);background:var(--white);outline:none;min-width:0;width:100%;font-family:inherit}
   .tknew select{padding-right:26px;-webkit-appearance:none;appearance:none;background:var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 10px center}
@@ -8577,146 +8572,9 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
   .tksnztime .tksnztrow button{min-width:0;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid var(--neutral-200);box-sizing:border-box}
   .tksnztime .tksnztrow button.on{border-color:var(--primary);background:#eef0fe;color:var(--primary);box-shadow:none}
 </style>
-<style id="property-search-css">
-  #ps-page{display:none;overflow:hidden;background:var(--white)}
-  .ps-shell{flex:1;min-height:0;display:flex;flex-direction:column;background:var(--white);position:relative}
-  .ps-top{flex:none;display:flex;align-items:center;gap:14px;padding:16px 20px 14px;border-bottom:1px solid var(--neutral-200);background:var(--white)}
-  .ps-toggle{width:32px;height:32px;border:none;background:none;border-radius:8px;color:var(--neutral-600);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-  .ps-toggle:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  .ps-searchbox{height:44px;flex:1;min-width:0;border:1px solid var(--neutral-200);border-radius:22px;background:var(--white);box-shadow:var(--shadow-xs);display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--neutral-500)}
-  .ps-searchbox i{font-size:18px;color:var(--neutral-400)}
-  .ps-locchip{height:28px;display:inline-flex;align-items:center;gap:7px;max-width:220px;padding:0 10px;border-radius:999px;background:var(--neutral-100);color:var(--neutral-900);font:500 13px var(--font);white-space:nowrap}
-  .ps-locchip button{width:16px;height:16px;border:0;background:var(--neutral-200);border-radius:50%;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
-  .ps-placeholder{font:400 14px var(--font);color:var(--neutral-400);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ps-savebar{flex:none;height:56px;display:flex;align-items:center;gap:14px;padding:0 20px;border-bottom:1px solid var(--neutral-200);background:var(--neutral-50)}
-  .ps-new{border:none;background:none;color:var(--neutral-700);font:500 14px var(--font);display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:0}
-  .ps-savelink{height:32px;border:0;background:none;color:var(--primary);font:500 14px var(--font);display:inline-flex;align-items:center;gap:7px;cursor:pointer}
-  .ps-filterbar{flex:none;min-height:58px;display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid var(--neutral-200);background:var(--white)}
-  .ps-filterbar .spacer{flex:1}
-  .ps-vsep{width:1px;height:28px;background:var(--neutral-200);margin:0 6px}
-  .ps-pill{height:36px;border:1px solid var(--neutral-200);border-radius:999px;background:var(--white);box-shadow:var(--shadow-xs);padding:0 14px;display:inline-flex;align-items:center;gap:8px;font:500 14px var(--font);color:var(--neutral-800);white-space:nowrap;cursor:pointer}
-  .ps-pill:hover{background:var(--neutral-50);border-color:var(--neutral-300)}
-  .ps-pill i{font-size:17px;color:currentColor}
-  .ps-pill.reset{border-color:#ff6b6b;color:#ff6b6b;background:#fff}
-  .ps-pill.share{border-color:var(--neutral-900)}
-  .ps-savedrow{flex:none;display:none;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--neutral-200);background:var(--white)}
-  .ps-savedrow.on{display:flex}
-  .ps-savedlabel{height:28px;display:inline-flex;align-items:center;gap:6px;flex:none;color:var(--neutral-500);font:600 12px var(--font);text-transform:uppercase;letter-spacing:.04em}
-  /* strict one line: never wraps — chips shrink to ellipsis, the overflow slot holds its width */
-  .ps-savedchips{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden}
-  .ps-savechip{height:28px;max-width:220px;flex:0 1 auto;min-width:0;display:inline-flex;align-items:center;gap:7px;padding:0 8px 0 10px;border:1px solid var(--neutral-200);border-radius:999px;background:var(--neutral-50);color:var(--neutral-900);font:500 13px var(--font);box-shadow:var(--shadow-xs)}
-  .ps-savechip span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  /* the label is a real button — clicking a saved chip reopens that property */
-  .ps-savechip .lab{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
-  .ps-savechip:hover{border-color:var(--neutral-300);background:var(--white)}
-  .ps-savechip .lab:hover{color:var(--primary)}
-  .ps-savechip .rm{width:18px;height:18px;border:0;border-radius:999px;background:var(--neutral-200);color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
-  .ps-savechip .rm:hover{background:var(--neutral-300);color:var(--neutral-900)}
-  #ps-savedshare{flex:none}
-  /* overflow slot: the last chip in the row when more are saved than fit (see SAVED_CAP) */
-  .ps-savechip.more{flex:none;max-width:none;padding:0 9px 0 11px;border-style:dashed;background:var(--white);color:var(--neutral-600);cursor:pointer;font-variant-numeric:tabular-nums}
-  .ps-savechip.more:hover{background:var(--neutral-50);border-color:var(--neutral-400);color:var(--neutral-900)}
-  .ps-savechip.more i{font-size:13px;transition:transform .12s ease}
-  .ps-savechip.more[aria-expanded="true"] i{transform:rotate(180deg)}
-  #ps-savedpop .dpb{display:flex;flex-direction:column;gap:2px;padding-top:2px}
-  .ps-savepoprow{display:flex;align-items:center;gap:10px;min-height:32px;padding:0 8px;border-radius:8px;font:500 13px var(--font);color:var(--neutral-900)}
-  .ps-savepoprow:hover{background:var(--neutral-50)}
-  .ps-savepoprow span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  /* open · share · remove — the label itself is the open action, same as the chip */
-  .ps-savepoprow .lab{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
-  .ps-savepoprow .lab:hover{color:var(--primary)}
-  .ps-savepoprow .act{flex:none;width:22px;height:22px;border:0;border-radius:6px;background:none;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;font-size:14px}
-  .ps-savepoprow .act:hover{background:var(--neutral-100);color:var(--primary)}
-  .ps-savepoprow .rm{flex:none;width:18px;height:18px;border:0;border-radius:999px;background:var(--neutral-200);color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
-  .ps-savepoprow .rm:hover{background:var(--neutral-300);color:var(--neutral-900)}
-  .ps-main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(430px,47%) minmax(0,1fr);padding-bottom:80px}
-  .ps-results{min-width:0;overflow:auto;border-right:1px solid var(--neutral-200);padding:18px 20px 20px;background:var(--white)}
-  .ps-titleline{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
-  .ps-titleline h2{margin:0;font:700 18px/24px var(--font);letter-spacing:-.01em;color:var(--neutral-950)}
-  .ps-titleline span{font:400 14px var(--font);color:var(--neutral-500)}
-  .ps-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-  .ps-card{min-width:0;overflow:hidden;border:1px solid var(--neutral-200);border-radius:14px;background:var(--white);box-shadow:var(--shadow-xs);transition:border-color 150ms ease,box-shadow 150ms ease,transform 140ms cubic-bezier(.23,1,.32,1)}
-  .ps-card:hover{border-color:var(--neutral-300);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
-  .ps-card.selected{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 14%,transparent),var(--shadow-sm)}
-  .ps-card:active{transform:scale(.99)}
-  .ps-photo{height:160px;position:relative;overflow:hidden;background:var(--neutral-100)}
-  .ps-photo img{width:100%;height:100%;object-fit:cover;display:block}
-  /* layout + hit target only — the .rds-checkbox inside is the Radius UI Checkbox
-     at its own spec (16px, --neutral-400 border, --primary when checked). Never
-     restyle it from here; a local size/colour override is how DS drift starts. */
-  .ps-select{grid-area:sel;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;cursor:pointer}
-  .ps-badge{position:absolute;top:12px;left:12px;height:24px;padding:0 10px;border-radius:999px;background:#f0fdf4;color:#15803d;font:700 11px/24px var(--font);letter-spacing:.02em;text-transform:uppercase;box-shadow:0 1px 2px rgba(10,10,10,.08)}
-  .ps-badge.pending{background:#eff6ff;color:#2563eb}
-  .ps-price{position:absolute;right:12px;bottom:12px;height:34px;padding:0 12px;border-radius:9px;background:rgba(255,255,255,.94);color:var(--primary);font:700 16px/34px var(--font);box-shadow:0 4px 14px rgba(10,10,10,.14)}
-  .ps-dots{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:5px}
-  .ps-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.62)}
-  .ps-body{padding:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"addr sel" "facts .";column-gap:12px;row-gap:14px;align-items:center}
-  .ps-address{grid-area:addr;font:700 18px/22px var(--font);letter-spacing:-.02em;color:#101322;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ps-facts{grid-area:facts;display:flex;align-items:center;gap:12px;min-width:0;color:var(--neutral-600);font:600 13px var(--font)}
-  .ps-facts span{display:inline-flex;align-items:center;gap:5px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ps-facts i{font-size:15px;color:#cbd5e1}
-  .ps-map{position:relative;min-width:0;overflow:hidden;background:#dff3ec}
-  .ps-map::before{content:"";position:absolute;inset:-40px;background:
-    radial-gradient(circle at 70% 20%, rgba(125,214,170,.45) 0 14%, transparent 15%),
-    radial-gradient(circle at 78% 58%, rgba(125,214,170,.48) 0 17%, transparent 18%),
-    radial-gradient(circle at 54% 84%, rgba(125,214,170,.38) 0 11%, transparent 12%),
-    linear-gradient(90deg,#83d8e7 0 36%,#f7f3df 36% 100%);
-    opacity:.9}
-  .ps-road{position:absolute;height:3px;background:#b8c1c8;border-radius:999px;opacity:.72;transform-origin:left center}
-  .ps-road.r1{left:32%;top:24%;width:42%;transform:rotate(16deg)}
-  .ps-road.r2{left:34%;top:66%;width:55%;transform:rotate(-9deg)}
-  .ps-road.r3{left:53%;top:8%;width:2px;height:82%;transform:rotate(4deg)}
-  .ps-road.r4{left:36%;top:45%;width:45%;transform:rotate(36deg)}
-  .ps-maplabel{position:absolute;pointer-events:none;color:#334155;font:500 14px var(--font);text-shadow:0 1px 0 rgba(255,255,255,.85)}
-  .ps-maplabel.big{font-size:20px;font-weight:700}
-  .ps-pin{position:absolute;display:inline-flex;align-items:center;justify-content:center;height:24px;min-width:48px;padding:0 8px;border-radius:999px;background:#2d6cdf;color:#fff;font:700 12px var(--font);box-shadow:0 0 0 2px rgba(255,255,255,.9),0 2px 8px rgba(37,99,235,.35)}
-  .ps-dotpin{position:absolute;width:11px;height:11px;border-radius:50%;background:#2563eb;box-shadow:0 0 0 2px rgba(255,255,255,.95),0 1px 5px rgba(37,99,235,.34)}
-  .ps-draw{position:absolute;left:16px;top:16px;height:36px;border:1px solid var(--neutral-200);border-radius:8px;background:rgba(255,255,255,.95);box-shadow:var(--shadow-sm);padding:0 16px;font:600 13px var(--font);color:var(--neutral-800)}
-  .ps-zoom{position:absolute;right:14px;bottom:24px;display:flex;flex-direction:column;background:var(--white);border:1px solid var(--neutral-200);box-shadow:var(--shadow-sm)}
-  .ps-zoom button{width:40px;height:40px;border:0;background:var(--white);font:400 26px/1 var(--font);color:var(--neutral-600);cursor:pointer}
-  .ps-zoom button+button{border-top:1px solid var(--neutral-200)}
-  .ps-bulkbar{position:absolute;left:50%;bottom:92px;transform:translate(-50%,16px);z-index:8;display:flex;align-items:center;gap:10px;min-width:420px;max-width:calc(100% - 40px);padding:10px 12px 10px 16px;border:1px solid var(--neutral-200);border-radius:14px;background:var(--popover);box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity 150ms ease,transform 150ms ease}
-  .ps-bulkbar.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
-  .ps-bulkcount{margin-right:auto;color:var(--neutral-900);font:600 14px var(--font)}
-  .ps-bulkmuted{color:var(--neutral-500);font-weight:400}
-  .ps-sharemodal{display:none}
-  .ps-sharemodal.on{display:flex}
-  .ps-sharemodal .rds-dialog{max-width:540px;padding:20px}
-  .ps-dialogtop{display:flex;align-items:flex-start;gap:12px}
-  .ps-dialogtop .mmx{margin-left:auto;width:30px;height:30px;border:0;background:transparent;border-radius:8px;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-  .ps-dialogtop .mmx:hover{background:var(--neutral-100);color:var(--neutral-900)}
-  .ps-clientsearch{position:relative;margin:16px 0 12px}
-  .ps-clientsearch i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--neutral-400);font-size:16px}
-  .ps-clientsearch .rds-input{padding-left:34px}
-  .ps-clientchips{display:flex;gap:8px;flex-wrap:wrap;min-height:28px;margin-bottom:12px}
-  .ps-clientchip{height:26px;display:inline-flex;align-items:center;gap:6px;padding:0 8px;border-radius:999px;background:var(--neutral-100);color:var(--neutral-900);font:500 12px var(--font)}
-  .ps-clientchip button{border:0;background:transparent;color:var(--neutral-500);cursor:pointer;padding:0;line-height:1}
-  .ps-clientlist{max-height:292px;overflow:auto;border:1px solid var(--neutral-200);border-radius:12px;background:var(--white)}
-  .ps-clientrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--neutral-100);cursor:pointer}
-  .ps-clientrow:last-child{border-bottom:0}
-  .ps-clientrow:hover{background:var(--neutral-50)}
-  .ps-clientrow strong{display:block;color:var(--neutral-900);font:600 14px/18px var(--font)}
-  .ps-clientrow span{display:block;color:var(--neutral-500);font:400 12px/16px var(--font)}
-  .ps-clientempty{padding:22px;text-align:center;color:var(--neutral-500);font:400 13px var(--font)}
-  #ps-page .melbar{left:20px;right:20px;bottom:20px}
-  @media (max-width:1100px){
-    /* stacked: the grid itself scrolls, the results pane no longer owns the scroll */
-    .ps-main{grid-template-columns:minmax(0,1fr);overflow:auto}
-    .ps-results{overflow:visible}
-    .ps-map{min-height:360px;border-top:1px solid var(--neutral-200)}
-    .ps-results{border-right:0}
-  }
-  @media (max-width:720px){
-    .ps-top,.ps-savebar,.ps-filterbar{padding-left:14px;padding-right:14px}
-    .ps-filterbar{overflow:auto;justify-content:flex-start}
-    .ps-grid{grid-template-columns:1fr}
-    .ps-main{padding-bottom:92px}
-    .ps-searchbox{min-width:0}
-  }
-</style>
 </head>
 <body>
-<template id="__bundler_thumbnail">
+<template id="__bundler_thumbnail" data-bg-color="#5A5FF2">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
     <rect width="200" height="200" fill="#5A5FF2"/>
     <rect x="60" y="60" width="80" height="80" rx="16" fill="#fff" opacity=".16"/>
@@ -8743,9 +8601,9 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
     </div>
     <div class="glabel">Main</div>
     <div class="nav" data-page="mywork"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M2 12h20"/></svg> Tasks & Appointments</div>
-    <div class="nav active" data-page="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg> Property search</div>
+    <div class="nav"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg> Property search</div>
         <div class="nav" data-page="clients"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Clients</div>
-    <div class="nav" data-page="transactions"><svg viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg> Transactions</div>
+    <div class="nav active" data-page="transactions"><svg viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg> Transactions</div>
     <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg> Reporting</div>
     <div class="nav"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h3M15 12h3M6 16c.5-1.5 1.8-2 3-2s2.5.5 3 2"/></svg> Agents</div>
     <div class="nav msgwrap" id="msgtoggle" title="Open messenger">
@@ -9019,124 +8877,6 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
       </div>
     </div>
   </main>
-  <main class="content" id="ps-page">
-    <div class="ps-shell">
-      <div class="ps-top">
-        <button class="ps-toggle" type="button" title="Toggle sidebar" aria-label="Toggle sidebar"><i class="ph ph-sidebar-simple" aria-hidden="true"></i></button>
-        <div class="ps-searchbox" role="search" aria-label="Search locations">
-          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-          <span class="ps-locchip">San Diego, CA <button type="button" aria-label="Remove San Diego">×</button></span>
-          <span class="ps-placeholder">Add another location...</span>
-        </div>
-      </div>
-      <div class="ps-savebar">
-        <button class="ps-new" type="button">New search <i class="ph ph-caret-down" aria-hidden="true"></i></button>
-        <span class="ps-vsep" aria-hidden="true"></span>
-        <button class="ps-savelink" type="button"><i class="ph ph-floppy-disk" aria-hidden="true"></i>Save search</button>
-      </div>
-      <div class="ps-filterbar" aria-label="Property search filters">
-        <button class="ps-pill" type="button">For sale</button>
-        <button class="ps-pill" type="button"><i class="ph ph-currency-dollar" aria-hidden="true"></i>Price</button>
-        <button class="ps-pill" type="button"><i class="ph ph-bed" aria-hidden="true"></i>Beds &amp; baths</button>
-        <button class="ps-pill" type="button"><i class="ph ph-house" aria-hidden="true"></i>Home type</button>
-        <button class="ps-pill" type="button"><i class="ph ph-caret-down" aria-hidden="true"></i>More filters</button>
-        <button class="ps-pill reset" type="button"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>Reset filters</button>
-        <span class="spacer"></span>
-        <span class="ps-vsep" aria-hidden="true"></span>
-        <button class="ps-pill" type="button">Recent status/price changes</button>
-        <button class="ps-pill share" type="button"><i class="ph ph-share-network" aria-hidden="true"></i>Share</button>
-      </div>
-      <div class="ps-savedrow" id="ps-savedrow" aria-live="polite">
-        <div class="ps-savedlabel"><i class="ph ph-bookmark-simple" aria-hidden="true"></i>Saved for later</div>
-        <div class="ps-savedchips" id="ps-savedchips"></div>
-        <button class="rds-btn rds-btn--sm" type="button" id="ps-savedshare"><i class="ph ph-share-network" aria-hidden="true"></i>Share saved</button>
-      </div>
-      <!-- overflow for the saved row: anchored panel (txd-dpop pattern), no scrim, closes on X/Esc/outside click -->
-      <div class="txd-dpop" id="ps-savedpop" role="dialog" aria-labelledby="ps-savedpop-t" aria-hidden="true">
-        <div class="dph">
-          <div><h3 id="ps-savedpop-t">More saved</h3></div>
-          <button type="button" class="dpx" id="ps-savedpop-x" aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button>
-        </div>
-        <div class="dpb" id="ps-savedpop-b"></div>
-      </div>
-      <div class="ps-main">
-        <section class="ps-results" aria-label="Property listings">
-          <div class="ps-titleline"><h2>Search</h2><span>Showing 10 of 7,398 listings</span></div>
-          <div class="ps-grid">
-            <article class="ps-card" data-ps-id="galveston" data-ps-title="2128 Galveston" data-ps-price="$1.70M">
-              <div class="ps-photo"><img src="assets/prop/s1.jpg" alt="2128 Galveston property"><span class="ps-badge">Active</span><span class="ps-price">$1.70M</span><span class="ps-dots"><i></i><i></i><i></i></span></div>
-              <div class="ps-body"><label class="ps-select" aria-label="Select 2128 Galveston"><input class="rds-checkbox" type="checkbox" data-ps-select></label><div class="ps-address">2128 Galveston</div><div class="ps-facts"><span><i class="ph ph-bed" aria-hidden="true"></i>6 bd</span><span><i class="ph ph-bathtub" aria-hidden="true"></i>3 ba</span><span><i class="ph ph-corners-out" aria-hidden="true"></i>3,150 sqft</span></div></div>
-            </article>
-            <article class="ps-card" data-ps-id="kansas" data-ps-title="4383 Kansas St 7" data-ps-price="$486K">
-              <div class="ps-photo"><img src="assets/prop/s2.jpg" alt="4383 Kansas St 7 property"><span class="ps-badge">Active</span><span class="ps-price">$486K</span><span class="ps-dots"><i></i><i></i><i></i></span></div>
-              <div class="ps-body"><label class="ps-select" aria-label="Select 4383 Kansas St 7"><input class="rds-checkbox" type="checkbox" data-ps-select></label><div class="ps-address">4383 Kansas St 7</div><div class="ps-facts"><span><i class="ph ph-bed" aria-hidden="true"></i>1 bd</span><span><i class="ph ph-bathtub" aria-hidden="true"></i>1 ba</span><span><i class="ph ph-corners-out" aria-hidden="true"></i>482 sqft</span></div></div>
-            </article>
-            <article class="ps-card" data-ps-id="sandiego" data-ps-title="San Diego" data-ps-price="$675K">
-              <div class="ps-photo"><img src="assets/prop/s3.jpg" alt="San Diego condo property"><span class="ps-badge pending">Coming soon</span><span class="ps-price">$675K</span><span class="ps-dots"><i></i><i></i><i></i></span></div>
-              <div class="ps-body"><label class="ps-select" aria-label="Select San Diego"><input class="rds-checkbox" type="checkbox" data-ps-select></label><div class="ps-address">San Diego</div><div class="ps-facts"><span><i class="ph ph-bed" aria-hidden="true"></i>1 bd</span><span><i class="ph ph-bathtub" aria-hidden="true"></i>1 ba</span><span><i class="ph ph-corners-out" aria-hidden="true"></i>1,029 sqft</span></div></div>
-            </article>
-            <article class="ps-card" data-ps-id="twinpond" data-ps-title="11038 Twin Pond" data-ps-price="$1.40M">
-              <div class="ps-photo"><img src="assets/prop/s4.jpg" alt="11038 Twin Pond property"><span class="ps-badge pending">Coming soon</span><span class="ps-price">$1.40M</span><span class="ps-dots"><i></i><i></i><i></i></span></div>
-              <div class="ps-body"><label class="ps-select" aria-label="Select 11038 Twin Pond"><input class="rds-checkbox" type="checkbox" data-ps-select></label><div class="ps-address">11038 Twin Pond</div><div class="ps-facts"><span><i class="ph ph-bed" aria-hidden="true"></i>4 bd</span><span><i class="ph ph-bathtub" aria-hidden="true"></i>3 ba</span><span><i class="ph ph-corners-out" aria-hidden="true"></i>1,911 sqft</span></div></div>
-            </article>
-          </div>
-        </section>
-        <section class="ps-map" aria-label="Map results">
-          <button class="ps-draw" type="button">Draw area</button>
-          <span class="ps-road r1"></span><span class="ps-road r2"></span><span class="ps-road r3"></span><span class="ps-road r4"></span>
-          <span class="ps-maplabel" style="left:58%;top:8%">San Marcos</span>
-          <span class="ps-maplabel" style="left:57%;top:27%">Poway</span>
-          <span class="ps-maplabel big" style="left:42%;top:80%">San Diego</span>
-          <span class="ps-maplabel" style="left:61%;top:63%">La Mesa</span>
-          <span class="ps-maplabel" style="left:67%;top:44%">Santee</span>
-          <span class="ps-pin" style="left:41%;top:26%">$4.3M</span>
-          <span class="ps-pin" style="left:47%;top:33%">$1.4M</span>
-          <span class="ps-pin" style="left:38%;top:38%">$1.6M</span>
-          <span class="ps-pin" style="left:41%;top:47%">$825K</span>
-          <span class="ps-pin" style="left:51%;top:56%">$1.2M</span>
-          <span class="ps-pin" style="left:43%;top:65%">$980K</span>
-          <span class="ps-pin" style="left:38%;top:58%">$2.7M</span>
-          <span class="ps-pin" style="left:52%;top:72%">$750K</span>
-          <span class="ps-dotpin" style="left:42%;top:31%"></span><span class="ps-dotpin" style="left:45%;top:37%"></span><span class="ps-dotpin" style="left:38%;top:43%"></span><span class="ps-dotpin" style="left:48%;top:42%"></span><span class="ps-dotpin" style="left:40%;top:52%"></span><span class="ps-dotpin" style="left:46%;top:51%"></span><span class="ps-dotpin" style="left:53%;top:48%"></span><span class="ps-dotpin" style="left:36%;top:57%"></span><span class="ps-dotpin" style="left:34%;top:64%"></span><span class="ps-dotpin" style="left:48%;top:62%"></span><span class="ps-dotpin" style="left:55%;top:66%"></span><span class="ps-dotpin" style="left:46%;top:71%"></span>
-          <div class="ps-zoom" aria-label="Map zoom controls"><button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button></div>
-        </section>
-      </div>
-      <div class="melfade"></div>
-      <div class="melbar">
-        <span class="melmini"><img class="melmark melmark--mini" src="assets/mel-icon.svg" alt=""></span>
-        <input class="askinput" placeholder="Ask Mel — try 'Send a text to a client asking if they are still interested in the property'">
-        <div class="rcluster">
-          <button class="send" type="button" title="Send"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
-        </div>
-      </div>
-      <div class="ps-bulkbar" id="ps-bulkbar" aria-live="polite">
-        <div class="ps-bulkcount"><span id="ps-bulkcount">0 properties selected</span> <span class="ps-bulkmuted">for shortlist</span></div>
-        <button class="rds-btn rds-btn--outline rds-btn--sm" type="button" id="ps-save-later"><i class="ph ph-bookmark-simple" aria-hidden="true"></i>Save for later</button>
-        <button class="rds-btn rds-btn--sm" type="button" id="ps-share-now"><i class="ph ph-share-network" aria-hidden="true"></i>Share now</button>
-      </div>
-    </div>
-  </main>
-  <div class="rds-overlay ps-sharemodal" id="ps-sharemodal" aria-hidden="true">
-    <div class="rds-dialog" role="dialog" aria-modal="true" aria-labelledby="ps-sharetitle">
-      <div class="ps-dialogtop">
-        <div>
-          <h3 class="rds-dialog__title" id="ps-sharetitle">Share selected properties</h3>
-          <p class="rds-dialog__desc" id="ps-sharedesc">Select clients to receive this shortlist.</p>
-        </div>
-        <button class="mmx" type="button" id="ps-shareclose" aria-label="Close share dialog"><i class="ph ph-x" aria-hidden="true"></i></button>
-      </div>
-      <div class="ps-clientsearch">
-        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-        <input class="rds-input" id="ps-clientsearch" type="text" placeholder="Search clients" autocomplete="off">
-      </div>
-      <div class="ps-clientchips" id="ps-clientchips" aria-live="polite"></div>
-      <div class="ps-clientlist" id="ps-clientlist" aria-label="Top clients"></div>
-      <div class="rds-dialog__footer">
-        <button class="rds-btn rds-btn--outline" type="button" id="ps-sharecancel">Cancel</button>
-        <button class="rds-btn" type="button" id="ps-shareconfirm">Share now</button>
-      </div>
-    </div>
-  </div>
   <main class="content" id="tx-page">
     <div class="phead">
       <button class="sbtoggle" title="Toggle sidebar" style="color:var(--neutral-900);margin-left:-6px"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
@@ -9317,7 +9057,7 @@ body.zs-demo-f #tx-twrap>.tzero[data-k="zero"],body.zs-demo-f #cl-twrap>.tzero[d
           <div class="rds-empty__media"><svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg></div>
           <p class="rds-empty__title">No transactions match this view</p>
           <p class="rds-empty__desc">This status has nothing in it right now, or the filters and search you've applied rule everything out.</p>
-          <div class="tzact"><button type="button" class="rds-btn rds-btn--outline" title="Clears the search and filters. A collaborator filter stays on." onclick="window.txClearView&&window.txClearView()">Show all transactions</button></div>
+          <div class="tzact"><button type="button" class="rds-btn rds-btn--outline" onclick="window.txClearView&&window.txClearView()">Show all transactions</button></div>
         </div>
       </div>
     </div>
@@ -9905,7 +9645,7 @@ body.txd-nocomments .txd-ctrl .cb .cdot.cdot-chk{display:block}
 body.txd-bnr #txd-card{display:none}
 body.txd-bnr #txd-banner{display:flex}
 body.txd-bnr .txd-switch{display:none}
-.txb{flex-direction:column;gap:10px;margin:14px 20px 12px;flex:none;min-width:0}
+.txb{flex-direction:column;gap:10px;margin:14px 20px 8px;flex:none;min-width:0}
 .txb-bar{display:flex;align-items:center;gap:8px;min-width:0;padding:0 2px}
 .txb-back{flex:none;width:28px;height:28px;border:none;border-radius:8px;background:none;color:var(--neutral-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
 .txb-back:hover{background:var(--neutral-100)}
@@ -9914,11 +9654,6 @@ body.txd-bnr .txd-switch{display:none}
 .txb-type{flex:none;height:22px;padding:0 8px;border-radius:var(--r-badge);background:#eef0ff;color:#3730a3;font-size:12.5px;font-weight:500;display:inline-flex;align-items:center}
 .txb-stat{flex:none;height:24px;padding:0 9px;border-radius:var(--r-badge);border:1px solid #d9def7;background:#f3f5ff;color:#26307a;font-size:12.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
 .txb-stat i{width:6px;height:6px;border-radius:50%;background:#2563eb;flex:none}
-.txb-stat{font-family:inherit;cursor:pointer;padding-right:5px;transition:background-color .14s ease,border-color .14s ease}
-.txb-stat:hover{background:#eaeeff;border-color:#c7cff2}
-.txb-stat:active{transform:scale(.98)}
-.txb-stat .stcar{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.6;flex:none;transition:transform .16s ease}
-.txb-stat[aria-expanded="true"] .stcar{transform:rotate(180deg)}
 .txb-sp{flex:1 1 auto;min-width:8px}
 .txb-gb{flex:none;height:30px;padding:0 11px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);color:var(--neutral-900);font-family:inherit;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 2px rgba(10,10,10,.04);transition:background .12s ease,border-color .12s ease}
 .txb-gb:hover{background:var(--neutral-50);border-color:var(--neutral-300)}
@@ -9934,27 +9669,19 @@ body.txb-min .txb-toggle svg{transform:rotate(-180deg)}
 .txb-toggle .lbmin{display:none}
 body.txb-min .txb-toggle .lbfull{display:none}
 body.txb-min .txb-toggle .lbmin{display:inline}
-.txb-grid{display:grid;grid-template-columns:minmax(667px,667px) minmax(320px,1fr);gap:10px;min-width:0;align-items:stretch}
-.txb-gb.grn{color:#fff;background:#166534;border-color:#166534}
-.txb-gb.grn i.ph,.txb-gb.grn svg,.txb-gb.grn .txb-car{color:#fff;stroke:#fff}
-.txb-gb.grn:hover{background:#14532d;border-color:#14532d}
+.txb-grid{display:grid;grid-template-columns:minmax(0,1.5fr) 210px minmax(250px,.95fr);gap:10px;min-width:0}
 .txb-left{display:flex;flex-direction:column;gap:10px;min-width:0}
-.txb-left>.txb-photo{flex:1 1 auto}
 .txb-acts{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;padding-left:2px}
-.txb-photo>.txb-acts{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;flex-wrap:nowrap;padding-left:0}
-.txb-photo>.txb-acts .txb-gb{flex:0 0 auto;white-space:nowrap}
 .txb-gb i.ph{font-size:15px;line-height:1;color:var(--neutral-600);flex:none}
 .txb-gb i.ph.txb-car{font-size:13px;color:var(--neutral-500);margin-left:1px}
-.txb-gb.grn i.ph.txb-car{color:#fff}
 .txb-gb.ico i.ph{color:var(--neutral-700)}
 .txb-tkbadge{min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--primary);color:#fff;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
 .txb-gb.bell{position:relative}
 .txb-gb.bell .ndot{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--destructive);box-shadow:0 0 0 2px var(--white)}
 body.txb-min .txb-grid{display:none}
 /* photo hero */
-.txb-photo{position:relative;margin:0;height:auto;min-height:276px;border-radius:16px;overflow:hidden;background:var(--neutral-900);border:1px solid var(--neutral-200)}
-.txb-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,.72) 100%);pointer-events:none;z-index:2}
-.txb-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.txb-photo{position:relative;margin:0;height:236px;border-radius:16px;overflow:hidden;background:var(--neutral-900);border:1px solid var(--neutral-200)}
+.txb-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .txb-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.55) 42%,rgba(10,10,10,.06) 78%)}
 .txb-cap{position:absolute;left:22px;top:22px;right:120px;display:flex;flex-direction:column;gap:10px;color:#fff}
 .txb-eyebrow{font-size:12px;color:rgba(255,255,255,.78);letter-spacing:.01em}
@@ -9962,17 +9689,13 @@ body.txb-min .txb-grid{display:none}
 .txb-h b{display:block;font-weight:500}
 .txb-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
 .txb-pills span{height:24px;padding:0 9px;border-radius:9999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.14);color:#fff;font-size:12px;display:inline-flex;align-items:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);font-variant-numeric:tabular-nums}
-.txb-count{position:absolute;top:14px;right:19px;height:24px;padding:0 9px;border-radius:9999px;background:rgba(10,10,10,.55);color:#fff;font-size:11.5px;display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.txb-count{position:absolute;top:14px;right:14px;height:24px;padding:0 9px;border-radius:9999px;background:rgba(10,10,10,.55);color:#fff;font-size:11.5px;display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .txb-count svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.txb-closes{position:absolute;z-index:3;left:22px;bottom:66px;display:flex;align-items:baseline;gap:9px;color:#fff;min-width:0;max-width:calc(100% - 150px)}
-.txb-closes .cl{font-size:11.5px;color:rgba(255,255,255,.7);letter-spacing:.01em}
-.txb-closes .cv{font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
-.txb-closes .cm{font-size:12px;color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.txb-dots{position:absolute;z-index:3;right:19px;bottom:70px;display:flex;align-items:center;gap:5px}
+.txb-dots{position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:5px}
 .txb-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45)}
 .txb-dots i.on{width:18px;border-radius:9999px;background:#fff}
 /* side tiles */
-.txb-side{display:grid;grid-template-rows:1fr;gap:10px;min-width:0}
+.txb-side{display:grid;grid-template-rows:1fr 1fr;gap:10px;min-width:0}
 .txb-tile{border:1px solid var(--neutral-200);border-radius:14px;background:var(--white);padding:14px 15px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;box-shadow:0 1px 2px rgba(10,10,10,.04)}
 .txb-tile .tl{font-size:11.5px;color:var(--neutral-500)}
 .txb-tile .tv{font-size:22px;font-weight:500;letter-spacing:-.02em;color:var(--neutral-900);line-height:1.1;font-variant-numeric:tabular-nums;margin-top:2px}
@@ -9985,24 +9708,14 @@ body.txb-min .txb-grid{display:none}
 .txb-seg i{height:5px;flex:1;border-radius:9999px;background:var(--neutral-200)}
 .txb-seg i.on{background:var(--primary)}
 /* facts card */
-.txb-dgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.6fr);gap:6px 14px;min-width:0}
-.txb-d{display:flex;flex-direction:column;gap:0;min-width:0;overflow:hidden}
-.txb-d .k{font-size:11.5px;color:var(--neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.txb-d .v{font-size:13px;font-weight:500;color:var(--neutral-900);font-variant-numeric:tabular-nums;white-space:normal;text-wrap:pretty}
-.txb-card{border:1px solid var(--neutral-200);border-radius:14px;background:var(--white);box-shadow:0 1px 2px rgba(10,10,10,.04);padding:14px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.txb-mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 14px;min-width:0}
-.txb-kv{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:0;overflow:hidden}
-.txb-kv .k{font-size:11.5px;color:var(--neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.txb-kv .v{font-size:14px;font-weight:500;color:var(--neutral-900);font-variant-numeric:tabular-nums;white-space:normal;overflow:hidden;text-overflow:ellipsis;max-width:100%;text-wrap:pretty}
-.txb-rule{height:1px;background:var(--neutral-200);margin:10px 0}
-.txb-pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 14px;min-width:0}
-.txb-pgrid .txb-people.wide{grid-column:span 2}
-.txb-people{display:flex;flex-direction:column;gap:2px;min-width:0;overflow:hidden}
-.txb-pchev{flex:none;width:20px;height:20px;padding:0;margin-left:0;justify-content:center}
-.txb-pchev .cchev{margin-left:0}
-.txb-people .k{font-size:11.5px;color:var(--neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.txb-people .pv{display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden}
-.txb-av{width:20px;height:20px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:600;letter-spacing:.01em}
+.txb-card{border:1px solid var(--neutral-200);border-radius:14px;background:var(--white);box-shadow:0 1px 2px rgba(10,10,10,.04);padding:14px 16px;display:flex;flex-direction:column;gap:11px;min-width:0}
+.txb-kv{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-width:0}
+.txb-kv .k{font-size:12.5px;color:var(--neutral-500);white-space:nowrap}
+.txb-kv .v{font-size:14px;font-weight:500;color:var(--neutral-900);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txb-rule{height:1px;background:var(--neutral-200);margin:1px 0}
+.txb-people{display:flex;align-items:center;gap:8px;min-width:0}
+.txb-people .k{font-size:12.5px;color:var(--neutral-500);flex:none;width:88px}
+.txb-av{width:22px;height:22px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;letter-spacing:.01em}
 .txb-nm{font-size:13px;color:var(--neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .txb-more{flex:none;height:20px;padding:0 7px;border-radius:9999px;border:1px solid var(--neutral-200);background:var(--white);color:var(--neutral-600);font-size:11px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums}
 .txb-role{flex:none;height:18px;padding:0 5px;border-radius:5px;background:var(--neutral-100);color:var(--neutral-600);font-size:10.5px;display:inline-flex;align-items:center}
@@ -10012,12 +9725,13 @@ body.txb-min .txb-grid{display:none}
 .txb-collabg .cchev,.txd-collabg .cchev{width:13px;height:13px;margin-left:4px}
 .txd-collabg[aria-expanded="true"]{background:var(--neutral-100);box-shadow:0 0 0 1px var(--neutral-200)}
 @media (max-width:1320px){
-  .txb-grid{grid-template-columns:minmax(667px,667px) minmax(280px,1fr)}
+  .txb-grid{grid-template-columns:minmax(0,1.35fr) 190px}
+  .txb-card{grid-column:1/-1}
 }
 @media (max-width:980px){
   .txb-grid{grid-template-columns:1fr}
-  .txb-side{grid-template-rows:auto}
-  .txb-photo{height:276px}
+  .txb-side{grid-template-rows:auto auto}
+  .txb-photo{height:200px}
   .txb-cap{right:22px}
 }
 /* ---- property photo hero (tweak: propertyPhoto) ---- */
@@ -10058,14 +9772,14 @@ body.txd-nophoto .txd-hero{display:none}
 .txd-next.block .nb{background:var(--neutral-900);border-color:var(--neutral-900);color:#fafafa}
 .txd-next.block .nb:hover{background:var(--neutral-800)}
 /* tabs / columns */
-.txd-tabs{height:46px;display:flex;align-items:center;gap:0;padding:6px 20px;border-bottom:none;flex:none}
+.txd-tabs{height:40px;display:flex;align-items:center;gap:0;padding:4px 20px;border-bottom:none;flex:none}
 .txd-tabseg{display:flex;align-items:center;gap:2px;min-width:0;background:var(--neutral-100);border-radius:10px;padding:3px}
 .txd-tb{height:28px;padding:0 14px;display:flex;align-items:center;font-size:13px;font-weight:600;font-variation-settings:"wght" 600,"wdth" 100;color:var(--neutral-500);border-radius:7px;cursor:pointer;white-space:nowrap;flex:none}
 .txd-tb:hover{color:var(--neutral-900)}
 .txd-tb.on{background:var(--white);color:var(--neutral-900);font-weight:800;font-variation-settings:"wght" 700,"wdth" 100;box-shadow:0 1px 2px rgba(10,10,10,.10),0 0 0 .5px rgba(10,10,10,.04)}
 .txd-tb .ct{font-size:11px;line-height:1;color:var(--neutral-600);margin-left:7px;background:rgba(10,10,10,.06);border-radius:6px;padding:3px 6px;flex:none}
 .txd-tb.on .ct{background:var(--neutral-100);color:var(--neutral-700)}
-.txd-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:10px 20px 0;align-items:start}
+.txd-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:7px 20px 0;align-items:start}
 .txd-card.flat{border:none;border-radius:0;background:transparent;overflow:visible;margin:0;min-width:0}
 .txd-card.flat .txd-ch{padding-left:0;padding-right:0;border-bottom:none;height:32px}
 .txd-card.flat .txd-chips{padding:3px;margin-bottom:8px;border-bottom:none}
@@ -10088,13 +9802,13 @@ body.txd-nophoto .txd-hero{display:none}
 .txd-card.flat .txd-foot{border-top:none;padding:8px 0 0;background:transparent}
 /* envelopes column reads as a tinted band (mirrors the Tasks & Appointments .mwband, bleeding right instead of left) */
 #txd-envcard{margin:0 -20px 0 0;padding:16px 20px 20px 16px;background:#FAFAFA;border:1px solid var(--neutral-200);border-right:none;border-bottom:none;border-radius:18px 0 0 0}
-#txd-doccols>.txd-card.flat:first-child{padding-top:17px;position:sticky;top:0;align-self:start;display:flex;flex-direction:column;max-height:calc(100vh - 301px)}
+#txd-doccols>.txd-card.flat:first-child{padding-top:17px;position:sticky;top:0;align-self:start;display:flex;flex-direction:column;max-height:calc(100vh - 248px)}
 #txd-forms{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
 #txd-forms::-webkit-scrollbar{width:8px}
 #txd-forms::-webkit-scrollbar-thumb{background:rgba(10,10,10,.14);border-radius:8px}
 #txd-forms::-webkit-scrollbar-track{background:transparent}
 /* envelope list scrolls on its own; header + tabs stay put, forms column stays pinned */
-#txd-envcard{position:sticky;top:0;display:flex;flex-direction:column;max-height:calc(100vh - 301px)}
+#txd-envcard{position:sticky;top:0;display:flex;flex-direction:column;max-height:calc(100vh - 248px)}
 #txd-envs{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:4px;margin-right:-4px}
 #txd-envs::-webkit-scrollbar{width:8px}
 #txd-envs::-webkit-scrollbar-thumb{background:rgba(10,10,10,.16);border-radius:8px}
@@ -10106,7 +9820,7 @@ body.txd-nophoto .txd-hero{display:none}
 .txd-lbtn{height:26px;padding:0 8px;border-radius:8px;border:none;background:none;color:var(--neutral-600);font-size:13px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-family:inherit}
 .txd-lbtn:hover{background:var(--neutral-100);color:var(--neutral-900)}
 .txd-lbtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.txd-chips{display:flex;gap:2px;padding:8px 12px;border-bottom:1px solid var(--neutral-200);flex-wrap:nowrap;background:transparent;border-radius:10px;width:fit-content;max-width:100%}
+.txd-chips{display:flex;gap:2px;padding:8px 12px;border-bottom:1px solid var(--neutral-200);flex-wrap:nowrap;background:var(--neutral-100);border-radius:10px;width:fit-content;max-width:100%}
 .txd-chip{height:28px;padding:0 10px;border-radius:7px;border:none;background:none;font-size:13px;font-weight:600;font-variation-settings:"wght" 600,"wdth" 100;color:var(--neutral-500);display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-family:inherit;white-space:nowrap}
 .txd-chip:hover{color:var(--neutral-900);background:none}
 .txd-chip.on{background:var(--white);border-color:transparent;color:var(--neutral-900);font-weight:800;font-variation-settings:"wght" 700,"wdth" 100;box-shadow:0 1px 2px rgba(10,10,10,.10),0 0 0 .5px rgba(10,10,10,.04)}
@@ -10451,7 +10165,7 @@ body.txd-nophoto .txd-hero{display:none}
           </div>
         </div>
         <div class="txd-cardbody">
-          <div class="txd-chkcol" id="txd-chk" aria-label="Commission tracker"></div>
+          <div class="txd-chkcol" id="txd-chk" aria-label="Commission Payment Checklist"></div>
           <div class="txd-panel">
             <div class="txd-facts3">
               <div class="txd-metrics" id="txd-metrics"></div>
@@ -10483,10 +10197,9 @@ body.txd-nophoto .txd-hero{display:none}
       <section class="txb" id="txd-banner" aria-label="Transaction overview">
         <div class="txb-bar">
           <button type="button" class="txb-back" id="txb-back" title="Back to transactions" aria-label="Back to transactions"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
-          <span class="txb-addr" id="txb-addr">MLS 70535793216</span>
+          <span class="txb-addr" id="txb-addr">5670 Kearny Mesa Road, Suite 210, San Diego</span>
           <span class="txb-sp"></span>
-          <button type="button" class="txb-gb ico bell" id="txb-bell" aria-haspopup="dialog" aria-expanded="false" title="Notifications on this transaction, 3 unread" aria-label="Notifications on this transaction, 3 unread"><i class="ph ph-bell" aria-hidden="true"></i><span class="ndot"></span></button>
-          <button type="button" class="txb-stat" id="txb-stat" aria-haspopup="listbox" aria-expanded="false" title="Change transaction status"><i></i><span class="lb">Incomplete · Pending</span><svg class="stcar" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+          <span class="txb-stat" id="txb-stat"><i></i>Incomplete · Pending</span>
           <button type="button" class="txb-gb txb-toggle" id="txb-toggle" aria-expanded="true"><svg viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg><span class="lbfull">Hide overview</span><span class="lbmin">Show overview</span></button>
         </div>
         <div class="txb-grid">
@@ -10495,56 +10208,57 @@ body.txd-nophoto .txd-hero{display:none}
             <img src="assets/prop/s1.jpg" alt="5670 Kearny Mesa Road">
             <span class="txb-scrim" aria-hidden="true"></span>
             <figcaption class="txb-cap">
+              <span class="txb-eyebrow" id="txb-eyebrow">San Diego, CA 92111 · MLS 70535793216</span>
               <h2 class="txb-h" id="txb-h">5670 Kearny Mesa Road<b>Suite 210, San Diego</b></h2>
               <span class="txb-pills"><span id="txb-price">$1,450,000</span><span id="txb-rep">Seller &amp; Buyer</span><span>3 bd · 2 ba · 1,510 sqft</span></span>
             </figcaption>
             <span class="txb-count"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 5-5 4 4 2-2 3 3"/></svg>1 / 12</span>
-            <span class="txb-closes"><span class="cl">Closes in</span><span class="cv" id="txb-days">8 days</span><span class="cm" id="txb-dates">· Jul 23</span></span>
             <span class="txb-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
-            <div class="txb-acts">
-              <button type="button" class="txb-gb grn" id="txb-comm"><i class="ph ph-currency-dollar" aria-hidden="true"></i>Commission breakdown<i class="ph ph-caret-right txb-car" aria-hidden="true"></i></button>
-              <button type="button" class="txb-gb chk" id="txb-split" aria-haspopup="dialog" aria-expanded="false"><i class="ph ph-list-checks" aria-hidden="true"></i>Commission tracker<svg class="cbcar" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><span class="cdot cdot-chk off" id="txb-csdot" aria-hidden="true"></span></button>
-              <button type="button" class="txb-gb" id="txb-comments" title="Comments" aria-label="Comments"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Comments</button>
-              <button type="button" class="txb-gb" id="txb-tasks" aria-haspopup="dialog" aria-expanded="false" title="Tasks on this transaction"><i class="ph ph-clipboard-text" aria-hidden="true"></i>Tasks<span class="txb-tkbadge">3</span></button>
-            </div>
           </figure>
+            <div class="txb-acts">
+              <button type="button" class="txb-gb" id="txb-comm"><i class="ph ph-currency-dollar" aria-hidden="true"></i>Commission breakdown<i class="ph ph-caret-right txb-car" aria-hidden="true"></i></button>
+              <button type="button" class="txb-gb chk" id="txb-split" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M6 3v4a3 3 0 0 0 3 3h6a3 3 0 0 1 3 3v4"/><path d="M6 21v-4a3 3 0 0 1 3-3"/><circle cx="6" cy="4" r="1.6"/><circle cx="18" cy="20" r="1.6"/><circle cx="6" cy="20" r="1.6"/></svg>Commission checklist<svg class="cbcar" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><span class="cdot cdot-chk off" id="txb-csdot" aria-hidden="true"></span></button>
+              <button type="button" class="txb-gb ico" id="txb-comments" title="Comments" aria-label="Comments"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+              <button type="button" class="txb-gb" id="txb-tasks" aria-haspopup="dialog" aria-expanded="false" title="Tasks on this transaction"><i class="ph ph-clipboard-text" aria-hidden="true"></i>Tasks<span class="txb-tkbadge">3</span></button>
+              <button type="button" class="txb-gb ico bell" id="txb-bell" aria-haspopup="dialog" aria-expanded="false" title="Notifications on this transaction, 3 unread" aria-label="Notifications on this transaction, 3 unread"><i class="ph ph-bell" aria-hidden="true"></i><span class="ndot"></span></button>
+            </div>
+          </div>
+          <div class="txb-side">
+            <div class="txb-tile dark">
+              <span class="tl">Closes in</span>
+              <span class="tv" id="txb-days">8 days</span>
+              <span class="tm" id="txb-dates">Aug 12 · accepted Jul 23</span>
+            </div>
+            <div class="txb-tile">
+              <span class="tl">Audit</span>
+              <span class="tv">4 of 6 cleared</span>
+              <span class="txb-seg" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+              <span class="tm">2 items waiting on documents</span>
+            </div>
           </div>
           <div class="txb-card">
-            <div class="txb-mgrid">
-              <div class="txb-kv"><span class="k">Sale price</span><span class="v" id="txb-price2">$1,450,000</span></div>
-              <div class="txb-kv"><span class="k">Gross commission</span><span class="v" id="txb-comm2">$14,500</span></div>
-              <div class="txb-kv"><span class="k">Commission rate</span><span class="v">1%</span></div>
-            </div>
+            <div class="txb-kv"><span class="k">Sale price</span><span class="v" id="txb-price2">$1,450,000</span></div>
+            <div class="txb-kv"><span class="k">Gross commission</span><span class="v" id="txb-comm2">$14,500</span></div>
+            <div class="txb-kv"><span class="k">Commission rate</span><span class="v">1%</span></div>
             <div class="txb-rule"></div>
-            <div class="txb-pgrid">
-              <div class="txb-people"><span class="k">Buyer(s)</span><span class="pv"><span class="txb-av" style="background:#fce7f3;color:#9d174d">NZ</span><span class="txb-nm" id="txb-client">Nora Zeglaya</span><span class="txb-more">+1</span><button type="button" class="collabg txb-pchev" aria-expanded="false" aria-label="Show all buyers" onclick="event.stopPropagation();__peoplePop(this,'2 buyers on this transaction',[['Nora Zeglaya','Buyer · primary'],['Alan Zeglaya','Co-buyer']],'Manage clients')"><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></span></div>
-              <div class="txb-people"><span class="k">Seller(s)</span><span class="pv"><span class="txb-av" style="background:#e0f2fe;color:#075985">MH</span><span class="txb-nm">Marcus Hale</span><span class="txb-more">+1</span><button type="button" class="collabg txb-pchev" aria-expanded="false" aria-label="Show all sellers" onclick="event.stopPropagation();__peoplePop(this,'2 sellers on this transaction',[['Marcus Hale','Seller · primary'],['Dana Hale','Co-seller']],'Manage clients')"><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></span></div>
-              <div class="txb-people"><span class="k">Buying agent</span><span class="pv"><span class="txb-av" style="background:#dcfce7;color:#166534">DC</span><span class="txb-nm">Daniel Cho</span><button type="button" class="collabg txb-pchev" aria-expanded="false" aria-label="Show buying side" onclick="event.stopPropagation();__peoplePop(this,'Buying side',[['Daniel Cho','Buying agent'],['Alan Reyes','Showing assistant']],'Manage agents')"><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></span></div>
-              <div class="txb-people"><span class="k">Selling agent</span><span class="pv"><span class="txb-av" style="background:#e0e7ff;color:#3730a3">AI</span><span class="txb-nm" id="txb-agent">Ashutosh iOSacc</span><button type="button" class="collabg txb-pchev" aria-expanded="false" aria-label="Show selling side" onclick="event.stopPropagation();__peoplePop(this,'Selling side',[['Ashutosh iOSacc','Selling agent'],['Emily Robinson','Co-listing agent']],'Manage agents')"><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></span></div>
-              <div class="txb-people wide"><span class="k">Collaborators</span><span class="pv"><span class="txb-av" style="background:#fef9c3;color:#854d0e">RB</span><span class="txb-nm">Ruth Baker</span><span class="txb-role">TC</span><span class="txb-more">+8</span><button type="button" class="collabg txb-pchev" aria-expanded="false" aria-label="Show all collaborators" onclick="event.stopPropagation();__peoplePop(this,'9 collaborators on this transaction',[['Ruth Baker','Transaction coordinator'],['Alan Reyes','Lender'],['Kim Adler','Escrow officer'],['Dillon Reeves','Title rep'],['Priya Raman','Compliance'],['Marta Diaz','Inspector'],['Owen Blake','Appraiser'],['Sara Lin','Photographer'],['Tom Weber','Home warranty']],'Manage access')"><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></span></div>
-            </div>
+            <div class="txb-people"><span class="k">Clients</span><span class="txb-av" style="background:#fce7f3;color:#9d174d">NC</span><span class="txb-nm" id="txb-client">Nora Collins</span><span class="txb-more">+2</span></div>
+            <div class="txb-people"><span class="k">Agent</span><span class="txb-av" style="background:#e0e7ff;color:#3730a3">AI</span><span class="txb-nm" id="txb-agent">Ashutosh iOSacc</span></div>
+            <div class="txb-people"><span class="k">Collaborators</span><span class="txb-av" style="background:#fef9c3;color:#854d0e">RB</span><span class="txb-nm">Ruth Baker</span><span class="txb-role">TC</span><button type="button" class="collabg txb-collabg" aria-expanded="false" title="Ruth Baker, Alan Reyes, Kim Adler and 8 more"><span class="cav" style="background:#e0e7ff;color:#3730a3">AR</span><span class="cav" style="background:#dcfce7;color:#166534">KA</span><span class="cnum">+8</span><svg class="cchev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></div>
             <div class="txb-rule"></div>
-            <div class="txb-dgrid">
-              <div class="txb-d"><span class="k">Listing start</span><span class="v">09/03/2026</span></div>
-              <div class="txb-d"><span class="k">On market</span><span class="v">09/12/2026</span></div>
-              <div class="txb-d"><span class="k">Acceptance</span><span class="v">09/12/2026</span></div>
-              <div class="txb-d"><span class="k">Closing</span><span class="v">09/14/2026</span></div>
-              <div class="txb-d"><span class="k">Listing expiration</span><span class="v">09/12/2026</span></div>
-              <div class="txb-d"><span class="k">Contract</span><span class="v" id="txb-contract">Nor Cal Standard Residential Purchase</span></div>
-            </div>
+            <div class="txb-kv"><span class="k">Contract</span><span class="v" id="txb-contract">Nor Cal Standard Residential Purchase</span></div>
           </div>
         </div>
       </section>
       <div class="txd-dpop" id="txd-cspop" role="dialog" aria-labelledby="txd-cspop-t">
         <div class="dph">
           <div>
-            <h3 id="txd-cspop-t">Commission tracker</h3>
+            <h3 id="txd-cspop-t">Commission Payment Checklist</h3>
           </div>
           <span class="dpcn" id="txd-cscount">3/6</span>
           <button type="button" class="dpx" id="txd-cspop-x" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
         </div>
         <div class="dpb">
-          <div class="txd-chkcol" id="txd-chk2" aria-label="Commission tracker"></div>
+          <div class="txd-chkcol" id="txd-chk2" aria-label="Commission Payment Checklist"></div>
         </div>
       </div>
       <div class="txd-next" id="txd-next"><svg class="ni" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span id="txd-nexttext"></span><button class="nb" id="txd-nextbtn"></button></div>
@@ -10638,419 +10352,6 @@ body.txd-nophoto .txd-hero{display:none}
       <div class="txd-cpf"><input placeholder="Write a comment" id="txd-cinput"><button class="txd-gb" id="txd-csend">Send</button></div>
     </div>
   </main>
-
-<style id="property-detail-css">
-  /* ===== Property detail page (#pd-page) =====
-     Sibling of the nav pages, toggled like #txd-page — never a modal, never a route.
-     body.pd-open hides the CRM sidebar so the page runs full-bleed (the screenshot's
-     black side nav is the consumer app's chrome and is deliberately not built). */
-  #pd-page{display:none}
-  #pd-page.on{display:flex}
-  body.pd-open .sidebar{display:none}
-  /* full-bleed: the body carries the teal team brand, which would otherwise frame the page
-     once the sidebar is gone. "Just the page" means no margin, no border, no radius. */
-  body.pd-open{background:var(--white)}
-  body.pd-open #pd-page{margin:0;border:none;border-radius:0;box-shadow:none}
-
-  .pd-top{flex:none;display:flex;align-items:center;gap:12px;height:44px;padding:0 16px;border-bottom:1px solid var(--neutral-200);background:var(--white);min-width:0}
-  .pd-back{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 8px;border:none;background:none;border-radius:var(--r-input);font:500 13px var(--font);color:var(--neutral-900);cursor:pointer}
-  .pd-back:hover{background:var(--neutral-100)}
-  .pd-back i{font-size:14px}
-  .pd-topsep{width:1px;height:18px;background:var(--neutral-200);flex:none}
-  .pd-toptitle{font:500 13px var(--font);color:var(--neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-  /* agent shortlist action — sits immediately after the address in the top bar, not pinned
-     to the far right and not in the client "Are you interested?" card. Eye path is
-     Back → Address → Save. Never margin-left:auto — the address truncates first
-     (.pd-toptitle is min-width:0 + ellipsis) so the button stays beside it. */
-  .pd-topsave{flex:none;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
-  .pd-topsave:hover{background:var(--neutral-50)}
-  .pd-topsave i{font-size:14px}
-  .pd-topsave.on{border-color:#C9CAF8;background:#F3F3FE;color:var(--primary)}
-  .pd-topsave.on:hover{background:#EBEBFD}
-  /* first-visit intro to the shortlist. Absolutely positioned inside .pd-savewrap so it is
-     anchored to the button wherever the address truncation leaves it, and so dismissing it
-     shifts nothing below — a hint that reflows the page on close reads as a bug. */
-  .pd-savewrap{flex:none;position:relative;display:inline-flex}
-  .pd-hint{position:absolute;top:calc(100% + 10px);left:0;z-index:40;display:flex;align-items:flex-start;gap:8px;width:max-content;max-width:min(330px,calc(100vw - 32px));padding:9px 8px 9px 12px;border:1px solid #C9CAF8;border-radius:var(--r-card);background:#F7F7FE;box-shadow:var(--shadow-sm);font:400 12px/16px var(--font);color:var(--neutral-900)}
-  .pd-hint::before{content:"";position:absolute;top:-5px;left:22px;width:8px;height:8px;background:#F7F7FE;border-left:1px solid #C9CAF8;border-top:1px solid #C9CAF8;transform:rotate(45deg)}
-  .pd-hint[hidden]{display:none}
-  .pd-hintx{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:none;border-radius:var(--r-badge);background:none;color:var(--neutral-500);cursor:pointer}
-  .pd-hintx:hover{background:#E4E4FB;color:var(--neutral-900)}
-  .pd-hintx i{font-size:12px}
-
-  .pd-scroll{flex:1;min-height:0;overflow:auto;background:var(--neutral-50);padding:16px 16px 40px}
-  .pd-wrap{max-width:1180px;margin:0 auto;min-width:0}
-
-  /* --- photo grid --- */
-  .pd-gallery{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:6px;height:330px;border-radius:var(--r-card);overflow:hidden;position:relative}
-  .pd-gallery figure{position:relative;margin:0;overflow:hidden;background:var(--neutral-200);min-width:0}
-  .pd-gallery figure.hero{grid-row:span 2}
-  .pd-gallery img{width:100%;height:100%;object-fit:cover;display:block}
-  .pd-count{position:absolute;right:8px;bottom:8px;padding:2px 7px;border-radius:var(--r-badge);background:rgba(10,10,10,.6);color:var(--white);font:500 11px var(--font);font-variant-numeric:tabular-nums}
-  .pd-showall{position:absolute;right:12px;bottom:12px;height:28px;padding:0 12px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);box-shadow:var(--shadow-sm);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
-  .pd-showall:hover{background:var(--neutral-50)}
-
-  /* --- two column body --- */
-  .pd-cols{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;margin-top:16px;align-items:start}
-  .pd-col{display:flex;flex-direction:column;gap:16px;min-width:0}
-  .pd-card{background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--r-card);box-shadow:var(--shadow-xs);padding:16px;min-width:0;overflow:hidden}
-  .pd-card h3{font:600 15px var(--font);color:var(--neutral-900);margin-bottom:12px}
-
-  /* --- price header card --- */
-  .pd-pricerow{display:flex;align-items:flex-start;gap:12px}
-  .pd-price{font:600 26px/1.1 var(--font);color:var(--neutral-900);font-variant-numeric:tabular-nums}
-  .pd-share{margin-left:auto;flex:none;width:30px;height:30px;border:1px solid var(--neutral-200);border-radius:50%;background:var(--white);display:grid;place-items:center;color:var(--neutral-600);cursor:pointer}
-  .pd-share:hover{background:var(--neutral-50);color:var(--neutral-900)}
-  .pd-addr{font:500 16px var(--font);color:var(--neutral-900);margin-top:6px}
-  .pd-loc{display:flex;align-items:center;gap:6px;font:400 12px var(--font);color:var(--neutral-500);margin-top:6px}
-  .pd-facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
-  .pd-fact{border:1px solid var(--neutral-200);border-radius:var(--r-input);padding:8px 10px;min-width:0;overflow:hidden}
-  .pd-fact .l{display:flex;align-items:center;gap:5px;font:400 11px var(--font);color:var(--neutral-500)}
-  .pd-fact .v{font:500 13px var(--font);color:var(--neutral-900);margin-top:3px;word-break:break-word}
-  .pd-metarow{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--neutral-200)}
-  .pd-match{padding:2px 8px;border:1px solid var(--neutral-200);border-radius:var(--r-badge);font:500 11px var(--font);color:var(--neutral-600);background:var(--neutral-50)}
-  .pd-est{font:400 12px var(--font);color:var(--neutral-500)}
-
-  /* --- about --- */
-  .pd-desc{font:400 13px/1.7 var(--font);color:var(--neutral-600)}
-  .pd-showmore{display:block;margin:12px auto 0;border:none;background:none;font:500 13px var(--font);color:var(--neutral-900);text-decoration:underline;cursor:pointer}
-  .pd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-  .pd-tag{padding:3px 9px;border:1px solid var(--neutral-200);border-radius:var(--r-badge);font:400 11px var(--font);color:var(--neutral-600)}
-
-  /* --- facts & features accordion --- */
-  .pd-acc{border-bottom:1px solid var(--neutral-200)}
-  .pd-acc:last-of-type{border-bottom:none}
-  .pd-acc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;padding:13px 0;font:500 13px var(--font);color:var(--neutral-900)}
-  .pd-acc>summary::-webkit-details-marker{display:none}
-  .pd-acc>summary i{margin-left:auto;font-size:14px;color:var(--neutral-500);transition:transform .16s ease}
-  .pd-acc[open]>summary i{transform:rotate(180deg)}
-  .pd-acc .pd-kv{padding-bottom:12px}
-
-  /* --- key/value rows --- */
-  .pd-kv{display:flex;flex-direction:column}
-  .pd-kv .r{display:flex;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--neutral-100);min-width:0}
-  .pd-kv .r:last-child{border-bottom:none}
-  .pd-kv .k{font:400 12px var(--font);color:var(--neutral-500);min-width:0}
-  .pd-kv .v{margin-left:auto;font:500 12px var(--font);color:var(--neutral-900);text-align:right;font-variant-numeric:tabular-nums}
-
-  /* --- location --- */
-  .pd-map{position:relative;height:170px;border:1px solid var(--neutral-200);border-radius:var(--r-input);overflow:hidden;background:#eef0f2}
-  .pd-map .road{position:absolute;background:var(--white);box-shadow:0 0 0 1px rgba(0,0,0,.05)}
-  .pd-map .road.h1{left:0;right:0;top:32%;height:5px}
-  .pd-map .road.h2{left:0;right:0;top:64%;height:5px}
-  .pd-map .road.v1{top:0;bottom:0;left:28%;width:5px}
-  .pd-map .road.v2{top:0;bottom:0;left:62%;width:5px}
-  .pd-map .water{position:absolute;top:0;bottom:0;left:74%;width:26px;background:#cfe3f0;transform:skewX(-6deg)}
-  .pd-map .mlbl{position:absolute;font:400 10px var(--font);color:var(--neutral-500)}
-  .pd-map .pin{position:absolute;left:50%;top:44%;transform:translate(-50%,-100%);color:var(--status-red);font-size:22px;line-height:1}
-  .pd-map .mzoom{position:absolute;right:8px;bottom:8px;display:flex;flex-direction:column;border:1px solid var(--neutral-200);border-radius:var(--r-badge);overflow:hidden;background:var(--white)}
-  .pd-map .mzoom button{width:22px;height:22px;border:none;background:var(--white);color:var(--neutral-600);font:400 13px var(--font);cursor:pointer}
-  .pd-map .mzoom button+button{border-top:1px solid var(--neutral-200)}
-  .pd-loc3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
-  .pd-loc3 .k{font:500 11px var(--font);color:var(--neutral-900)}
-  .pd-loc3 .v{font:400 11px/1.5 var(--font);color:var(--neutral-500);margin-top:3px;min-width:0}
-
-  /* --- tables --- */
-  .pd-table{width:100%;border-collapse:collapse;table-layout:fixed}
-  .pd-table th{text-align:left;font:500 11px var(--font);color:var(--neutral-500);padding:8px 10px;background:var(--neutral-50);border-bottom:1px solid var(--neutral-200)}
-  .pd-table td{font:400 12px var(--font);color:var(--neutral-900);padding:9px 10px;border-bottom:1px solid var(--neutral-100);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .pd-table tr:last-child td{border-bottom:none}
-  .pd-tablewrap{border:1px solid var(--neutral-200);border-radius:var(--r-input);overflow:hidden}
-
-  /* --- market value boxes --- */
-  .pd-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .pd-three .b{border:1px solid var(--neutral-200);border-radius:var(--r-input);padding:10px 12px;min-width:0;overflow:hidden}
-  .pd-three .b .k{font:400 11px var(--font);color:var(--neutral-500)}
-  .pd-three .b .v{font:600 15px var(--font);color:var(--neutral-900);margin-top:4px;font-variant-numeric:tabular-nums}
-
-  /* --- nearby --- */
-  .pd-nearby{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .pd-nearby span{display:block;height:92px;border-radius:var(--r-input);background:var(--neutral-200)}
-
-  /* --- right column --- */
-  .pd-side{width:360px;flex:none}
-  .pd-ibtns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
-  .pd-ibtn{height:32px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
-  .pd-ibtn:hover{background:var(--neutral-50)}
-  .pd-ibtn i{font-size:14px}
-  .pd-ibtn.wide{grid-column:1/-1}
-  .pd-ibtn.on{border-color:#C9CAF8;background:#F3F3FE;color:var(--primary)}
-  .pd-ibtn.on:hover{background:#EBEBFD}
-  .pd-bigval{font:600 22px var(--font);color:var(--neutral-900);font-variant-numeric:tabular-nums}
-  .pd-note{font:400 11px var(--font);color:var(--neutral-500);margin:2px 0 10px}
-  .pd-agent{display:flex;align-items:center;gap:10px;min-width:0}
-  .pd-agent img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}
-  .pd-agent .n{font:500 13px var(--font);color:var(--neutral-900)}
-  .pd-agent .m{font:400 11px var(--font);color:var(--neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .pd-msg{width:100%;height:34px;margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:var(--r-button);background:var(--neutral-900);color:var(--white);font:500 13px var(--font);cursor:pointer}
-  .pd-msg:hover{background:var(--neutral-700)}
-  .pd-tour{width:100%;height:32px;margin-top:8px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
-  .pd-tour:hover{background:var(--neutral-50)}
-
-  /* --- footer disclaimer --- */
-  .pd-legal{margin-top:16px;padding:0 4px;font:400 10px/1.6 var(--font);color:var(--neutral-400)}
-  .pd-legal b{display:block;margin:10px 0 4px;font:600 10px var(--font);color:var(--neutral-500)}
-</style>
-
-  <main class="content" id="pd-page">
-    <div class="pd-top">
-      <button class="pd-back" type="button" id="pd-back"><i class="ph ph-caret-left" aria-hidden="true"></i>Back to listings</button>
-      <span class="pd-topsep" aria-hidden="true"></span>
-      <span class="pd-toptitle">4383 Kansas St ST #7, San Diego, CA 92104</span>
-      <span class="pd-savewrap">
-        <button class="pd-topsave" type="button" id="pd-save" aria-pressed="false"><i class="ph ph-bookmark-simple" aria-hidden="true"></i><span class="lb">Save for later</span></button>
-        <div class="pd-hint" id="pd-savehint" role="status" hidden>
-          <span>Now you can save properties and share them with agents or clients later.</span>
-          <button class="pd-hintx" type="button" id="pd-savehintx" aria-label="Got it"><i class="ph ph-x" aria-hidden="true"></i></button>
-        </div>
-      </span>
-    </div>
-    <div class="pd-scroll">
-      <div class="pd-wrap">
-
-        <div class="pd-gallery">
-          <figure class="hero"><img src="assets/prop/s2.jpg" alt="4383 Kansas St ST #7 exterior"><span class="pd-count">1 / 28</span></figure>
-          <figure><img src="assets/prop/s1.jpg" alt="Front elevation"></figure>
-          <figure><img src="assets/prop/s3.jpg" alt="Entry hallway"></figure>
-          <figure><img src="assets/prop/s4.jpg" alt="Bathroom"></figure>
-          <figure><img src="assets/prop/s2.jpg" alt="Shower"></figure>
-          <button class="pd-showall" type="button">Show all 28 photos</button>
-        </div>
-
-        <div class="pd-cols">
-          <!-- ============ LEFT COLUMN ============ -->
-          <div class="pd-col">
-
-            <section class="pd-card">
-              <div class="pd-pricerow">
-                <div>
-                  <div class="pd-price">$486,000</div>
-                  <div class="pd-addr">4383 Kansas St ST #7, San Diego, CA 92104</div>
-                  <div class="pd-loc"><i class="ph ph-map-pin" aria-hidden="true"></i>92104 - North Park · San Diego, CA</div>
-                </div>
-                <button class="pd-share" type="button" title="Share listing" aria-label="Share listing"><i class="ph ph-share-network" aria-hidden="true"></i></button>
-              </div>
-              <div class="pd-facts">
-                <div class="pd-fact"><div class="l"><i class="ph ph-bed" aria-hidden="true"></i>Beds</div><div class="v">1</div></div>
-                <div class="pd-fact"><div class="l"><i class="ph ph-bathtub" aria-hidden="true"></i>Baths</div><div class="v">1</div></div>
-                <div class="pd-fact"><div class="l"><i class="ph ph-ruler" aria-hidden="true"></i>Sqft</div><div class="v">482</div></div>
-                <div class="pd-fact"><div class="l"><i class="ph ph-square-half" aria-hidden="true"></i>Lot</div><div class="v">APN 4461620207</div></div>
-                <div class="pd-fact"><div class="l"><i class="ph ph-calendar-blank" aria-hidden="true"></i>Year</div><div class="v">1982</div></div>
-              </div>
-              <div class="pd-metarow">
-                <span class="pd-match">0% Match</span>
-                <span class="pd-est">Estimated monthly $2,634/mo</span>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>About this home</h3>
-              <p class="pd-desc">A condo to call your own in fabulous North Park! This charming upstairs condo has 1 bedroom, a full bathroom and is conveniently located close to restaurants and shopping with terrific bikability and walkability. This 8 unit compl...</p>
-              <button class="pd-showmore" type="button">Show more</button>
-              <div class="pd-tags">
-                <span class="pd-tag">Updated kitchen</span>
-                <span class="pd-tag">Natural light</span>
-                <span class="pd-tag">Garage</span>
-                <span class="pd-tag">Walkable</span>
-                <span class="pd-tag">Large backyard</span>
-                <span class="pd-tag">New appliances</span>
-                <span class="pd-tag">hoa</span>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Facts &amp; features</h3>
-              <details class="pd-acc"><summary>Key facts<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">Property type</span><span class="v">Condominium</span></div>
-                  <div class="r"><span class="k">Stories</span><span class="v">1</span></div>
-                  <div class="r"><span class="k">Units in complex</span><span class="v">8</span></div>
-                </div>
-              </details>
-              <details class="pd-acc"><summary>Interior features<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">Flooring</span><span class="v">Laminate, tile</span></div>
-                  <div class="r"><span class="k">Laundry</span><span class="v">Community</span></div>
-                  <div class="r"><span class="k">Bedrooms</span><span class="v">1</span></div>
-                </div>
-              </details>
-              <details class="pd-acc"><summary>Heating, cooling, appliances<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">Heating</span><span class="v">Wall furnace</span></div>
-                  <div class="r"><span class="k">Cooling</span><span class="v">None</span></div>
-                  <div class="r"><span class="k">Appliances</span><span class="v">Range, refrigerator</span></div>
-                </div>
-              </details>
-              <details class="pd-acc"><summary>Exterior, parking, lot<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">Garage spaces</span><span class="v">1</span></div>
-                  <div class="r"><span class="k">Parking spaces</span><span class="v">1</span></div>
-                  <div class="r"><span class="k">Lot description</span><span class="v">Zero lot line</span></div>
-                </div>
-              </details>
-              <details class="pd-acc"><summary>Building &amp; construction<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">Year built</span><span class="v">1982</span></div>
-                  <div class="r"><span class="k">Roof</span><span class="v">Composition</span></div>
-                  <div class="r"><span class="k">Construction</span><span class="v">Stucco</span></div>
-                </div>
-              </details>
-              <details class="pd-acc"><summary>Utilities, HOA, community<i class="ph ph-caret-down" aria-hidden="true"></i></summary>
-                <div class="pd-kv">
-                  <div class="r"><span class="k">HOA fee</span><span class="v">$350/mo</span></div>
-                  <div class="r"><span class="k">HOA includes</span><span class="v">Water, trash</span></div>
-                  <div class="r"><span class="k">Sewer</span><span class="v">Public sewer</span></div>
-                </div>
-              </details>
-            </section>
-
-            <section class="pd-card">
-              <h3>Location</h3>
-              <div class="pd-map">
-                <span class="road h1"></span><span class="road h2"></span><span class="road v1"></span><span class="road v2"></span>
-                <span class="water"></span>
-                <span class="mlbl" style="left:6%;top:12%">Madison Ave</span>
-                <span class="mlbl" style="left:34%;top:12%">Monroe Ave</span>
-                <span class="mlbl" style="left:8%;top:38%">University Heights</span>
-                <span class="mlbl" style="left:40%;top:56%">Meade Ave</span>
-                <span class="mlbl" style="left:14%;top:70%">El Cajon Blvd</span>
-                <span class="mlbl" style="left:64%;top:78%">Wabash Gardens</span>
-                <i class="ph ph-map-pin pin" aria-hidden="true"></i>
-                <div class="mzoom"><button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button></div>
-              </div>
-              <div class="pd-loc3">
-                <div><div class="k">Neighborhood</div><div class="v">92104 - North Park</div></div>
-                <div><div class="k">Area context</div><div class="v">Near South Congress retail and major Austin corridors</div></div>
-                <div><div class="k">Address</div><div class="v">4383 Kansas St ST #7, San Diego, CA 92104, San Diego, CA</div></div>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Schools</h3>
-              <div class="pd-tablewrap">
-                <table class="pd-table">
-                  <thead><tr><th style="width:52%">School</th><th style="width:14%">Grades</th><th style="width:16%">Distance</th><th style="width:18%">Rating</th></tr></thead>
-                  <tbody>
-                    <tr><td>Children's Performing Arts Academy</td><td>K-6</td><td>0.2 mi</td><td>—</td></tr>
-                    <tr><td>Children's Creative And Performing Arts</td><td>K-12</td><td>0.2 mi</td><td>—</td></tr>
-                    <tr><td>Childrens Creative/Performing Arts Academy San Diego</td><td>PK-12</td><td>0.2 mi</td><td>—</td></tr>
-                    <tr><td>Garfield Elementary School</td><td>K-5</td><td>0.2 mi</td><td>Above average</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Price and tax history</h3>
-              <div class="pd-tablewrap">
-                <table class="pd-table">
-                  <thead><tr><th style="width:26%">Date</th><th style="width:30%">Event</th><th style="width:24%">Price</th><th style="width:20%">Change</th></tr></thead>
-                  <tbody>
-                    <tr><td>10/04/2026</td><td>Listed for sale</td><td>$486,000</td><td>—</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Market value and investment</h3>
-              <div class="pd-three">
-                <div class="b"><div class="k">Estimated value</div><div class="v">$486,000</div></div>
-                <div class="b"><div class="k">Comparable homes</div><div class="v">—</div></div>
-                <div class="b"><div class="k">Rent estimate</div><div class="v">—</div></div>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Public facts and climate risk</h3>
-              <div class="pd-kv">
-                <div class="r"><span class="k">MLS #</span><span class="v">260021320SD</span></div>
-                <div class="r"><span class="k">Parcel number</span><span class="v">4461620207</span></div>
-                <div class="r"><span class="k">List AOR</span><span class="v">CRMLS_SAND</span></div>
-                <div class="r"><span class="k">Listing office</span><span class="v">Navigation Realty</span></div>
-                <div class="r"><span class="k">Originating system</span><span class="v">CRMLS</span></div>
-                <div class="r"><span class="k">Photo count</span><span class="v">28</span></div>
-                <div class="r"><span class="k">Garage spaces</span><span class="v">1</span></div>
-                <div class="r"><span class="k">Parking spaces</span><span class="v">1</span></div>
-                <div class="r"><span class="k">Cirrus ID</span><span class="v">060007951721</span></div>
-                <div class="r"><span class="k">Coordinates</span><span class="v">32.756980, -117.131087</span></div>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Nearby homes</h3>
-              <div class="pd-nearby"><span></span><span></span><span></span></div>
-            </section>
-
-            <div class="pd-legal">
-              The data relating to real estate for sale on this web site comes in part from the Internet Data Exchange Program of ACTRIS. Real estate listings held by brokerage firms other than Radius Agent are marked with the Internet Data Exchange logo or the Internet Data Exchange thumbnail logo and detailed information about them includes the name of the listing brokers. Listing courtesy of Keller Williams Realty Austin.
-              <b>IDX DISCLAIMER</b>
-              Information Deemed Reliable but Not Guaranteed. All information should be verified by the user and it is recommended that the user hire a professional to verify all info. This information was last updated: 09/16/2026.
-            </div>
-          </div>
-
-          <!-- ============ RIGHT COLUMN ============ -->
-          <div class="pd-col pd-side">
-            <section class="pd-card">
-              <h3 style="margin-bottom:0">Are you interested?</h3>
-              <div class="pd-ibtns">
-                <button class="pd-ibtn" type="button"><i class="ph ph-heart" aria-hidden="true"></i>Interested</button>
-                <button class="pd-ibtn" type="button"><i class="ph ph-x" aria-hidden="true"></i>Pass</button>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Listing snapshot</h3>
-              <div class="pd-kv">
-                <div class="r"><span class="k">Status</span><span class="v">ACTIVE</span></div>
-                <div class="r"><span class="k">Days on market</span><span class="v">4 days</span></div>
-                <div class="r"><span class="k">Listing ID</span><span class="v">260021320SD</span></div>
-                <div class="r"><span class="k">Listed date</span><span class="v">2026-09-10</span></div>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3 style="margin-bottom:6px">Estimated monthly cost</h3>
-              <div class="pd-bigval">$2,634/mo</div>
-              <div class="pd-note">Estimate only. Buyer to verify.</div>
-              <div class="pd-kv">
-                <div class="r"><span class="k">Principal &amp; interest</span><span class="v">$1,401</span></div>
-                <div class="r"><span class="k">Property taxes</span><span class="v">$753</span></div>
-                <div class="r"><span class="k">Home insurance</span><span class="v">$130</span></div>
-                <div class="r"><span class="k">HOA fees</span><span class="v">$350/mo</span></div>
-                <div class="r"><span class="k">Mortgage insurance</span><span class="v">$0</span></div>
-              </div>
-            </section>
-
-            <section class="pd-card">
-              <h3>Contact agent</h3>
-              <div class="pd-agent">
-                <img src="assets/Avatar.png" alt="">
-                <div style="min-width:0">
-                  <div class="n">Ashutosh iOSac</div>
-                  <div class="m">Avengers</div>
-                  <div class="m">576-765-7575</div>
-                  <div class="m">ashutosh+iosacc@radiusagent.com</div>
-                </div>
-              </div>
-              <button class="pd-msg" type="button"><i class="ph ph-chat-circle" aria-hidden="true"></i>Message Ashutosh</button>
-              <button class="pd-tour" type="button">Request a tour</button>
-            </section>
-
-            <section class="pd-card">
-              <h3>Listing metadata</h3>
-              <div class="pd-kv">
-                <div class="r"><span class="k">Provided by</span><span class="v">CRMLS_SAND</span></div>
-                <div class="r"><span class="k">MLS source</span><span class="v">CRMLS</span></div>
-                <div class="r"><span class="k">Last updated</span><span class="v">09/14/2026</span></div>
-                <div class="r"><span class="k">Equal housing</span><span class="v">Applies</span></div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
   <!-- Tasks side sheet (Radius UI DS: rds-sheet--right) — reuses My Work task visuals -->
   <div class="tkscrim" id="tk-scrim"></div>
   <aside class="rds-sheet rds-sheet--right tksheet" id="tk-sheet" role="dialog" aria-modal="true" aria-labelledby="tk-sheet-title" aria-hidden="true">
@@ -11074,7 +10375,6 @@ body.txd-nophoto .txd-hero{display:none}
         <div class="tkfpsec">
           <div class="tkfplbl">Type</div>
           <div class="tkfpopts" data-fk="ty">
-            <button class="tkfpopt" type="button" data-fv="general">General</button>
             <button class="tkfpopt" type="button" data-fv="email">Email</button>
             <button class="tkfpopt" type="button" data-fv="call">Call</button>
             <button class="tkfpopt" type="button" data-fv="follow">Follow-up</button>
@@ -11102,7 +10402,7 @@ body.txd-nophoto .txd-hero{display:none}
       </div>
       <div class="tnrow">
         <div class="tnfield">
-          <label class="tnlbl" for="tk-nt-prop" id="tk-nt-proplbl">Property</label>
+          <label class="tnlbl" for="tk-nt-prop">Property</label>
           <input type="text" id="tk-nt-prop" placeholder="Address" list="tk-nt-props" autocomplete="off">
           <datalist id="tk-nt-props"></datalist>
         </div>
@@ -11119,7 +10419,6 @@ body.txd-nophoto .txd-hero{display:none}
         <div class="tnfield">
           <label class="tnlbl" for="tk-nt-ty">Type</label>
           <select id="tk-nt-ty">
-            <option value="general">General</option>
             <option value="email">Email</option>
             <option value="call">Call</option>
             <option value="follow">Follow-up</option>
@@ -11146,25 +10445,6 @@ body.txd-nophoto .txd-hero{display:none}
           <label class="tnlbl" for="tk-nt-env">Envelope(s)</label>
           <select id="tk-nt-env" multiple size="3" style="height:auto;min-height:64px;padding:6px 10px"></select>
           <span class="tnhint" style="font-size:11px;color:var(--neutral-500);margin-top:2px">Pick one or more transaction documents. ⌘/Ctrl-click for multiple.</span>
-        </div>
-      </div>
-      <div class="tnrow">
-        <div class="tnfield">
-          <label class="tnlbl" for="tk-nt-rem">Due-date reminder</label>
-          <select id="tk-nt-rem">
-            <option value="">No reminder</option>
-            <option value="0">On the due date</option>
-            <option value="1">1 day before</option>
-            <option value="3">3 days before</option>
-            <option value="7">1 week before</option>
-          </select>
-        </div>
-        <div class="tnfield">
-          <span class="tnlbl">Notify me by</span>
-          <div class="tnnotif">
-            <label class="tnchk"><input type="checkbox" id="tk-nt-push" checked><span>Push</span></label>
-            <label class="tnchk"><input type="checkbox" id="tk-nt-email"><span>Email</span></label>
-          </div>
         </div>
       </div>
       <div class="tnfoot">
@@ -11324,7 +10604,6 @@ body.txd-nophoto .txd-hero{display:none}
           </span>
           <div class="spacer"></div>
           <button class="btn icbtn" type="button" id="mel-taskstoggle" title="Mel activity" aria-label="Mel activity" aria-expanded="false"><svg class="btnic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="tdot"></span></button>
-          <button class="btn icbtn" type="button" id="mel-close" title="Close Mel" aria-label="Close Mel"><i class="ph ph-x" aria-hidden="true"></i></button>
         </div>
 
         <div class="melbody" id="mel-body">
@@ -14848,9 +14127,9 @@ data.forEach((r,i)=>{
 });
 const ini=n=>n==='—'?'—':n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const agtone={"Emily Robinson":["#e0e7ff","#3730a3"],"Daniel Scott":["#dcfce7","#166534"],"Donald Scott":["#fef9c3","#854d0e"],"Michael Allen":["#fce7f3","#9d174d"],"Ashutosh iOSacc":["#e5e5e5","#404040"],"Aashin R. Ironman":["#dbeafe","#1d4ed8"]};
-const agImg={"Emily Robinson":"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Donald Scott":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Aashin R. Ironman":"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"};
+const agImg={"Emily Robinson":window.__resources.cav415829,"Donald Scott":window.__resources.cav91227,"Aashin R. Ironman":window.__resources.cav220453};
 const clientTone=["#eff3ff","#edfdf3","#fef9e3","#fdf3f9","#edf4fe","#f9f3ff","#fff1f2","#e5fdf8","#fefce1","#eff8fe"];
-const clientImgTx={"Marcus Webb":"https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Grace Lee":"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"};
+const clientImgTx={"Marcus Webb":window.__resources.cav614810,"Grace Lee":window.__resources.cav1239291};
 const avImg=(n,map)=>map[n]?`<img src="${map[n]}" alt="" onerror="this.remove()">`:'';
 const tb=document.getElementById('tx-tb');
 /* Fix 2 (Krish review): dates render short ("Jul 23"), year only when it isn't the prototype's
@@ -15499,18 +14778,7 @@ const PRICE_MAX=(()=>{let m=0;data.forEach(r=>{const p=moneyOf(r[5]);if(p&&p>m)m
 const fmtM=n=>n>=1e6?'$'+(n/1e6).toFixed(n%1e6?1:0)+'M':'$'+Math.round(n/1e3)+'k';
 const REP_SET=[...new Set(data.map(r=>r[2]))];
 const ST_PRESENT=[...new Set(data.map(r=>r[6]))].sort((a,b)=>Object.keys(STATUS_FAM).indexOf(a)-Object.keys(STATUS_FAM).indexOf(b));
-/* col 5 carries the one price the seed rows have. List and offer price are derived from it
-   deterministically so the three price filters are independently meaningful: list sits a little
-   above the agreed number, the offer is the number on file, and a purchase price only exists
-   once there is an accepted contract. */
-const PX3=data.map((r,i)=>{
-  const p=moneyOf(r[5]);
-  if(p==null)return{l:null,o:null,p:null};
-  return{l:Math.round(p*(1+((i%4)+1)/100)/5000)*5000,o:p,
-         p:(r[8]||/escrow|closed|executed|pending/i.test(String(r[6]||'')))?p:null};
-});
-const PXF=['lmin','lmax','omin','omax','pmin','pmax'];
-const blankF=()=>({st:[],stside:'b',rep:[],ty:'All types',aud:[],cb:[],chk:'any',vis:'all',collab:[],dfield:'coe',dpre:'any',ds:'',de:'',lmin:'',lmax:'',omin:'',omax:'',pmin:'',pmax:'',cmin:'',cmax:'',rmin:'',rmax:''});
+const blankF=()=>({st:[],stside:'b',rep:[],ty:'All types',aud:[],cb:[],chk:'any',vis:'all',dfield:'coe',dpre:'any',ds:'',de:'',pmin:0,pmax:PRICE_MAX,cmin:'',cmax:'',rmin:'',rmax:''});
 /* Status is side-scoped: each representation side runs its own stage vocabulary, so the
    section carries a tab per side and only shows the sides the Representation filter allows. */
 const ST_SIDES=[['b','Buyer / Tenant'],['s','Seller / Landlord'],['r','Referral']];
@@ -15555,13 +14823,7 @@ function passF(i,A){
   if(A.vis==='private'&&!r[4])return false;
   if(A.vis==='shared'&&r[4])return false;
   const p=moneyOf(r[5]),c=moneyOf(r[9]),nn=v=>v===''||v==null?null:Number(v);
-  if((A.collab||[]).length&&!collabsOf(i).some(x=>A.collab.includes(x[0])))return false;
-  const inRng=(v,lo,hi)=>{const a=nn(lo),b=nn(hi);if(a==null&&b==null)return true;
-    if(v==null)return false;if(a!=null&&v<a)return false;if(b!=null&&v>b)return false;return true};
-  const px=PX3[i]||{l:null,o:null,p:null};
-  if(!inRng(px.l,A.lmin,A.lmax))return false;
-  if(!inRng(px.o,A.omin,A.omax))return false;
-  if(!inRng(px.p,A.pmin,A.pmax))return false;
+  if(A.pmin>0||A.pmax<PRICE_MAX){if(p==null||p<A.pmin||p>A.pmax)return false}
   if(nn(A.cmin)!=null&&(c==null||c<nn(A.cmin)))return false;
   if(nn(A.cmax)!=null&&(c==null||c>nn(A.cmax)))return false;
   const rate=(p&&c)?c/p*100:null;
@@ -15605,8 +14867,7 @@ const oRd=(k,v,label,n)=>`<div class="fo${FD[k]===v?' on':''}" data-k="${k}" dat
 /* one row per filter; its options open in a pane to the left, so nothing ever scrolls */
 const SECS=[
   ['rep','Representation'],['st','Status'],['dates','Dates'],
-  ['aud','Auditing status'],['cb','Commission breakdown'],['chk','Checklist'],
-  ['collab','Collaborators'],['money','Price & commission']
+  ['aud','Auditing status'],['cb','Commission breakdown'],['chk','Checklist'],['money','Price & commission']
 ];
 function secSummary(k){
   const A=FD;
@@ -15619,15 +14880,11 @@ function secSummary(k){
   if(k==='chk')return A.chk==='any'?'Any':(A.chk==='open'?'Has open items':'No open items');
   if(k==='money'){
     const bits=[];
-    const rl=(a,b)=>(a!==''?fmtM(+a):'any')+'\u2013'+(b!==''?fmtM(+b):'any');
-    if(A.lmin!==''||A.lmax!=='')bits.push('list '+rl(A.lmin,A.lmax));
-    if(A.omin!==''||A.omax!=='')bits.push('offer '+rl(A.omin,A.omax));
-    if(A.pmin!==''||A.pmax!=='')bits.push('purchase '+rl(A.pmin,A.pmax));
+    if(A.pmin>0||A.pmax<PRICE_MAX)bits.push(fmtM(A.pmin)+'\u2013'+(A.pmax>=PRICE_MAX?fmtM(PRICE_MAX)+'+':fmtM(A.pmax)));
     if(A.cmin!==''||A.cmax!=='')bits.push('fee $'+(A.cmin||'0')+'\u2013'+(A.cmax||'any'));
     if(A.rmin!==''||A.rmax!=='')bits.push((A.rmin||'0')+'\u2013'+(A.rmax||'any')+'%');
     return bits.length?bits.join(' \u00b7 '):'Any';
   }
-  if(k==='collab')return (A.collab||[]).length?A.collab.length+' selected':'Any';
   if(k==='vis')return A.vis==='all'?'All transactions':(A.vis==='private'?'Private only':'Team visible');
   return '';
 }
@@ -15636,8 +14893,7 @@ const secSet=k=>{
   if(k==='st')return !!A.st.length; if(k==='rep')return !!A.rep.length;
   if(k==='ty')return A.ty!=='All types'; if(k==='dates')return A.dpre!=='any';
   if(k==='aud')return !!A.aud.length; if(k==='chk')return A.chk!=='any';
-  if(k==='collab')return !!(A.collab||[]).length;
-  if(k==='money')return PXF.concat(['cmin','cmax','rmin','rmax']).some(f=>A[f]!=='');
+  if(k==='money')return A.pmin>0||A.pmax<PRICE_MAX||A.cmin!==''||A.cmax!==''||A.rmin!==''||A.rmax!=='';
   return false;
 };
 function buildRail(){
@@ -15676,14 +14932,13 @@ function secBody(k){
      +oCk('cb','Completed','Completed','',tk('Completed'),false)+'</div>';
   }else if(k==='chk'){
     h='<div class="fopts">'+oRd('chk','any','Any',null)+oRd('chk','open','Has open items',nOf(i=>openItemsOf(i)>0))+oRd('chk','clear','No open items',nOf(i=>openItemsOf(i)===0))+'</div>';
-  }else if(k==='collab'){
-    h='<div class="fopts">'+COLLAB_POOL.map(p=>oCk('collab',p[0],p[0]+'<span class="fosub">'+p[1]+'</span>','',nOf(i=>collabsOf(i).some(c=>c[0]===p[0])),false)).join('')+'</div>';
-    hint='Narrows the tab you are in \u2014 the tab still owns the coarse cut.';
   }else if(k==='money'){
-    const pxRow=(a,b)=>`<div class="frow"><span class="fnum"><span class="pfx">$</span><input type="number" data-f="${a}" value="${FD[a]}" placeholder="Min" step="5000"></span><span class="arw">&rarr;</span><span class="fnum"><span class="pfx">$</span><input type="number" data-f="${b}" value="${FD[b]}" placeholder="Max" step="5000"></span></div>`;
-    h=`<div class="fsub" style="margin-top:0">List price</div>`+pxRow('lmin','lmax')
-     +`<div class="fsub">Offer price</div>`+pxRow('omin','omax')
-     +`<div class="fsub">Purchase price</div>`+pxRow('pmin','pmax')
+    const pl=FD.pmin/PRICE_MAX*100,pr=FD.pmax/PRICE_MAX*100;
+    h=`<div class="fsub" style="margin-top:0">Sale price</div>`
+     +`<div class="fsld"><div class="trk"></div><div class="fill" id="tx-prfill" style="left:${pl}%;right:${100-pr}%"></div>`
+     +`<input type="range" id="tx-pr1" data-f="pmin" min="0" max="${PRICE_MAX}" step="50000" value="${FD.pmin}" aria-label="Minimum price">`
+     +`<input type="range" id="tx-pr2" data-f="pmax" min="0" max="${PRICE_MAX}" step="50000" value="${FD.pmax}" aria-label="Maximum price"></div>`
+     +`<div class="fsldv"><span id="tx-prlo">${fmtM(FD.pmin)}</span><span id="tx-prhi">${FD.pmax>=PRICE_MAX?fmtM(PRICE_MAX)+'+':fmtM(FD.pmax)}</span></div>`
      +`<div class="fsub">Gross commission</div><div class="frow"><span class="fnum"><span class="pfx">$</span><input type="number" data-f="cmin" value="${FD.cmin}" placeholder="Min"></span><span class="arw">&rarr;</span><span class="fnum"><span class="pfx">$</span><input type="number" data-f="cmax" value="${FD.cmax}" placeholder="Max"></span></div>`
      +`<div class="fsub">Commission rate</div><div class="frow"><span class="fnum"><input type="number" data-f="rmin" value="${FD.rmin}" placeholder="Min" step="0.25"><span class="pfx">%</span></span><span class="arw">&rarr;</span><span class="fnum"><input type="number" data-f="rmax" value="${FD.rmax}" placeholder="Max" step="0.25"><span class="pfx">%</span></span></div>`;
   }
@@ -15697,8 +14952,7 @@ function secLabels(k){
   if(k==='aud')return ['Not started','In review','Complete'];
   if(k==='cb')return ['Confirmed','Pending approval','Completed'].concat(CB_PARTIES.map(p=>p+' approval'));
   if(k==='chk')return ['Any','Has open items','No open items'];
-  if(k==='collab')return COLLAB_POOL.map(p=>p[0]);
-  if(k==='money')return ['List price','Offer price','Purchase price','Gross commission','Commission rate'];
+  if(k==='money')return ['Sale price','Gross commission','Commission rate'];
   return [];
 }
 const secTitle=k=>(SECS.find(s=>s[0]===k)||['',''])[1];
@@ -15773,12 +15027,7 @@ function chipsF(A){
   if(A.chk!=='any')out.push(['Checklist',A.chk==='open'?'Has open items':'No open items','chk','']);
   if(A.vis!=='all')out.push(['Visibility',A.vis==='private'?'Private only':'Team visible','vis','']);
   if(A.dpre!=='any')out.push([A.dfield==='coe'?'Close of escrow':'Acceptance',A.dpre==='custom'?((A.ds||'any')+' \u2192 '+(A.de||'any')):DPRE_LBL[A.dpre],'dpre','']);
-  (A.collab||[]).forEach(v=>out.push(['Collaborator',v,'collab',v]));
-  const pxChip=(lbl,a,b,k)=>{if(A[a]===''&&A[b]==='')return;
-    out.push([lbl,(A[a]!==''?fmtM(+A[a]):'any')+' \u2013 '+(A[b]!==''?fmtM(+A[b]):'any'),k,''])};
-  pxChip('List price','lmin','lmax','lpx');
-  pxChip('Offer price','omin','omax','opx');
-  pxChip('Purchase price','pmin','pmax','ppx');
+  if(A.pmin>0||A.pmax<PRICE_MAX)out.push(['Price',fmtM(A.pmin)+' \u2013 '+(A.pmax>=PRICE_MAX?fmtM(PRICE_MAX)+'+':fmtM(A.pmax)),'price','']);
   if(A.cmin!==''||A.cmax!=='')out.push(['Commission',(A.cmin?'$'+A.cmin:'any')+' \u2013 '+(A.cmax?'$'+A.cmax:'any'),'comm','']);
   if(A.rmin!==''||A.rmax!=='')out.push(['Rate',(A.rmin||'0')+'\u2013'+(A.rmax||'any')+'%','rate','']);
   return out;
@@ -15796,29 +15045,23 @@ window._txSheetChips=()=>{
   return h;
 };
 function clearKeyF(k,v){
-  if(k==='st'||k==='rep'||k==='aud'||k==='cb'||k==='collab'){FD[k]=(FD[k]||[]).filter(x=>x!==v)}
+  if(k==='st'||k==='rep'||k==='aud'||k==='cb'){FD[k]=FD[k].filter(x=>x!==v)}
   else if(k==='ty')FD.ty='All types';
   else if(k==='chk')FD.chk='any';
   else if(k==='vis')FD.vis='all';
   else if(k==='dates'||k==='dpre'){FD.dpre='any';FD.ds='';FD.de=''}
-  else if(k==='lpx'){FD.lmin='';FD.lmax=''}
-  else if(k==='opx'){FD.omin='';FD.omax=''}
-  else if(k==='ppx'){FD.pmin='';FD.pmax=''}
+  else if(k==='price'){FD.pmin=0;FD.pmax=PRICE_MAX}
   else if(k==='comm'){FD.cmin='';FD.cmax=''}
   else if(k==='rate'){FD.rmin='';FD.rmax=''}
   else if(k==='st_all')FD.st=[];
-  else if(k==='money'){PXF.concat(['cmin','cmax','rmin','rmax']).forEach(f=>FD[f]='')}
+  else if(k==='money'){FD.pmin=0;FD.pmax=PRICE_MAX;FD.cmin='';FD.cmax='';FD.rmin='';FD.rmax=''}
 }
 function clearSecF(k){
   if(k==='st')FD.st=[];else if(k==='rep')FD.rep=[];else if(k==='aud')FD.aud=[];else if(k==='cb')FD.cb=[];
-  else if(k==='collab')FD.collab=[];
   else clearKeyF(k,null);
 }
 function commitF(){FA=cloneF(FD);renderTable();renderChips()}
-window.txClearSheetFilters=function(keepCollab){
-  const keep=keepCollab?(FA.collab||[]).slice():[];
-  FD=blankF();FD.collab=keep;commitF();
-};
+window.txClearSheetFilters=function(){FD=blankF();commitF()};
 function openF(){FD=cloneF(FA);fMore=false;fSec=null;fpane.hidden=true;fQ='';const q=document.getElementById('tx-fsq');if(q){q.value='';document.getElementById('tx-fsqx').hidden=true}renderF();fsheet.classList.add('on');fscrim.classList.add('on');fsheet.setAttribute('aria-hidden','false');filterbtn.classList.add('on')}
 function closeF(){fsheet.classList.remove('on');fscrim.classList.remove('on');fsheet.setAttribute('aria-hidden','true');filterbtn.classList.remove('on');fSec=null;fpane.hidden=true}
 filterbtn.addEventListener('click',e=>{e.stopPropagation();fsheet.classList.contains('on')?closeF():openF()});
@@ -15874,7 +15117,14 @@ function syncSummaries(){
 }
 function handleOptInput(e){
   const t=e.target,f=t.dataset.f;if(!f)return;
-  {
+  if(f==='pmin'||f==='pmax'){
+    const a=+document.getElementById('tx-pr1').value,b=+document.getElementById('tx-pr2').value;
+    FD.pmin=Math.min(a,b);FD.pmax=Math.max(a,b);
+    const fill=document.getElementById('tx-prfill');
+    if(fill){fill.style.left=(FD.pmin/PRICE_MAX*100)+'%';fill.style.right=(100-FD.pmax/PRICE_MAX*100)+'%'}
+    document.getElementById('tx-prlo').textContent=fmtM(FD.pmin);
+    document.getElementById('tx-prhi').textContent=FD.pmax>=PRICE_MAX?fmtM(PRICE_MAX)+'+':fmtM(FD.pmax);
+  }else{
     FD[f]=t.value;
     if(f==='ds'||f==='de'){FD.dpre='custom';(window.__filterLayout==='pane'?fpane:fsbody).querySelectorAll('[data-k="dpre"]').forEach(x=>x.classList.toggle('on',x.dataset.v==='custom'))}
   }
@@ -16105,7 +15355,7 @@ function pxRangeFields(op,mn,mx){
 function pxPriceBody(cur){
   const op='between',mn=(cur.min===0||cur.min)?cur.min:'',mx=(cur.max===0||cur.max)?cur.max:'',sort=window._txPriceSort||'';
   const rng=`<div class="fmfield" id="px-rangewrap">${pxRangeFields(op,mn,mx)}</div>`;
-  const hist='';  /* text fields + quick bands only \u2014 no draggable rail */
+  const hist=`<div class="pxhist" id="px-hist"><div class="pxtrack" id="px-track"><div class="pxrail"></div><div class="pxfill" id="px-fill"></div><div class="pxhandle" id="px-h0" role="slider" tabindex="0" aria-label="Minimum price"></div><div class="pxhandle" id="px-h1" role="slider" tabindex="0" aria-label="Maximum price"></div></div></div>`;
   const bands=`<div class="rds-menu__label">Quick bands</div><div class="pxbands" id="px-bands">`+PX_BANDS.map(([l,a,b])=>`<button type="button" class="pxband" data-min="${a}" data-max="${b}" data-on="false">${l}</button>`).join('')+`</div>`;
   const sortRow=`<div class="rds-menu__sep"></div><div class="rds-menu__label">Sort by price</div><div class="pxsort" id="px-sort"><button type="button" data-sort="asc" data-on="${sort==='asc'?'true':'false'}">Low \u2192 High</button><button type="button" data-sort="desc" data-on="${sort==='desc'?'true':'false'}">High \u2192 Low</button></div>`;
   return `<div class="rds-menu__label">Price</div><div class="rds-menu__sep"></div>`+rng+hist+bands+sortRow+_footerRow();
@@ -16128,8 +15378,7 @@ function pxSetOp(op,fromBand){
   pop.querySelectorAll('#px-seg [data-op]').forEach(b=>b.dataset.on=(b.dataset.op===op)?'true':'false');
   const mn=(pop.querySelector('#fn-min')||{}).value||'',mx=(pop.querySelector('#fn-max')||{}).value||'';
   pop.querySelector('#px-rangewrap').innerHTML=pxRangeFields(op,mn,mx);
-  const hist=pop.querySelector('#px-hist');
-  if(hist){if(op==='between')hist.removeAttribute('hidden');else hist.setAttribute('hidden','')}
+  const hist=pop.querySelector('#px-hist');if(op==='between')hist.removeAttribute('hidden');else hist.setAttribute('hidden','');
   if(!fromBand){pxDrawHist();pxSyncBands()}
 }
 function pxBindHandle(id,which){
@@ -16725,7 +15974,7 @@ window.txClearView=function(){
   Object.keys(window.__txActive||{}).forEach(k=>{
     try{removeFilterTx(k)}catch(err){console.warn('[txClearView] '+err.message)}
   });
-  if(window.txClearSheetFilters)window.txClearSheetFilters(true);
+  if(window.txClearSheetFilters)window.txClearSheetFilters();
   const allTab=root.querySelector('.tabseg .tab[data-tab="All"]');
   if(allTab&&!allTab.classList.contains('active'))allTab.click();
   renderChips();renderTable();
@@ -18324,12 +17573,12 @@ const ini1=n=>(n[0]||'').toUpperCase();
 const agtone={"Emily Robinson":["#e0e7ff","#3730a3"],"Daniel Scott":["#dcfce7","#166534"],"Donald Scott":["#fef9c3","#854d0e"],"Michael Allen":["#fce7f3","#9d174d"],"Ashutosh iOSacc":["#e5e5e5","#404040"],"Aashin R. Ironman":["#dbeafe","#1d4ed8"]};
 /* Dark analogues — deep tinted bgs + light-on-dark fg matched per identity */
 const agtoneDark={"Emily Robinson":["#1e1b4b","#a5b4fc"],"Daniel Scott":["#052e16","#86efac"],"Donald Scott":["#451a03","#fcd34d"],"Michael Allen":["#500724","#f9a8d4"],"Ashutosh iOSacc":["#333333","#e5e5e5"],"Aashin R. Ironman":["#172554","#93c5fd"]};
-const agImg={"Emily Robinson":"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Donald Scott":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Aashin R. Ironman":"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"};
+const agImg={"Emily Robinson":window.__resources.cav415829,"Donald Scott":window.__resources.cav91227,"Aashin R. Ironman":window.__resources.cav220453};
 const collabPool=["Alex Kim","Priya Shah","Marco Vega","Jenna Reyes","Ravi Patel","Sara Malik","Tom Hong","Nina Lee","Kai Odell","Zara Chen","Ben Cole","Ivy Wu"];
 const collabTone=["#eff3ff","#edfdf3","#fef9e3","#fdf3f9","#edf4fe","#f9f3ff","#fff1f2","#e5fdf8","#fefce1","#eff8fe","#fae7fe","#feebd4"];
 /* Dark analogues — desaturated deep tints, one per light index */
 const collabToneDark=["#1e2340","#153a25","#3a3010","#2e1a26","#1a2e3f","#2a1f3a","#3a2226","#153a33","#3f3818","#1a2f3f","#3a2540","#3a2818"];
-const collabImg={"Alex Kim":"https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Jenna Reyes":"https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Sara Malik":"https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"};
+const collabImg={"Alex Kim":window.__resources.cav1043471,"Jenna Reyes":window.__resources.cav1130626,"Sara Malik":window.__resources.cav1587009};
 const collabRole={"Alex Kim":"TC","Priya Shah":"Lender","Marco Vega":"Vendor","Jenna Reyes":"Assistant","Ravi Patel":"TC","Sara Malik":"Lender","Tom Hong":"Vendor","Nina Lee":"Assistant","Kai Odell":"TC","Zara Chen":"Lender","Ben Cole":"Vendor","Ivy Wu":"Assistant"};
 const coAgentPool=["Daniel Scott","Michael Allen","Donald Scott","Emily Robinson"];
 const coAgentRole={"Daniel Scott":"Co-agent · buyer side","Michael Allen":"Co-agent · listing side","Donald Scott":"Co-agent · showings","Emily Robinson":"Co-agent · referral"};
@@ -18338,7 +17587,7 @@ const coAgentCount=i=>[0,2,1,0,1,3,0,2][Math.abs(i)%8];
 const coClientPool=[["Ritu Sharma","Spouse"],["Harold Vance","Father"],["Lena Vance","Mother"],["Devin Cole","Son"],["Ana Cole","Daughter"],["Priya Nair","Sibling"],["Owen Blake","Trustee"],["Marta Diaz","Co-signer"]];
 const coClientCount=i=>[0,2,1,3,0,1,2,4][Math.abs(i)%8];
 function coClientsOf(i){const n=coClientCount(i);const out=[];for(let k=0;k<n;k++)out.push(coClientPool[(i+k)%coClientPool.length]);return out;}
-const clientImg={"Mason Martinez":"https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Ava Stewart":"https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop","Liam Carter":"https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"};
+const clientImg={"Mason Martinez":window.__resources.cav1222271,"Ava Stewart":window.__resources.cav712513,"Liam Carter":window.__resources.cav697509};
 const avImg=(n,map)=>map[n]?`<img class="avatar-image" src="${map[n]}" alt="" onerror="this.remove()">`:'';
 const tb=document.getElementById('cl-tb');
 const CAP=6;
@@ -20025,7 +19274,7 @@ document.getElementById('logoutbtn').addEventListener('click',e=>{
 })();
 
 /* ---------- sidebar collapse toggle ---------- */
-document.querySelectorAll('.content .phead .sbtoggle, #ps-page .ps-toggle').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.content .phead .sbtoggle').forEach(b=>b.addEventListener('click',()=>{
   document.querySelector('.app').classList.toggle('collapsed');
   setTimeout(updateRail,200);
 }));
@@ -20729,14 +19978,14 @@ function renderHead(){
  /* banner top section mirrors the same record (text only — markup stays literal) */
  if($('txb-addr')){
   const full=head.addr+(head.city?', '+head.city:'');
-  $('txb-addr').textContent='MLS '+(head.mls||'70535793216');
+  $('txb-addr').textContent=full;
   const t=$('txb-type');if(t)t.textContent=head.txtype||'—';
-  $('txb-stat').innerHTML='<i style="background:'+head.stc+'"></i><span class="lb">'+esc(head.st)+'</span><svg class="stcar" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+  $('txb-stat').innerHTML='<i style="background:'+head.stc+'"></i>'+esc(head.st);
   $('txb-price').textContent=head.price||'—';
   $('txb-rep').textContent=head.rep||'—';
   $('txb-price2').textContent=head.price||'—';
   $('txb-comm2').textContent=head.comm||'—';
-  $('txb-dates').textContent='· '+(head.coe||'—');
+  $('txb-dates').textContent=(head.coe||'—')+' · accepted '+(head.acc||'—');
   $('txb-client').textContent=(head.parties&&head.parties[0])||head.client||'—';
   $('txb-agent').textContent=head.ag||'—';
   $('txb-contract').textContent=head.txcontract||head.txtype||'—';
@@ -20796,23 +20045,23 @@ const CHK_SCENARIOS={
  noteam:{received:'done',compliant:'done',agentcda:'done',teamcda:null,groupcda:null,payment:'wait'}
 };
 const CHK_GATES=[
- ['compliant','Checklist compliant'],
- ['agentcda','Agent CDA approved'],
- ['teamcda','Team lead CDA approved'],
- ['groupcda','Group lead CDA approved'],
- ['received','Commission received'],
- ['payment','Agent payment']
+ ['received','Commission Received'],
+ ['compliant','Checklist Compliant'],
+ ['agentcda','Agent CDA Approved'],
+ ['teamcda','[Team Name] CDA Approved'],
+ ['groupcda','[Group Name] CDA Approved'],
+ ['payment','Agent Payment']
 ];
 const CHK_ICO={
  done:'<svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>',
  bad:'<svg viewBox="0 0 24 24"><path d="M12 7v6M12 17h.01"/></svg>'
 };
 window.__txState=(function(){try{const v=localStorage.getItem('crm-txstate');return (v==='paid'||v==='pending')?v:'pending'}catch(err){return 'pending'}})();
-const CHK_GATE_LABELS=['Checklist compliant','Agent CDA approved','Team lead CDA approved','Group lead CDA approved','Commission received','Agent payment'];
+const CHK_GATE_LABELS=['Commission Received','Checklist Compliant','Agent CDA Approved','[Team Name] CDA Approved','[Group Name] CDA Approved','Agent Payment'];
 /* which gates are cleared in each lifecycle state — auditors own these, agents only read */
 const CHK_BY_STATE={
  listing:[0,0,0,0,0,0],
- pending:[1,0,0,1,1,0],
+ pending:[1,1,0,0,1,0],
  paid:[1,1,1,1,1,1]
 };
 const TICK='<svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>';
@@ -20831,13 +20080,13 @@ function renderChk(){
   note='<div class="txd-chknote paid"><div><span class="t">Commission paid</span>'+
    '<span class="b">Funds released to agent <strong>Aug 14, 2026</strong> via <strong>Payload</strong>.</span></div></div>';
  }else{
-  const waiting=CHK_GATE_LABELS.filter((t,i)=>!flags[i]&&i!==5).map(t=>t.replace(' CDA approved',' CDA approval').replace('Commission received','commission funds').replace('Checklist compliant','checklist compliance'));
+  const waiting=CHK_GATE_LABELS.filter((t,i)=>!flags[i]&&i!==5).map(t=>t.replace(' CDA Approved','').replace(' Approved','')+' Commission');
   const list=waiting.length>1?waiting.slice(0,-1).join(', ')+' and '+waiting[waiting.length-1]:(waiting[0]||'auditor');
   note='<div class="txd-chknote"><div><span class="t">What\u2019s holding up payment</span>'+
-   '<span class="b">Waiting on '+esc(list)+'.</span></div></div>';
+   '<span class="b">Waiting on '+esc(list)+' approval.</span></div></div>';
  }
  const cnt=all?'<span class="cn ok">100%</span>':'<span class="cn'+(done?'':' idle')+'">'+done+'/6</span>';
- const html='<div class="ch"><h4>Commission tracker</h4>'+cnt+'</div><div class="cl">'+rows+'</div>'+note;
+ const html='<div class="ch"><h4>Commission Payment Checklist</h4>'+cnt+'</div><div class="cl">'+rows+'</div>'+note;
  if(el)el.innerHTML=html;
  if(el2)el2.innerHTML=html;
  ['txd-csdot','txb-csdot'].forEach(id=>{const dot=$(id);if(dot)dot.classList.toggle('off',all)});
@@ -20908,8 +20157,8 @@ window.__renderFlatbar=function(){
  if(fbM&&cmtBtn) fbM.onclick=()=>cmtBtn.click();
 };
 /* ---- property photo hero + lightbox ---- */
-const PHOTO_IDS=[106399,1396122,2724749,1643383,1571460,2404843,3288103,1080721,2062431,1428348,3935350,1918291];
-const photoUrl=(id,w)=>'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w='+w;
+const PHOTO_IDS=[106399,1396122,2724749,1643383,1571460,2404843,1080721,2062431,1428348,3935350,1918291];
+const photoUrl=(id,w)=>(window.__resources&&window.__resources['px'+id])||'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w='+w;
 let lbIdx=0;
 function renderHero(){
  const el=$('txd-hero');if(!el)return;
@@ -21001,11 +20250,6 @@ $('txd-factstrip').addEventListener('click',e=>{
 });
 $('txd-status').addEventListener('click',e=>{
  showPop($('txd-status'),stagesDList().map(st=>'<div class="pi'+(st[0]===head.st?' cur':'')+'" data-st="'+st[0]+'" data-c="'+st[1]+'"><i style="background:'+st[1]+'"></i>'+st[0]+'<span class="chk">✓</span></div>').join(''),200);
- pop.querySelectorAll('[data-st]').forEach(el=>el.onclick=()=>{head.st=el.dataset.st;head.stc=el.dataset.c;hidePop();window.__applyTxGate(el.dataset.st);renderHead()});
-});
-$('txb-stat').addEventListener('click',e=>{
- e.stopPropagation();
- showPop($('txb-stat'),stagesDList().map(st=>'<div class="pi'+(st[0]===head.st?' cur':'')+'" data-st="'+st[0]+'" data-c="'+st[1]+'"><i style="background:'+st[1]+'"></i>'+st[0]+'<span class="chk">\u2713</span></div>').join(''),200);
  pop.querySelectorAll('[data-st]').forEach(el=>el.onclick=()=>{head.st=el.dataset.st;head.stc=el.dataset.c;hidePop();window.__applyTxGate(el.dataset.st);renderHead()});
 });
 $('txd-idchips').addEventListener('click',e=>{
@@ -21577,15 +20821,7 @@ const ENVS=[
 const ST={you:['Your signature pending','Sign','you'],ag:['Agent signature pending','Remind','ag'],
           ot:['Other signature pending','Remind','ot'],sg:['Signed','View','sg']};
 const GL={over:'Overdue',today:'Today',up:'Upcoming'};
-const TY={general:'General',email:'Email',call:'Call',follow:'Follow-up',sign:'Sign',comm:'Commission approval',esign:'eSign',comment:'Comment',combrk:'Commission breakdown'};
-/* due-date reminders, and how a row shows the one it carries */
-const REM={'0':'On due date','1':'1 day before','3':'3 days before','7':'1 week before'};
-function remChip(t){
-  if(t.rem==null||t.rem==='')return '';
-  const ch=[];if(t.push)ch.push('push');if(t.email)ch.push('email');
-  const lbl=REM[String(t.rem)]||'Reminder';
-  return `<span class="mwrem" title="Reminder ${lbl.toLowerCase()} \u00b7 ${ch.length?ch.join(' and '):'no channel selected'}"><i class="ph ph-bell" aria-hidden="true"></i>${lbl}${ch.length?' \u00b7 '+ch.join('/'):''}</span>`;
-}
+const TY={email:'Email',call:'Call',follow:'Follow-up',sign:'Sign',comm:'Commission approval',esign:'eSign',comment:'Comment',combrk:'Commission breakdown'};
 /* signing route — mixed order: you, then co-op agent (when there is one), then client(s) in parallel */
 const ME='Ashutosh Iyer';
 const COAG=['Emily Robinson','Daniel Scott','Marcus Webb','Lena Park'];
@@ -21742,14 +20978,12 @@ function taskRow(i){
       </div>
       <div class="mwtmeta">
         ${link(t.cl)}
-        <span class="mwty ${t.ty}">${P[t.ty]?ic(P[t.ty],'mwic mwtyi'):'<i class="ph ph-note mwtyph" aria-hidden="true"></i>'}${TY[t.ty]||'General'}</span>
-        ${remChip(t)}
+        <span class="mwty ${t.ty}">${ic(P[t.ty],'mwic mwtyi')}${TY[t.ty]}</span>
         ${t.mel?melBadge():''}
       </div>
     </div>
     <div class="mwtacts">
       <button class="mwta" type="button" data-act="done" title="Mark as done" aria-label="Mark as done">${ic(P.check,'mwic')}</button>
-      <button class="mwta" type="button" data-act="edit" title="Edit task" aria-label="Edit task"><i class="ph ph-pencil-simple mwtaph" aria-hidden="true"></i></button>
       <button class="mwta" type="button" data-act="snooze" title="Snooze" aria-label="Snooze">${ic(P.clock,'mwic')}</button>
     </div></div>`;
 }
@@ -22069,353 +21303,9 @@ window.__applyDensity=v=>{document.body.classList.toggle('mw-compact',v==='compa
 render();
 })();
 </script>
-<script id="property-search-module">
-(function(){
-  const root=document.getElementById('ps-page');
-  if(!root)return;
-  const cards=[...root.querySelectorAll('.ps-card[data-ps-id]')];
-  const selected=new Set();
-  const saved=new Map();
-  const selectedClients=new Set();
-  const clients=[
-    {id:'sarah',name:'Sarah Chen',meta:'Buyer · $900k budget'},
-    {id:'michael',name:'Michael Ross',meta:'Investor · cash ready'},
-    {id:'priya',name:'Priya Shah',meta:'Relocating · needs schools'},
-    {id:'daniel',name:'Daniel Lee',meta:'First-time buyer'},
-    {id:'amanda',name:'Amanda Brooks',meta:'Seller + buyer'},
-    {id:'nora',name:'Nora Zeglaya',meta:'Buyer · condo shortlist'},
-    {id:'marcus',name:'Marcus Hale',meta:'Move-up buyer'},
-    {id:'elena',name:'Elena Park',meta:'Downsizing'},
-    {id:'jordan',name:'Jordan Miles',meta:'VA approved'},
-    {id:'lena',name:'Lena Ortiz',meta:'Open house follow-up'}
-  ];
-  const bulk=root.querySelector('#ps-bulkbar');
-  const bulkCount=root.querySelector('#ps-bulkcount');
-  const saveBtn=root.querySelector('#ps-save-later');
-  const shareBtn=root.querySelector('#ps-share-now');
-  const savedRow=root.querySelector('#ps-savedrow');
-  const savedChips=root.querySelector('#ps-savedchips');
-  const savedShare=root.querySelector('#ps-savedshare');
-  const savedPop=root.querySelector('#ps-savedpop');
-  const savedPopTitle=root.querySelector('#ps-savedpop-t');
-  const savedPopBody=root.querySelector('#ps-savedpop-b');
-  let savedPopAnchor=null;
-  const modal=document.getElementById('ps-sharemodal');
-  const modalDesc=document.getElementById('ps-sharedesc');
-  const clientSearch=document.getElementById('ps-clientsearch');
-  const clientList=document.getElementById('ps-clientlist');
-  const clientChips=document.getElementById('ps-clientchips');
-  const shareConfirm=document.getElementById('ps-shareconfirm');
-
-  function propFromCard(card){
-    return {id:card.dataset.psId,title:card.dataset.psTitle,price:card.dataset.psPrice};
-  }
-  function selectedProps(){
-    return cards.filter(card=>selected.has(card.dataset.psId)).map(propFromCard);
-  }
-  function syncSelection(){
-    cards.forEach(card=>{
-      const on=selected.has(card.dataset.psId);
-      card.classList.toggle('selected',on);
-      const box=card.querySelector('[data-ps-select]');
-      if(box)box.checked=on;
-    });
-    const count=selected.size;
-    bulkCount.textContent=count+' '+(count===1?'property':'properties')+' selected';
-    bulk.classList.toggle('on',count>=2);
-  }
-  function clearSelection(){
-    selected.clear();
-    syncSelection();
-  }
-  /* ---- saved store: this module is the single owner. The property detail page talks to it
-     through window.psSaved (below) and never keeps a second copy — two stores would drift. ---- */
-  const SAVED_KEY='ps-saved';
-  const SAVED_CAP=5;               /* chip slots in the row; the last one becomes "N others". 5 keeps the row on one line */
-  const savedSubs=[];
-  function loadSaved(){
-    try{
-      const raw=localStorage.getItem(SAVED_KEY);
-      if(!raw)return;
-      JSON.parse(raw).forEach(p=>{if(p&&p.id)saved.set(p.id,{id:p.id,title:p.title,price:p.price});});
-    }catch(e){console.warn('[ps-saved] could not read storage, saves stay in memory: '+e.message);}
-  }
-  function persistSaved(){
-    try{localStorage.setItem(SAVED_KEY,JSON.stringify([...saved.values()]));}
-    catch(e){console.warn('[ps-saved] could not write storage, saves stay in memory: '+e.message);}
-  }
-  /* the saved row is a working shortlist, not a parking lot: open · share · remove.
-     Batch share lives on the row; per-item share lives in the overflow panel, where
-     there is width for it — a third control on a 28px chip reads as a toolbar. */
-  function openSaved(prop){
-    closeSavedPop();
-    if(typeof window.openPropertyDetail==='function')window.openPropertyDetail(prop);
-    else console.warn('[ps-saved] window.openPropertyDetail missing — cannot open '+prop.id);
-  }
-  function savedChip(prop){
-    const chip=document.createElement('span');
-    chip.className='ps-savechip';
-    const label=document.createElement('button');
-    label.type='button';
-    label.className='lab';
-    label.title='Open '+prop.title;
-    label.textContent=prop.title+' · '+prop.price;
-    label.addEventListener('click',()=>openSaved(prop));
-    const remove=document.createElement('button');
-    remove.type='button';
-    remove.className='rm';
-    remove.setAttribute('aria-label','Remove '+prop.title);
-    remove.textContent='×';
-    remove.addEventListener('click',()=>{saved.delete(prop.id);syncSaved();});
-    chip.append(label,remove);
-    return chip;
-  }
-  function overflowList(){return [...saved.values()].slice(SAVED_CAP-1);}
-  function syncSaved(){
-    savedChips.textContent='';
-    const list=[...saved.values()];
-    const over=list.length>SAVED_CAP;
-    (over?list.slice(0,SAVED_CAP-1):list).forEach(prop=>savedChips.appendChild(savedChip(prop)));
-    if(over){
-      const rest=list.length-(SAVED_CAP-1);
-      const more=document.createElement('button');
-      more.type='button';
-      more.id='ps-savedmore';
-      more.className='ps-savechip more';
-      more.setAttribute('aria-haspopup','dialog');
-      more.setAttribute('aria-expanded',savedPop.classList.contains('on')?'true':'false');
-      const label=document.createElement('span');
-      label.textContent=rest+' others';
-      const caret=document.createElement('i');
-      caret.className='ph ph-caret-down';
-      caret.setAttribute('aria-hidden','true');
-      more.append(label,caret);
-      /* stopPropagation so the outside-click listener doesn't close the panel we just opened */
-      more.addEventListener('click',e=>{e.stopPropagation();savedPop.classList.contains('on')?closeSavedPop():openSavedPop(more);});
-      savedChips.appendChild(more);
-      if(savedPop.classList.contains('on')){renderSavedPop();placeSavedPop(more);}
-    }else if(savedPop.classList.contains('on')){closeSavedPop();}
-    savedRow.classList.toggle('on',saved.size>0);
-    persistSaved();
-    savedSubs.forEach(fn=>{try{fn();}catch(e){console.warn('[ps-saved] subscriber failed: '+e.message);}});
-  }
-  function renderSavedPop(){
-    const rest=overflowList();
-    savedPopTitle.textContent=rest.length+' more saved';
-    savedPopBody.textContent='';
-    rest.forEach(prop=>{
-      const row=document.createElement('div');
-      row.className='ps-savepoprow';
-      const label=document.createElement('button');
-      label.type='button';
-      label.className='lab';
-      label.title='Open '+prop.title;
-      label.textContent=prop.title+' · '+prop.price;
-      label.addEventListener('click',e=>{e.stopPropagation();openSaved(prop);});
-      const share=document.createElement('button');
-      share.type='button';
-      share.className='act';
-      share.title='Share '+prop.title;
-      share.setAttribute('aria-label','Share '+prop.title);
-      share.innerHTML='<i class="ph ph-share-network" aria-hidden="true"></i>';
-      share.addEventListener('click',e=>{e.stopPropagation();closeSavedPop();openModal([prop]);});
-      const remove=document.createElement('button');
-      remove.type='button';
-      remove.className='rm';
-      remove.setAttribute('aria-label','Remove '+prop.title);
-      remove.textContent='×';
-      /* stopPropagation: syncSaved() re-renders this row, so by the time the document
-         listener runs the button is detached and would read as an outside click */
-      remove.addEventListener('click',e=>{e.stopPropagation();saved.delete(prop.id);syncSaved();});
-      row.append(label,share,remove);
-      savedPopBody.appendChild(row);
-    });
-  }
-  function placeSavedPop(anchor){
-    if(!anchor)return;
-    const r=anchor.getBoundingClientRect(),w=savedPop.offsetWidth;
-    let left=Math.min(r.right-w,window.innerWidth-w-12);
-    if(left<12)left=12;
-    /* pick the roomier side and cap the height to it — clamping a too-tall panel to the
-       viewport top would park it on top of the saved row it belongs to */
-    const below=window.innerHeight-12-(r.bottom+8),above=r.top-8-12;
-    const useBelow=below>=above;
-    savedPop.style.maxHeight=Math.max(160,useBelow?below:above)+'px';
-    const h=savedPop.offsetHeight;
-    savedPop.style.left=left+'px';
-    savedPop.style.top=(useBelow?r.bottom+8:Math.max(12,r.top-h-8))+'px';
-  }
-  function openSavedPop(anchor){
-    savedPopAnchor=anchor;
-    renderSavedPop();
-    savedPop.classList.add('on');
-    savedPop.setAttribute('aria-hidden','false');
-    anchor.setAttribute('aria-expanded','true');
-    placeSavedPop(anchor);
-  }
-  function closeSavedPop(){
-    savedPop.classList.remove('on');
-    savedPop.setAttribute('aria-hidden','true');
-    const more=document.getElementById('ps-savedmore');
-    if(more)more.setAttribute('aria-expanded','false');
-    savedPopAnchor=null;
-  }
-  function renderClients(){
-    const q=(clientSearch.value||'').trim().toLowerCase();
-    const rows=clients.filter(c=>(c.name+' '+c.meta).toLowerCase().includes(q)).slice(0,10);
-    clientList.textContent='';
-    if(!rows.length){
-      const empty=document.createElement('div');
-      empty.className='ps-clientempty';
-      empty.textContent='No clients match that search.';
-      clientList.appendChild(empty);
-    }else{
-      rows.forEach(client=>{
-        const row=document.createElement('label');
-        row.className='ps-clientrow';
-        row.dataset.psClient=client.id;
-        const box=document.createElement('input');
-        box.type='checkbox';
-        box.className='rds-checkbox';
-        box.checked=selectedClients.has(client.id);
-        /* chips only — re-rendering the whole list here would reset its scroll
-           position every time a client is ticked. The box already shows its own state. */
-        box.addEventListener('change',()=>{
-          if(box.checked)selectedClients.add(client.id);
-          else selectedClients.delete(client.id);
-          renderClientChips();
-        });
-        const text=document.createElement('span');
-        const name=document.createElement('strong');
-        name.textContent=client.name;
-        const meta=document.createElement('span');
-        meta.textContent=client.meta;
-        text.append(name,meta);
-        row.append(box,text);
-        clientList.appendChild(row);
-      });
-    }
-    shareConfirm.disabled=selectedClients.size===0;
-  }
-  function renderClientChips(){
-    clientChips.textContent='';
-    selectedClients.forEach(id=>{
-      const client=clients.find(c=>c.id===id);
-      if(!client)return;
-      const chip=document.createElement('span');
-      chip.className='ps-clientchip';
-      chip.textContent=client.name+' ';
-      const remove=document.createElement('button');
-      remove.type='button';
-      remove.setAttribute('aria-label','Remove '+client.name);
-      remove.textContent='×';
-      remove.addEventListener('click',()=>{
-        selectedClients.delete(id);
-        renderClientChips();
-        /* untick the matching row in place if it is currently visible */
-        const row=[...clientList.querySelectorAll('.ps-clientrow')].find(r=>r.dataset.psClient===id);
-        if(row)row.querySelector('input').checked=false;
-      });
-      chip.appendChild(remove);
-      clientChips.appendChild(chip);
-    });
-    shareConfirm.disabled=selectedClients.size===0;
-  }
-  /* one share modal, two sources: the checkbox selection (default) or the saved shortlist.
-     Never fork this into a second dialog — the two copies would drift. */
-  let shareTargets=[],shareFromSelection=true;
-  function openModal(props){
-    shareFromSelection=!(props&&props.length);
-    shareTargets=shareFromSelection?selectedProps():props;
-    if(!shareTargets.length)return;
-    selectedClients.clear();
-    clientSearch.value='';
-    const count=shareTargets.length;
-    modalDesc.textContent=count+' '+(count===1?'property':'properties')+' selected. Add one or more clients.';
-    renderClientChips();
-    renderClients();
-    modal.classList.add('on');
-    modal.setAttribute('aria-hidden','false');
-    setTimeout(()=>clientSearch.focus(),0);
-  }
-  function closeModal(){
-    modal.classList.remove('on');
-    modal.setAttribute('aria-hidden','true');
-  }
-
-  cards.forEach(card=>{
-    const box=card.querySelector('[data-ps-select]');
-    if(!box)return;
-    const wrap=card.querySelector('.ps-select');
-    /* stopPropagation only — never preventDefault here: cancelling the label click
-       reverts the native checkbox after syncSelection() writes it, so the card reads
-       selected while its box reads unchecked. The change event is the only source. */
-    if(wrap)wrap.addEventListener('click',e=>{e.stopPropagation();});
-    box.addEventListener('change',()=>{
-      if(box.checked)selected.add(card.dataset.psId);
-      else selected.delete(card.dataset.psId);
-      syncSelection();
-    });
-  });
-  saveBtn.addEventListener('click',()=>{
-    selectedProps().forEach(prop=>saved.set(prop.id,prop));
-    syncSaved();
-    clearSelection();
-  });
-  /* wrapped, not passed directly: the listener would hand openModal the click event as its props */
-  shareBtn.addEventListener('click',()=>openModal());
-  root.querySelector('.ps-pill.share').addEventListener('click',()=>{if(selected.size)openModal();});
-  savedShare.addEventListener('click',()=>{closeSavedPop();openModal([...saved.values()]);});
-  clientSearch.addEventListener('input',renderClients);
-  document.getElementById('ps-shareclose').addEventListener('click',closeModal);
-  document.getElementById('ps-sharecancel').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-  modal.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-  shareConfirm.addEventListener('click',()=>{
-    const propCount=shareTargets.length;
-    const clientCount=selectedClients.size;
-    closeModal();
-    /* sharing the checkbox selection ends it (existing behaviour). Sharing the saved list
-       does NOT clear it — it is a shortlist the agent curates over days and may send twice. */
-    if(shareFromSelection)clearSelection();
-    if(window.sonner)window.sonner('Shared property shortlist',propCount+' properties · '+clientCount+' clients');
-  });
-  root.querySelector('#ps-savedpop-x').addEventListener('click',closeSavedPop);
-  document.addEventListener('click',e=>{
-    if(!savedPop.classList.contains('on'))return;
-    /* composedPath() is captured at dispatch, so it still names the panel even when the
-       clicked node was re-rendered away mid-handler */
-    const path=typeof e.composedPath==='function'?e.composedPath():[];
-    if(path.some(n=>n&&(n.id==='ps-savedpop'||n.id==='ps-savedmore')))return;
-    if(e.target.closest&&(e.target.closest('#ps-savedpop')||e.target.closest('#ps-savedmore')))return;
-    closeSavedPop();
-  });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&savedPop.classList.contains('on'))closeSavedPop();});
-  window.addEventListener('resize',()=>{if(savedPop.classList.contains('on'))placeSavedPop(savedPopAnchor);});
-  window.addEventListener('scroll',()=>{if(savedPop.classList.contains('on'))placeSavedPop(savedPopAnchor);},true);
-
-  /* the only way other modules (property detail page) touch the saved list */
-  window.psSaved={
-    add(prop){
-      if(!prop||!prop.id){console.warn('[ps-saved] add() called without an id');return false;}
-      saved.set(prop.id,{id:prop.id,title:prop.title,price:prop.price});
-      syncSaved();
-      return true;
-    },
-    remove(id){const had=saved.delete(id);if(had)syncSaved();return had;},
-    has(id){return saved.has(id);},
-    list(){return [...saved.values()];},
-    subscribe(fn){if(typeof fn==='function')savedSubs.push(fn);}
-  };
-
-  syncSelection();
-  loadSaved();
-  syncSaved();
-})();
-</script>
 <script id="crm-router">
 (function(){
-  const pages={mywork:'mw-page',clients:'cl-page',search:'ps-page',transactions:'tx-page',mel:'mel-page'};
+  const pages={mywork:'mw-page',clients:'cl-page',transactions:'tx-page',mel:'mel-page'};
   function showPage(p){
     const txd=document.getElementById('txd-page');
     if(txd)txd.classList.remove('on');
@@ -22441,108 +21331,7 @@ render();
   /* header Tasks pill button in tx phead — opens the DS side sheet, not a page */
   const tkBtn=document.getElementById('tx-tkbtn');
   if(tkBtn)tkBtn.addEventListener('click',()=>{if(window.openTasksSheet)openTasksSheet();});
-  showPage('search');
-})();
-</script>
-<script id="property-detail-module">
-/* Property detail page — opened by clicking a .ps-card, closed by "Back to listings".
-   Same mechanism as #txd-page: sibling <main>, toggled with .on, the list page hidden
-   behind it. body.pd-open drops the CRM sidebar so the page runs full-bleed. */
-(function(){
-  const page=document.getElementById('pd-page');
-  const list=document.getElementById('ps-page');
-  const back=document.getElementById('pd-back');
-  if(!page||!list||!back){console.warn('[property-detail] missing #pd-page, #ps-page or #pd-back');return;}
-  const saveBtn=document.getElementById('pd-save');
-  /* the card that opened the page — all four point at the Kansas St listing today, but the
-     save must record the card the agent actually clicked, not a hardcoded id */
-  let current=null;
-
-  function syncSaveBtn(){
-    if(!saveBtn||!window.psSaved)return;
-    const on=!!(current&&window.psSaved.has(current.id));
-    saveBtn.classList.toggle('on',on);
-    saveBtn.setAttribute('aria-pressed',on?'true':'false');
-    saveBtn.querySelector('.lb').textContent=on?'Saved for later':'Save for later';
-    /* no fill variant exists in the vendored Phosphor set — state is carried by the class + label */
-    saveBtn.querySelector('i').className=on?'ph ph-check':'ph ph-bookmark-simple';
-  }
-  /* first-visit intro. Once ever per browser: dismissing it sets the flag, and so does the
-     first real save — using the feature explains it better than the hint does. */
-  const HINT_KEY='ps-savedhint';
-  const hint=document.getElementById('pd-savehint');
-  function retireHint(){
-    if(hint)hint.hidden=true;
-    try{localStorage.setItem(HINT_KEY,'1');}
-    catch(e){console.warn('[property-detail] could not persist hint flag: '+e.message);}
-  }
-  function maybeShowHint(){
-    if(!hint)return;
-    let seen=true;
-    try{seen=localStorage.getItem(HINT_KEY)==='1';}
-    catch(e){console.warn('[property-detail] could not read hint flag: '+e.message);}
-    if(seen)return;
-    /* an agent who already has a shortlist has met the feature — don't explain it to them */
-    if(window.psSaved&&window.psSaved.list().length){retireHint();return;}
-    hint.hidden=false;
-  }
-  if(hint)document.getElementById('pd-savehintx').addEventListener('click',retireHint);
-  if(saveBtn){
-    if(!window.psSaved){console.warn('[property-detail] window.psSaved missing — save button disabled');saveBtn.disabled=true;}
-    else{
-      saveBtn.addEventListener('click',()=>{
-        if(!current)return;
-        retireHint();
-        if(window.psSaved.has(current.id)){
-          window.psSaved.remove(current.id);
-          if(window.sonner)window.sonner('Removed from saved',current.title);
-        }else{
-          window.psSaved.add(current);
-          if(window.sonner)window.sonner('Saved for later',current.title+' · '+current.price);
-        }
-        syncSaveBtn();
-      });
-      window.psSaved.subscribe(syncSaveBtn);
-    }
-  }
-
-  function openPd(){
-    list.style.display='none';
-    page.classList.add('on');
-    document.body.classList.add('pd-open');
-    page.querySelector('.pd-scroll').scrollTop=0;
-    maybeShowHint();
-  }
-  function closePd(){
-    page.classList.remove('on');
-    document.body.classList.remove('pd-open');
-    if(document.body.getAttribute('data-page')==='search')list.style.display='flex';
-  }
-  window.closePropertyDetail=closePd;
-  /* how the saved shortlist reopens a property — same path as a card click, so the
-     save button on the page comes up in the right state for that listing */
-  window.openPropertyDetail=function(prop){
-    if(!prop||!prop.id){console.warn('[property-detail] openPropertyDetail() called without a property');return;}
-    current={id:prop.id,title:prop.title,price:prop.price};
-    syncSaveBtn();
-    openPd();
-  };
-
-  document.querySelectorAll('#ps-page .ps-card[data-ps-id]').forEach(card=>{
-    card.addEventListener('click',e=>{
-      /* the checkbox owns its own click (.ps-select calls stopPropagation) — this is a guard
-         for keyboard/label edge cases, not a duplicate of it */
-      if(e.target.closest('.ps-select'))return;
-      current={id:card.dataset.psId,title:card.dataset.psTitle,price:card.dataset.psPrice};
-      syncSaveBtn();
-      openPd();
-    });
-  });
-  back.addEventListener('click',closePd);
-  /* a sidebar nav click can't happen while the page is open (the sidebar is hidden),
-     but keep the page from surviving any other route change */
-  document.querySelectorAll('.sidebar > .nav[data-page]').forEach(n=>n.addEventListener('click',closePd));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&page.classList.contains('on'))closePd();});
+  showPage('transactions');
 })();
 </script>
 <script id="tasks-module">
@@ -22774,12 +21563,7 @@ render();
         nProps=document.getElementById('tk-nt-props'),
         nAsg=document.getElementById('tk-nt-asg'),
         nEnv=document.getElementById('tk-nt-env'),
-        nEnvRow=document.getElementById('tk-nt-envrow'),
-        nRem=document.getElementById('tk-nt-rem'),
-        nPush=document.getElementById('tk-nt-push'),
-        nEmail=document.getElementById('tk-nt-email'),
-        nPropLbl=document.getElementById('tk-nt-proplbl');
-  let editIdx=null;
+        nEnvRow=document.getElementById('tk-nt-envrow');
 
   const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -22802,8 +21586,7 @@ render();
     nProps.innerHTML=[...seen].map(p=>`<option value="${p.replace(/"/g,'&quot;')}">`).join('');
   }
   function validate(){
-    /* a general task is not tied to a property, so the address is optional there */
-    const ok=nTitle.value.trim()&&nDue.value&&(nTy.value==='general'||nProp.value.trim());
+    const ok=nTitle.value.trim()&&nProp.value.trim()&&nDue.value;
     nSave.disabled=!ok;
     return ok;
   }
@@ -22823,55 +21606,22 @@ render();
     if(!nEnvRow)return;
     const show=nTy.value==='sign'||nTy.value==='esign';
     nEnvRow.style.display=show?'flex':'none';
-    if(nPropLbl)nPropLbl.textContent=nTy.value==='general'?'Property (optional)':'Property';
   }
-  if(nTy)nTy.addEventListener('change',()=>{syncEnvRow();validate()});
+  if(nTy)nTy.addEventListener('change',syncEnvRow);
   function resetForm(){
-    nTitle.value='';nProp.value='';nCl.value='';nTy.value='general';
+    nTitle.value='';nProp.value='';nCl.value='';nTy.value='email';
     if(nAsg)nAsg.value='me';
     if(nEnv)[...nEnv.options].forEach(o=>o.selected=false);
-    if(nRem)nRem.value='';
-    if(nPush)nPush.checked=true;
-    if(nEmail)nEmail.checked=false;
     nDue.value=todayISO();nSave.disabled=true;syncEnvRow();
   }
-  /* one form, two modes: openForm() adds, openForm(i) edits task i in place */
-  function openForm(idx){
+  function openForm(){
     fillProps();fillEnvelopes();resetForm();
-    editIdx=(typeof idx==='number'&&window.mwTASKS&&window.mwTASKS[idx])?idx:null;
-    if(editIdx!=null){
-      const t=window.mwTASKS[editIdx];
-      nTitle.value=t.t||'';
-      nProp.value=(t.prop&&t.prop!=='General tasks')?t.prop:'';
-      nCl.value=(t.cl&&t.cl!=='—')?t.cl:'';
-      nDue.value=t.dt||todayISO();
-      nTy.value=(window.mwTY&&window.mwTY[t.ty])?t.ty:'general';
-      if(nRem)nRem.value=t.rem==null?'':String(t.rem);
-      if(nPush)nPush.checked=!!t.push;
-      if(nEmail)nEmail.checked=!!t.email;
-    }
-    nSave.textContent=editIdx!=null?'Save changes':'Add task';
-    nForm.setAttribute('aria-label',editIdx!=null?'Edit task':'New task');
-    syncEnvRow();validate();
     nForm.classList.add('on');nBtn.setAttribute('aria-expanded','true');
     setTimeout(()=>nTitle.focus(),40);
   }
   function closeForm(){
-    editIdx=null;nSave.textContent='Add task';
-    nForm.setAttribute('aria-label','New task');
     nForm.classList.remove('on');nBtn.setAttribute('aria-expanded','false');
   }
-  /* the pencil on any task row (sheet or My Work) opens this same form, prefilled */
-  document.addEventListener('click',e=>{
-    const eb=e.target.closest('.mwta[data-act="edit"]');
-    if(!eb)return;
-    e.preventDefault();e.stopPropagation();
-    const row=eb.closest('[data-ti]');if(!row)return;
-    const sh=document.getElementById('tk-sheet');
-    if(sh&&sh.getAttribute('aria-hidden')==='true'&&window.openTasksSheet)window.openTasksSheet();
-    const i=+row.dataset.ti;
-    setTimeout(()=>openForm(i),0);
-  });
   if(nBtn)nBtn.addEventListener('click',()=>{nForm.classList.contains('on')?closeForm():openForm();});
   if(nCancel)nCancel.addEventListener('click',closeForm);
   [nTitle,nProp,nDue].forEach(el=>el&&el.addEventListener('input',validate));
@@ -22881,19 +21631,13 @@ render();
     const iso=nDue.value,{g,due}=classifyDue(iso);
     const envs=nEnv?[...nEnv.selectedOptions].map(o=>o.textContent):[];
     const asg=nAsg?nAsg.options[nAsg.selectedIndex].textContent:'';
-    const rem=nRem?nRem.value:'';
-    const fields={t:nTitle.value.trim(),cl:nCl.value.trim()||'—',g,due,dt:iso,ty:nTy.value,
-      prop:nProp.value.trim()||'General tasks',asg,envs,
-      rem,push:!!(nPush&&nPush.checked),email:!!(nEmail&&nEmail.checked)};
-    const editing=editIdx!=null;
-    const t=editing?Object.assign(window.mwTASKS[editIdx],fields):Object.assign({done:false},fields);
-    if(!editing)window.mwTASKS.push(t);
+    const t={t:nTitle.value.trim(),cl:nCl.value.trim()||'—',g,due,dt:iso,ty:nTy.value,prop:nProp.value.trim(),done:false,asg,envs};
+    window.mwTASKS.push(t);
     const p=t.prop;ST.open[p]=true;ST.tab='all';
     stabs.forEach(x=>x.classList.toggle('active',x.dataset.tktab==='all'));
     closeForm();syncBadges();render();
     if(window.mwRerender)window.mwRerender();
-    if(window.sonner)sonner(editing?'Task updated':'Task added',
-      t.t+(rem!==''?' \u00b7 '+((t.push&&t.email)?'push and email reminder':t.push?'push reminder':t.email?'email reminder':'reminder set'):''));
+    if(window.sonner)sonner('Task added',t.t);
   });
 
   /* -------- Snooze menu -------- */
@@ -23059,7 +21803,7 @@ render();
   const page = $('mel-page'); if(!page) return;
   const thread = $('mel-thread'), bodyEl = $('mel-body'), ta = $('mel-input'),
         composer = $('mel-composer'), attach = $('mel-attach'), tname = $('mel-threadname');
-  const AV = 'assets/mel-icon.svg';
+  const AV = window.__resources.melIcon;
   let lastFocus = null;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const scroll = () => { bodyEl.scrollTop = bodyEl.scrollHeight; };
@@ -23088,12 +21832,7 @@ render();
   };
 
   /* ================= open / close ================= */
-  /* Mel is a full page, so closing it has to land somewhere. Remember where it was
-     opened from — hardcoding a page dumps the user out of whatever flow they were in. */
-  let melReturnPage = 'search';
   function openMel(seed){
-    const from = document.body.getAttribute('data-page');
-    if(from && from !== 'mel') melReturnPage = from;
     document.body.classList.add('melopen');
     if(window.showPage) showPage('mel');
     if(seed){ setTimeout(() => send(seed), 60); }
@@ -23101,7 +21840,7 @@ render();
   }
   function closeMel(){
     document.body.classList.remove('melopen');
-    if(window.showPage) showPage(melReturnPage);
+    if(window.showPage) showPage('transactions');
   }
   window.openMel = openMel;
   const melPill = document.querySelector('.sidebar .mel');
@@ -23115,17 +21854,15 @@ render();
 
   
   /* page ask bar hands its question to the full copilot */
-  /* every page has its own bar (clients, tasks, property search, transactions) — wire them all */
-  document.querySelectorAll('.melbar').forEach(bar => {
-    const askInput = bar.querySelector('.askinput');
-    if(!askInput) return;
+  const askInput = document.querySelector('.melbar .askinput');
+  if(askInput){
     const handoff = () => { const v = askInput.value.trim(); askInput.value = ''; openMel(v || undefined); };
     askInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); handoff(); } });
-    const sendBtn = bar.querySelector('.send');
+    const sendBtn = document.querySelector('.melbar .send');
     if(sendBtn) sendBtn.addEventListener('click', handoff);
-    const expand = bar.querySelector('.rcluster .icob[title="Expand"]');
+    const expand = document.querySelector('.melbar .rcluster .icob[title="Expand"]');
     if(expand) expand.addEventListener('click', () => openMel());
-  });
+  }
 
   /* ================= history rail ================= */
   let CHATS = [
@@ -23763,7 +22500,7 @@ render();
     [
       { n:'New chat', d:'Start Mel fresh', i:P.msg, run:() => { openMel(); newChat(); } },
       { n:'Mel activity', d:'What Mel is holding for you', i:P.check, run:() => { openMel(); if(!page.classList.contains('taskson')) ttoggle.click(); } },
-      { n:'Close Mel', d:'Back to the page you came from', i:P.arrows, run:() => closeMel() }
+      { n:'Go to transactions', d:'Leave Mel and open the pipeline', i:P.arrows, run:() => closeMel() }
     ].filter(a => (a.n + ' ' + a.d).toLowerCase().includes(q)).forEach(a => rows.push(Object.assign({ g:'Actions' }, a)));
     if(q && !rows.length) rows.push({ g:'Ask Mel', n:'Ask Mel: “' + palIn.value.trim() + '”', d:'Send this as a message', i:P.msg, run:() => { openMel(); send(palIn.value.trim()); } });
     return rows;
@@ -23978,18 +22715,18 @@ render();
   const esc = window.MEL.esc, money = n => '$' + n.toLocaleString('en-US');
 
   const PHOTOS = [
-    { c:'#cfc9c0', n:'Front elevation', img:'assets/prop/s1.jpg' },
-    { c:'#c7d0d2', n:'Living room', img:'assets/prop/s2.jpg' },
-    { c:'#d6cec4', n:'Kitchen', img:'assets/prop/s3.jpg' },
-    { c:'#c3ccc5', n:'Back yard', img:'assets/prop/s4.jpg' },
-    { c:'#ccc6cf', n:'Primary suite', img:'assets/prop/s1.jpg' },
-    { c:'#cdd3d6', n:'Primary bath', img:'assets/prop/s2.jpg' },
-    { c:'#d2ccc2', n:'Dining area', img:'assets/prop/s3.jpg' },
-    { c:'#c6cfc8', n:'Balcony', img:'assets/prop/s4.jpg' },
-    { c:'#cbc6c0', n:'Entry hall', img:'assets/prop/s1.jpg' },
-    { c:'#c9d1d4', n:'Second bedroom', img:'assets/prop/s2.jpg' },
-    { c:'#d4cdc6', n:'Home office', img:'assets/prop/s3.jpg' },
-    { c:'#c5cdc7', n:'Street view', img:'assets/prop/s4.jpg' }
+    { c:'#cfc9c0', n:'Front elevation', img:window.__resources.p1 },
+    { c:'#c7d0d2', n:'Living room', img:window.__resources.p2 },
+    { c:'#d6cec4', n:'Kitchen', img:window.__resources.p3 },
+    { c:'#c3ccc5', n:'Back yard', img:window.__resources.p4 },
+    { c:'#ccc6cf', n:'Primary suite', img:window.__resources.p1 },
+    { c:'#cdd3d6', n:'Primary bath', img:window.__resources.p2 },
+    { c:'#d2ccc2', n:'Dining area', img:window.__resources.p3 },
+    { c:'#c6cfc8', n:'Balcony', img:window.__resources.p4 },
+    { c:'#cbc6c0', n:'Entry hall', img:window.__resources.p1 },
+    { c:'#c9d1d4', n:'Second bedroom', img:window.__resources.p2 },
+    { c:'#d4cdc6', n:'Home office', img:window.__resources.p3 },
+    { c:'#c5cdc7', n:'Street view', img:window.__resources.p4 }
   ];
   const UPLOAD = { c:'#bfb6ab', n:'IMG_2841.jpg · yours' };
   /* real photo when the file exists; the flat tone stays as the fallback */
@@ -24266,7 +23003,7 @@ render();
               '<p style="margin:' + P(7) + ' 0 0;font-size:' + P(10.5) + ';line-height:1.6;color:#57534E;text-wrap:pretty">' + esc(f.meta) + '</p></div>' +
             '<div style="width:1px;background:' + a + ';opacity:.35"></div>' +
             '<div style="flex:0 0 22%;display:flex;flex-direction:column;align-items:center;gap:' + P(6) + ';text-align:center">' +
-              '<span style="width:' + P(48) + ';height:' + P(48) + ';border-radius:999px;background:#EDEBE6 url(\'assets/avatars/a2.svg\') 50%/cover"></span>' +
+              '<span style="width:' + P(48) + ';height:' + P(48) + ';border-radius:999px;background:#EDEBE6 url(\'' + window.__resources.avA2 + '\') 50%/cover"></span>' +
               '<span style="font-size:' + P(10.5) + ';line-height:1.3;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#1c1917">Maya Kapoor<br>' +
               '<span style="letter-spacing:.02em;text-transform:none;font-weight:400;color:#78716C">' + esc(f.title) + '</span></span></div></div>' +
           '<div style="display:flex;gap:' + P(10) + ';flex:1;min-height:0">' +
@@ -24789,7 +23526,7 @@ render();
     opts = opts || {};
     const el = document.createElement('div');
     el.className = 'mstr3';
-    el.innerHTML = '<div class="mstrr run seen"><span class="mstri"><span class="mstrp"></span><img class="mstrm" src="assets/mel-icon.svg" alt=""></span><span class="mstrt3"></span></div>';
+    el.innerHTML = '<div class="mstrr run seen"><span class="mstri"><span class="mstrp"></span><img class="mstrm" src="' + window.__resources.melIcon + '" alt=""></span><span class="mstrt3"></span></div>';
     host.appendChild(el);
     const row = el.querySelector('.mstrr'), ico = el.querySelector('.mstri'), lbl = el.querySelector('.mstrt3');
     let i = 0;
@@ -25007,7 +23744,7 @@ render();
         '<button class="msvshare" type="button" data-mv="share">' + sv('<path d="M12 16V4M7 8l5-4 5 4"/><path d="M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/>') + 'Share</button>' + post + '</div>' +
       '<aside class="msvside">' +
         '<div><h3 class="msvh">' + t.label + ' \u00b7 ' + S.channel.label + '</h3><p class="msvd">' + esc(p.kind === 'market' ? p.hood + ' \u00b7 median ' + money(p.price) + ' \u00b7 ' + p.sold + ' sold \u00b7 ' + p.dom + ' days' : p.kind === 'event' ? p.ename + ' \u00b7 ' + p.ewhen + ' \u00b7 ' + p.ewhere : p.a + ' \u00b7 ' + money(p.price) + ' \u00b7 ' + p.bd + ' bd \u00b7 ' + p.ba + ' ba') + '. Edit the photos, accent and text here — nothing publishes from this editor.</p></div>' +
-        '<div class="msvsec"><button class="msvchip" type="button" data-mv="aistyle" style="display:inline-flex;align-items:center;gap:6px"><img src="assets/mel-icon.svg" alt="" style="width:13px;height:13px">Let Mel style it</button><span class="msvfine">One click — Mel picks the image, color, font and template, and rewrites the headline and ' + (isWeb() ? 'description' : 'caption') + '.</span></div>' +
+        '<div class="msvsec"><button class="msvchip" type="button" data-mv="aistyle" style="display:inline-flex;align-items:center;gap:6px"><img src="' + window.__resources.melIcon + '" alt="" style="width:13px;height:13px">Let Mel style it</button><span class="msvfine">One click — Mel picks the image, color, font and template, and rewrites the headline and ' + (isWeb() ? 'description' : 'caption') + '.</span></div>' +
         '<div class="msvsec"><div class="msvseg" style="margin-bottom:8px"><button type="button" data-mv="edtab" data-v="image" class="' + (S.edtab !== 'color' ? 'on' : '') + '">' + (isWeb() ? 'Hero photo' : 'Image') + '</button><button type="button" data-mv="edtab" data-v="color" class="' + (S.edtab === 'color' ? 'on' : '') + '">' + (isWeb() ? 'Accent' : 'Color') + '</button></div>' +
           (S.edtab === 'color'
             ? '<div class="msvsw">' + swatches + '</div>'
@@ -25634,7 +24371,7 @@ render();
   ];
   function renderToday(){
     const el = $('ms-today'); if(!el) return;
-    el.innerHTML = '<div class="mssech"><img src="assets/mel-icon.svg" alt=""><b>Today</b>' +
+    el.innerHTML = '<div class="mssech"><img src="' + window.__resources.melIcon + '" alt=""><b>Today</b>' +
       '<i>Ranked by what moves the listing</i>' +
       '<button class="msmore" type="button" data-mx="whytoday">Why these?</button></div>' +
       TODAY.map(x => '<button class="mstd' + (x.hot ? ' hot' : '') + '" type="button" data-mssend="' + esc(x.go) + '">' +
@@ -25822,7 +24559,7 @@ render();
   }
 
   const qr = list => '<div class="msqr">' + list.map(x => '<button type="button" data-msq="' + esc(x) + '">' + esc(x) + '</button>').join('') + '</div>';
-  const PROPTHUMBS = ['assets/prop/s1.jpg','assets/prop/s2.jpg','assets/prop/s3.jpg','assets/prop/s4.jpg'];
+  const PROPTHUMBS = [window.__resources.p1,window.__resources.p2,window.__resources.p3,window.__resources.p4];
   let __pt = 0;
   const tiles = arr => '<div class="mspick">' + arr.map(p =>
     '<button class="mstile" type="button" data-mssend="' + esc(p.send) + '">' +
@@ -25992,7 +24729,7 @@ render();
 <script>
 /* Mel mark tweak — swaps every Mel avatar between the infinity mark and the Radius orb. */
 (function(){
-  var MARKS = {infinity:'assets/mel-icon.svg', orb:'assets/mel-orb.svg'};
+  var MARKS = {infinity:window.__resources.melIcon, orb:window.__resources.melOrb};
   var KEY = 'radius-mel-mark';
   function cur(){ try{ return localStorage.getItem(KEY)==='orb' ? 'orb' : 'infinity'; }catch(e){ return 'infinity'; } }
   function isMel(img){
@@ -27798,9 +26535,9 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
 
   /* ---------- data ---------- */
   const FALLBACK_LISTINGS = [
-    { id:'grove', a:'1420 Grove St', hood:'Noe Valley · San Francisco', bd:3, ba:2, sqft:'1,510', price:1285000, ph:'#cfc9c0', img:'assets/prop/s1.jpg', mls:'424118902' },
-    { id:'maple', a:'412 Maple Ave', hood:'Rockridge · Oakland',       bd:4, ba:3, sqft:'2,240', price:975000,  ph:'#c7d0d2', img:'assets/prop/s2.jpg', mls:'41069318' },
-    { id:'pine',  a:'88 Pine St, Unit 12B', hood:'Financial District · San Francisco', bd:2, ba:2, sqft:'1,120', price:842000, ph:'#d6cec4', img:'assets/prop/s3.jpg', mls:'424106744' }
+    { id:'grove', a:'1420 Grove St', hood:'Noe Valley · San Francisco', bd:3, ba:2, sqft:'1,510', price:1285000, ph:'#cfc9c0', img:window.__resources.p1, mls:'424118902' },
+    { id:'maple', a:'412 Maple Ave', hood:'Rockridge · Oakland',       bd:4, ba:3, sqft:'2,240', price:975000,  ph:'#c7d0d2', img:window.__resources.p2, mls:'41069318' },
+    { id:'pine',  a:'88 Pine St, Unit 12B', hood:'Financial District · San Francisco', bd:2, ba:2, sqft:'1,120', price:842000, ph:'#d6cec4', img:window.__resources.p3, mls:'424106744' }
   ];
   const LISTINGS_SRC = () => (window.MELSTUDIO && window.MELSTUDIO.LISTINGS) || FALLBACK_LISTINGS;
   /* backwards-name for a few local usages */
@@ -27830,12 +26567,12 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
   panel.className = 'mspacket';
   panel.id = 'ms-packet';
   panel.innerHTML =
-    '<div class="head"><span class="eyebrow"><img src="assets/mel-icon.svg" alt="">Marketing Studio</span>' +
+    '<div class="head"><span class="eyebrow"><img src="' + window.__resources.melIcon + '" alt="">Marketing Studio</span>' +
       '<h2>Listing package</h2>' +
       '<p>Every asset from one address.</p></div>' +
     '<div id="pk-chipwrap"></div>' +
     '<div class="scope" id="pk-scope"><div class="slab"><span>Included in this package</span><span class="cnt" id="pk-cnt">8 of 8 selected</span></div><div class="list" id="pk-list"></div></div>' +
-    '<button class="go" type="button" id="pk-go"><img src="assets/mel-icon.svg" alt="" class="gomel"><span>Generate listing package</span></button>';
+    '<button class="go" type="button" id="pk-go"><img src="' + window.__resources.melIcon + '" alt="" class="gomel"><span>Generate listing package</span></button>';
   studio.appendChild(panel);
 
   const list = $('pk-list'), goBtn = $('pk-go');
@@ -27992,7 +26729,7 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
       if(m){
         const q = m.dataset.pkmls || pin.value.trim();
         const num = (q.match(/\d{6,}/) || [])[0] || '424097902';
-        const syn = { id:'mls-' + num, a:'1719 Judah St', hood:'Outer Sunset · San Francisco', bd:3, ba:2, sqft:'1,340', price:1149000, ph:'#d6cec4', img:'assets/prop/s3.jpg', mls:num };
+        const syn = { id:'mls-' + num, a:'1719 Judah St', hood:'Outer Sunset · San Francisco', bd:3, ba:2, sqft:'1,340', price:1149000, ph:'#d6cec4', img:window.__resources.p3, mls:num };
         pdrop.innerHTML = '<div class="grp">Fetching from the board</div><div class="list"><div class="row" style="cursor:default"><span class="thm" style="' + thumb(syn) + '"></span><span style="min-width:0"><b>Looking up MLS ' + esc(num) + '\u2026</b><i>SFAR MLS \u00b7 Bridge</i></span></div></div>';
         setTimeout(() => { S.prop = syn; renderChip(); renderScope(); }, 600);
       }
@@ -28839,7 +27576,7 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
     }
     const melcard =
       '<div class="melsug">' +
-        '<span class="who"><img src="assets/mel-icon.svg" alt="">Mel suggests</span>' +
+        '<span class="who"><img src="' + window.__resources.melIcon + '" alt="">Mel suggests</span>' +
         '<p>' + melLine + '</p>' + picks +
       '</div>';
     let bodyHtml;
@@ -29845,7 +28582,7 @@ body.dark .msubox .dz{background:#25252f;border-color:rgba(255,255,255,.14)}
       /* MLS look-up: prototype resolves to a synthetic listing */
       const q = m.dataset.pbmls || inp.value.trim();
       const num = (q.match(/\d{6,}/) || [])[0] || '424097902';
-      const syn = { id:'mls-' + num, a:'1719 Judah St', hood:'Outer Sunset · San Francisco', bd:3, ba:2, sqft:'1,340', price:1149000, ph:'#d6cec4', img:'assets/prop/s3.jpg' };
+      const syn = { id:'mls-' + num, a:'1719 Judah St', hood:'Outer Sunset · San Francisco', bd:3, ba:2, sqft:'1,340', price:1149000, ph:'#d6cec4', img:window.__resources.p3 };
       /* small skeleton flash before resolving */
       drop.innerHTML = '<div class="grp">Fetching from the board</div><div class="list"><div class="row" style="cursor:default"><span class="thm" style="' + thumb(syn) + '"></span><span style="min-width:0"><b>Looking up MLS ' + esc(num) + '…</b><i>SFAR MLS · Bridge</i></span></div></div>';
       setTimeout(() => {
@@ -30199,7 +28936,6 @@ body.dark .rload--boot{background:#0a0a0a}
   var PAGE={
     transactions:{icon:'transactions',steps:['Loading transactions','Loading filters and saved views','Checking approvals and documents']},
     clients:{icon:'clients',steps:['Loading clients','Loading filters','Sorting by last touch']},
-    search:{icon:'search',steps:['Loading listings','Drawing the map','Applying your saved filters']},
     mywork:{icon:'mywork',steps:['Loading tasks','Loading appointments','Checking what is due today']},
     mel:{icon:'mel',steps:['Waking Mel','Loading your recent threads']}
   };
@@ -30207,9 +28943,9 @@ body.dark .rload--boot{background:#0a0a0a}
     transactions:{'All':'Loading all transactions','Active listings':'Loading active listings','Pending':'Loading pending transactions',
       'Closing soon':'Loading closings','Closed':'Loading closed transactions','Needs attention':'Loading approvals',
       'Referrals':'Loading referrals','Drafts':'Loading drafts'},
-    clients:{},mywork:{},search:{},mel:{}
+    clients:{},mywork:{},mel:{}
   };
-  var PAGE_EL={mywork:'mw-page',clients:'cl-page',search:'ps-page',transactions:'tx-page',mel:'mel-page'};
+  var PAGE_EL={mywork:'mw-page',clients:'cl-page',transactions:'tx-page',mel:'mel-page'};
   var busy=false, booting=true, last=null;
 
   var SV=function(p){return '<svg viewBox="0 0 24 24">'+p+'</svg>'};
@@ -30300,7 +29036,7 @@ body.dark .rload--boot{background:#0a0a0a}
   }
 
   /* boot: covers the whole app, sidebar included */
-  show({mode:'boot',hex:76,icon:'search',dur:4400,
+  show({mode:'boot',hex:76,icon:'transactions',dur:4400,
     steps:['Loading your workspace','Loading navigation','Applying your theme','Syncing clients and deals','Almost ready']});
   setTimeout(function(){booting=false;last=document.body.getAttribute('data-page')},4600);
 
@@ -31151,19 +29887,19 @@ body.msaf-hidefmttabs .msaf-tabs{display:none !important}
   const B = document.body;
   const L = {
     grove: { a:'1420 Grove St',        mls:'424118902', photos:24, oh:'Sat 1–4',  drop:'Price drop · Aug 12',
-             price:'$1,285,000', hood:'Noe Valley',        facts:'3 bd · 2 ba · 1,510 sqft', img:'assets/prop/s1.jpg',
+             price:'$1,285,000', hood:'Noe Valley',        facts:'3 bd · 2 ba · 1,510 sqft', img:window.__resources.p1,
              why:'Price drop 6 days ago — I would lead with a feed post.',
              tpl:'editorial', tplwhy:'Price drop reads better in Editorial — considered, not salesy.' },
     pine:  { a:'88 Pine St, Unit 12B', mls:'424106744', photos:18, oh:'Sat 11–1', drop:'11 days on market',
-             price:'$842,000',   hood:'Financial District', facts:'2 bd · 2 ba · 1,120 sqft', img:'assets/prop/s2.jpg',
+             price:'$842,000',   hood:'Financial District', facts:'2 bd · 2 ba · 1,120 sqft', img:window.__resources.p2,
              why:'Eleven days on market and an open house Saturday — a feed post is the fastest way to fill it.',
              tpl:'feature', tplwhy:'A city condo sells on the numbers — Feature sheet puts them up front.' },
     maple: { a:'412 Maple Ave',        mls:'41069318',  photos:31, oh:'Sun 12–3', drop:'Price drop · Aug 4',
-             price:'$975,000',   hood:'Rockridge',          facts:'4 bd · 3 ba · 2,240 sqft', img:'assets/prop/s3.jpg',
+             price:'$975,000',   hood:'Rockridge',          facts:'4 bd · 3 ba · 2,240 sqft', img:window.__resources.p3,
              why:'New price since Aug 4 and 31 photos to work with — a feed post carries it best.',
              tpl:'collage', tplwhy:'Thirty-one photos is a lot of house — Collage shows more of it in one frame.' },
     judah: { a:'1719 Judah St',        mls:'424097902', photos:22, oh:'Sun 1–4',  drop:'Price drop · Aug 13',
-             price:'$1,149,000', hood:'Outer Sunset',       facts:'3 bd · 2 ba · 1,340 sqft', img:'assets/prop/s4.jpg',
+             price:'$1,149,000', hood:'Outer Sunset',       facts:'3 bd · 2 ba · 1,340 sqft', img:window.__resources.p4,
              why:'Not your listing, but the price moved 6 days ago — a feed post is the safe lead.',
              tpl:'wave', tplwhy:'Not your listing, so Wave keeps it about the house, not the branding.' }
   };

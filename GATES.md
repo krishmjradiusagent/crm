@@ -1,23 +1,41 @@
-# Gates — new "Split" template (3 status variations)
+# Gates — New transaction wizard (2-step, single popup)
 
-- [ ] G1 Backup: `backups/index.backup.html` matches `index.html` before write.
-  CHECK: node -e "const a=require('fs').readFileSync('index.html','utf8');const b=require('fs').readFileSync('backups/index.backup.html','utf8');process.stdout.write(a===b?'BACKUP_MATCH':'BACKUP_MISMATCH')"
-  EXPECT: BACKUP_MATCH
-- [ ] G2 Grid gains one `data-nftpl="split"` card.
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const c=(s.match(/data-nftpl=\"split\"/g)||[]).length;process.stdout.write(c+'')"
+- [x] G1 Backup exists.
+  CHECK: node -e "const fs=require('fs');process.stdout.write(fs.existsSync('backups/index.backup.html')?'BACKUP_OK':'BACKUP_MISSING')"
+  EXPECT: BACKUP_OK
+- [x] G2 One wizard shell.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(((s.match(/id=\"ntw\"/g)||[]).length)+'')"
   EXPECT: 1
-- [ ] G3 Card carries 3 variations tagged `data-nfsplit-var`.
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const c=(s.match(/data-nfsplit-var=/g)||[]).length;process.stdout.write(c+'')"
-  EXPECT: 3
-- [ ] G4 Card renders diagonal split shape inline (tsplt- class markers).
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/tpl-split[\s\S]{0,6000}tsplt-hd/.test(s)?'SHAPE_OK':'SHAPE_MISSING')"
-  EXPECT: SHAPE_OK
-- [ ] G5 CSS block for `.prev.tpl-split` exists.
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/\.prev\.tpl-split\b/.test(s)?'CSS_OK':'CSS_MISSING')"
-  EXPECT: CSS_OK
-- [ ] G6 No emoji inside new card block.
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const m=s.match(/data-nftpl=\"split\"[\s\S]{0,8000}?<\/article>/);const bad=/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F\uDE80-\uDEFF]/.test(m?m[0]:'');process.stdout.write(bad?'EMOJI_FOUND':'EMOJI_CLEAN')"
-  EXPECT: EMOJI_CLEAN
-- [ ] G7 `CARD_TPL_NM` map has a `split:` entry so the picker shows a name.
-  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/CARD_TPL_NM[\s\S]{0,600}split:/.test(s)?'MAP_OK':'MAP_MISSING')"
-  EXPECT: MAP_OK
+- [x] G3 Exactly two step panes.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(((s.match(/data-ntwpane=/g)||[]).length)+'')"
+  EXPECT: 2
+- [x] G4 Step 1 fields match the live product: type, state, status, template — and nothing else.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const p=s.slice(s.indexOf('data-ntwpane=\"1\"'),s.indexOf('data-ntwpane=\"2\"'));const ids=[...p.matchAll(/<select[^>]*id=\"([^\"]+)\"/g)].map(m=>m[1]).join(',');process.stdout.write(ids)"
+  EXPECT: ntw-state,ntw-status,ntw-tpl
+- [x] G5 One status select, not one per type.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(((s.match(/id=\"ntw-status\"/g)||[]).length)+'')"
+  EXPECT: 1
+- [x] G6 No invented fields (contract type, client name, referred to).
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/ntw-contract|ntw-refclient|ntw-refto/.test(s)?'INVENTED':'CLEAN')"
+  EXPECT: CLEAN
+- [x] G7 [hidden] beats the DS display rules inside the wizard.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/\.ntw \[hidden\]\{display:none !important\}/.test(s)?'GUARD_OK':'GUARD_MISSING')"
+  EXPECT: GUARD_OK
+- [x] G8 Collaborator rows use the DS checkbox, no hand-rolled box.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const b=s.slice(s.indexOf('id=\"ntw-collablist\"'));process.stdout.write(((b.match(/rds-checkbox\" data-ntwperson/g)||[]).length)+'|'+(/ntw__box/.test(s)?'FAUX':'NOFAUX'))"
+  EXPECT: 5|NOFAUX
+- [x] G9 Collaborator list is inline (no fixed/absolute popover inside the transformed dialog).
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const m=s.match(/\.ntw__menu\{[^}]*\}/)[0];process.stdout.write(/position:static/.test(m)&&!/position:(fixed|absolute)/.test(m)?'INLINE_OK':'FLOATING')"
+  EXPECT: INLINE_OK
+- [x] G10 No dead JS references left from removed fields.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/refClient|refWrap|subSel|contractEl|placeMenu/.test(s)?'DEAD_REFS':'NO_DEAD_REFS')"
+  EXPECT: NO_DEAD_REFS
+- [x] G11 Next ships disabled (gated validation).
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write(/id=\"ntw-next\"[^>]*disabled/.test(s)?'GATED':'UNGATED')"
+  EXPECT: GATED
+- [x] G12 Discard confirm exists; wizard wired to the New transaction button; Create hands off to the transaction page.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');process.stdout.write([/id=\"ntw-confirm\"/.test(s),/tx-newtxbtn/.test(s)&&/openNtw/.test(s),/openTxDetail/.test(s)].join(','))"
+  EXPECT: true,true,true
+- [x] G13 No emoji, no silent catch in the wizard block.
+  CHECK: node -e "const s=require('fs').readFileSync('index.html','utf8');const b=s.slice(s.indexOf('id=\"ntw-app\"'));process.stdout.write((/catch\s*\(\s*_?\s*\)\s*\{\s*\}/.test(b)?'SILENT':'OK'))"
+  EXPECT: OK

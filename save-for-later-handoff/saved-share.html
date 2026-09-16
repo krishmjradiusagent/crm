@@ -1,0 +1,56 @@
+<!-- Save for later + Share — markup extracted verbatim from CRM/index.html -->
+
+<!-- ---- index.html 9059-9071 : saved shortlist row on the search page (under the filter bar) ---- -->
+      <div class="ps-savedrow" id="ps-savedrow" aria-live="polite">
+        <div class="ps-savedlabel"><i class="ph ph-bookmark-simple" aria-hidden="true"></i>Saved for later</div>
+        <div class="ps-savedchips" id="ps-savedchips"></div>
+        <button class="rds-btn rds-btn--sm" type="button" id="ps-savedshare"><i class="ph ph-share-network" aria-hidden="true"></i>Share saved</button>
+      </div>
+      <!-- overflow for the saved row: anchored panel (txd-dpop pattern), no scrim, closes on X/Esc/outside click -->
+      <div class="txd-dpop" id="ps-savedpop" role="dialog" aria-labelledby="ps-savedpop-t" aria-hidden="true">
+        <div class="dph">
+          <div><h3 id="ps-savedpop-t">More saved</h3></div>
+          <button type="button" class="dpx" id="ps-savedpop-x" aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button>
+        </div>
+        <div class="dpb" id="ps-savedpop-b"></div>
+      </div>
+
+<!-- ---- index.html 9129-9152 : share dialog (combobox + top-5 pills) ---- -->
+  <div class="rds-overlay ps-sharemodal" id="ps-sharemodal" aria-hidden="true">
+    <div class="rds-dialog" role="dialog" aria-modal="true" aria-labelledby="ps-sharetitle">
+      <div class="ps-dialogtop">
+        <div>
+          <h3 class="rds-dialog__title" id="ps-sharetitle">Share selected properties</h3>
+          <p class="rds-dialog__desc" id="ps-sharedesc">Select clients to receive this shortlist.</p>
+        </div>
+        <button class="mmx" type="button" id="ps-shareclose" aria-label="Close share dialog"><i class="ph ph-x" aria-hidden="true"></i></button>
+      </div>
+      <div class="ps-clientpick">
+        <div class="ps-clientsearch">
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+          <input class="rds-input" id="ps-clientsearch" type="text" placeholder="Search clients" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="ps-clientlist" aria-autocomplete="list">
+          <button class="ps-clientchev" type="button" id="ps-clientchev" aria-label="Show all clients" aria-expanded="false" aria-controls="ps-clientlist"><i class="ph ph-caret-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="ps-clientlist" id="ps-clientlist" role="listbox" aria-label="Clients" hidden></div>
+      </div>
+      <div class="ps-clientpills" id="ps-clientpills" aria-label="Top clients"></div>
+      <div class="rds-dialog__footer">
+        <button class="rds-btn rds-btn--outline" type="button" id="ps-sharecancel">Cancel</button>
+        <button class="rds-btn" type="button" id="ps-shareconfirm">Share now</button>
+      </div>
+    </div>
+  </div>
+
+<!-- ---- index.html 10809-10820 : property detail top bar, save button right after the address ---- -->
+    <div class="pd-top">
+      <button class="pd-back" type="button" id="pd-back"><i class="ph ph-caret-left" aria-hidden="true"></i>Back to listings</button>
+      <span class="pd-topsep" aria-hidden="true"></span>
+      <span class="pd-toptitle">4383 Kansas St ST #7, San Diego, CA 92104</span>
+      <span class="pd-savewrap">
+        <button class="pd-topsave" type="button" id="pd-save" aria-pressed="false"><i class="ph ph-bookmark-simple" aria-hidden="true"></i><span class="lb">Save for later</span></button>
+        <div class="pd-hint" id="pd-savehint" role="status" hidden>
+          <span>Now you can save properties and share them with agents or clients later.</span>
+          <button class="pd-hintx" type="button" id="pd-savehintx" aria-label="Got it"><i class="ph ph-x" aria-hidden="true"></i></button>
+        </div>
+      </span>
+    </div>

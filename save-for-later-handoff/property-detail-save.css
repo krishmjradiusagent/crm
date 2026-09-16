@@ -1,0 +1,20 @@
+/* Property detail Save for later control.
+   Extracted from CRM/index.html lines ~10678-10692.
+   Required piece: do not omit this when porting the feature. */
+
+.pd-topsave{flex:none;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
+.pd-topsave:hover{background:var(--neutral-50)}
+.pd-topsave i{font-size:14px}
+.pd-topsave.on{border-color:#C9CAF8;background:#F3F3FE;color:var(--primary)}
+.pd-topsave.on:hover{background:#EBEBFD}
+
+/* First-visit intro to the shortlist. Absolutely positioned inside .pd-savewrap so it is
+   anchored to the button wherever the address truncation leaves it, and so dismissing it
+   shifts nothing below. */
+.pd-savewrap{flex:none;position:relative;display:inline-flex}
+.pd-hint{position:absolute;top:calc(100% + 10px);left:0;z-index:40;display:flex;align-items:flex-start;gap:8px;width:max-content;max-width:min(330px,calc(100vw - 32px));padding:9px 8px 9px 12px;border:1px solid #C9CAF8;border-radius:var(--r-card);background:#F7F7FE;box-shadow:var(--shadow-sm);font:400 12px/16px var(--font);color:var(--neutral-900)}
+.pd-hint::before{content:"";position:absolute;top:-5px;left:22px;width:8px;height:8px;background:#F7F7FE;border-left:1px solid #C9CAF8;border-top:1px solid #C9CAF8;transform:rotate(45deg)}
+.pd-hint[hidden]{display:none}
+.pd-hintx{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:none;border-radius:var(--r-badge);background:none;color:var(--neutral-500);cursor:pointer}
+.pd-hintx:hover{background:#E4E4FB;color:var(--neutral-900)}
+.pd-hintx i{font-size:12px}

@@ -1,0 +1,133 @@
+/* Save for later + Share — extracted verbatim from CRM/index.html.
+   Source lines are noted per block. Tokens (--primary, --neutral-*, --r-*, --font)
+   come from the Radius UI design system already loaded by index.html. */
+
+/* ---- index.html 8602-8710 : saved row, overflow chip, share dialog, client picker ---- */
+  .ps-savedrow{flex:none;display:none;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--neutral-200);background:var(--white)}
+  .ps-savedrow.on{display:flex}
+  .ps-savedlabel{height:28px;display:inline-flex;align-items:center;gap:6px;flex:none;color:var(--neutral-500);font:600 12px var(--font);text-transform:uppercase;letter-spacing:.04em}
+  /* strict one line: never wraps — chips shrink to ellipsis, the overflow slot holds its width */
+  .ps-savedchips{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden}
+  .ps-savechip{height:28px;max-width:220px;flex:0 1 auto;min-width:0;display:inline-flex;align-items:center;gap:7px;padding:0 8px 0 10px;border:1px solid var(--neutral-200);border-radius:999px;background:var(--neutral-50);color:var(--neutral-900);font:500 13px var(--font);box-shadow:var(--shadow-xs)}
+  .ps-savechip span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* the label is a real button — clicking a saved chip reopens that property */
+  .ps-savechip .lab{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+  .ps-savechip:hover{border-color:var(--neutral-300);background:var(--white)}
+  .ps-savechip .lab:hover{color:var(--primary)}
+  .ps-savechip .rm{width:18px;height:18px;border:0;border-radius:999px;background:var(--neutral-200);color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+  .ps-savechip .rm:hover{background:var(--neutral-300);color:var(--neutral-900)}
+  #ps-savedshare{flex:none}
+  /* overflow slot: the last chip in the row when more are saved than fit (see SAVED_CAP) */
+  .ps-savechip.more{flex:none;max-width:none;padding:0 9px 0 11px;border-style:dashed;background:var(--white);color:var(--neutral-600);cursor:pointer;font-variant-numeric:tabular-nums}
+  .ps-savechip.more:hover{background:var(--neutral-50);border-color:var(--neutral-400);color:var(--neutral-900)}
+  .ps-savechip.more i{font-size:13px;transition:transform .12s ease}
+  .ps-savechip.more[aria-expanded="true"] i{transform:rotate(180deg)}
+  #ps-savedpop .dpb{display:flex;flex-direction:column;gap:2px;padding-top:2px}
+  .ps-savepoprow{display:flex;align-items:center;gap:10px;min-height:32px;padding:0 8px;border-radius:8px;font:500 13px var(--font);color:var(--neutral-900)}
+  .ps-savepoprow:hover{background:var(--neutral-50)}
+  .ps-savepoprow span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* open · share · remove — the label itself is the open action, same as the chip */
+  .ps-savepoprow .lab{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+  .ps-savepoprow .lab:hover{color:var(--primary)}
+  .ps-savepoprow .act{flex:none;width:22px;height:22px;border:0;border-radius:6px;background:none;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;font-size:14px}
+  .ps-savepoprow .act:hover{background:var(--neutral-100);color:var(--primary)}
+  .ps-savepoprow .rm{flex:none;width:18px;height:18px;border:0;border-radius:999px;background:var(--neutral-200);color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+  .ps-savepoprow .rm:hover{background:var(--neutral-300);color:var(--neutral-900)}
+  .ps-main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(430px,47%) minmax(0,1fr);padding-bottom:80px}
+  .ps-results{min-width:0;overflow:auto;border-right:1px solid var(--neutral-200);padding:18px 20px 20px;background:var(--white)}
+  .ps-titleline{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+  .ps-titleline h2{margin:0;font:700 18px/24px var(--font);letter-spacing:-.01em;color:var(--neutral-950)}
+  .ps-titleline span{font:400 14px var(--font);color:var(--neutral-500)}
+  .ps-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .ps-card{min-width:0;overflow:hidden;border:1px solid var(--neutral-200);border-radius:14px;background:var(--white);box-shadow:var(--shadow-xs);transition:border-color 150ms ease,box-shadow 150ms ease,transform 140ms cubic-bezier(.23,1,.32,1)}
+  .ps-card:hover{border-color:var(--neutral-300);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .ps-card.selected{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 14%,transparent),var(--shadow-sm)}
+  .ps-card:active{transform:scale(.99)}
+  .ps-photo{height:160px;position:relative;overflow:hidden;background:var(--neutral-100)}
+  .ps-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  /* layout + hit target only — the .rds-checkbox inside is the Radius UI Checkbox
+     at its own spec (16px, --neutral-400 border, --primary when checked). Never
+     restyle it from here; a local size/colour override is how DS drift starts. */
+  .ps-select{grid-area:sel;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;cursor:pointer}
+  .ps-badge{position:absolute;top:12px;left:12px;height:24px;padding:0 10px;border-radius:999px;background:#f0fdf4;color:#15803d;font:700 11px/24px var(--font);letter-spacing:.02em;text-transform:uppercase;box-shadow:0 1px 2px rgba(10,10,10,.08)}
+  .ps-badge.pending{background:#eff6ff;color:#2563eb}
+  .ps-price{position:absolute;right:12px;bottom:12px;height:34px;padding:0 12px;border-radius:9px;background:rgba(255,255,255,.94);color:var(--primary);font:700 16px/34px var(--font);box-shadow:0 4px 14px rgba(10,10,10,.14)}
+  .ps-dots{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:5px}
+  .ps-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.62)}
+  .ps-body{padding:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"addr sel" "facts .";column-gap:12px;row-gap:14px;align-items:center}
+  .ps-address{grid-area:addr;font:700 18px/22px var(--font);letter-spacing:-.02em;color:#101322;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ps-facts{grid-area:facts;display:flex;align-items:center;gap:12px;min-width:0;color:var(--neutral-600);font:600 13px var(--font)}
+  .ps-facts span{display:inline-flex;align-items:center;gap:5px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ps-facts i{font-size:15px;color:#cbd5e1}
+  .ps-map{position:relative;min-width:0;overflow:hidden;background:#dff3ec}
+  .ps-map::before{content:"";position:absolute;inset:-40px;background:
+    radial-gradient(circle at 70% 20%, rgba(125,214,170,.45) 0 14%, transparent 15%),
+    radial-gradient(circle at 78% 58%, rgba(125,214,170,.48) 0 17%, transparent 18%),
+    radial-gradient(circle at 54% 84%, rgba(125,214,170,.38) 0 11%, transparent 12%),
+    linear-gradient(90deg,#83d8e7 0 36%,#f7f3df 36% 100%);
+    opacity:.9}
+  .ps-road{position:absolute;height:3px;background:#b8c1c8;border-radius:999px;opacity:.72;transform-origin:left center}
+  .ps-road.r1{left:32%;top:24%;width:42%;transform:rotate(16deg)}
+  .ps-road.r2{left:34%;top:66%;width:55%;transform:rotate(-9deg)}
+  .ps-road.r3{left:53%;top:8%;width:2px;height:82%;transform:rotate(4deg)}
+  .ps-road.r4{left:36%;top:45%;width:45%;transform:rotate(36deg)}
+  .ps-maplabel{position:absolute;pointer-events:none;color:#334155;font:500 14px var(--font);text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  .ps-maplabel.big{font-size:20px;font-weight:700}
+  .ps-pin{position:absolute;display:inline-flex;align-items:center;justify-content:center;height:24px;min-width:48px;padding:0 8px;border-radius:999px;background:#2d6cdf;color:#fff;font:700 12px var(--font);box-shadow:0 0 0 2px rgba(255,255,255,.9),0 2px 8px rgba(37,99,235,.35)}
+  .ps-dotpin{position:absolute;width:11px;height:11px;border-radius:50%;background:#2563eb;box-shadow:0 0 0 2px rgba(255,255,255,.95),0 1px 5px rgba(37,99,235,.34)}
+  .ps-draw{position:absolute;left:16px;top:16px;height:36px;border:1px solid var(--neutral-200);border-radius:8px;background:rgba(255,255,255,.95);box-shadow:var(--shadow-sm);padding:0 16px;font:600 13px var(--font);color:var(--neutral-800)}
+  .ps-zoom{position:absolute;right:14px;bottom:24px;display:flex;flex-direction:column;background:var(--white);border:1px solid var(--neutral-200);box-shadow:var(--shadow-sm)}
+  .ps-zoom button{width:40px;height:40px;border:0;background:var(--white);font:400 26px/1 var(--font);color:var(--neutral-600);cursor:pointer}
+  .ps-zoom button+button{border-top:1px solid var(--neutral-200)}
+  .ps-bulkbar{position:absolute;left:50%;bottom:92px;transform:translate(-50%,16px);z-index:8;display:flex;align-items:center;gap:10px;min-width:420px;max-width:calc(100% - 40px);padding:10px 12px 10px 16px;border:1px solid var(--neutral-200);border-radius:14px;background:var(--popover);box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity 150ms ease,transform 150ms ease}
+  .ps-bulkbar.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+  .ps-bulkcount{margin-right:auto;color:var(--neutral-900);font:600 14px var(--font)}
+  .ps-bulkmuted{color:var(--neutral-500);font-weight:400}
+  .ps-sharemodal{display:none}
+  .ps-sharemodal.on{display:flex}
+  .ps-sharemodal .rds-dialog{max-width:460px;padding:20px}
+  .ps-dialogtop{display:flex;align-items:flex-start;gap:12px}
+  .ps-dialogtop .mmx{margin-left:auto;width:30px;height:30px;border:0;background:transparent;border-radius:8px;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+  .ps-dialogtop .mmx:hover{background:var(--neutral-100);color:var(--neutral-900)}
+  /* client picker: ONE combobox + a row of avatar pills. No standing list, no chips row,
+     no scroll in the dialog body — the only scroller is the dropdown itself. */
+  .ps-clientpick{position:relative;margin:14px 0 10px}
+  .ps-clientsearch{position:relative}
+  .ps-clientsearch i.ph-magnifying-glass{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--neutral-400);font-size:16px;pointer-events:none}
+  .ps-clientsearch .rds-input{padding-left:34px;padding-right:36px}
+  .ps-clientchev{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:28px;height:28px;border:0;background:transparent;border-radius:8px;color:var(--neutral-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+  .ps-clientchev:hover{background:var(--neutral-100);color:var(--neutral-900)}
+  .ps-clientchev i{font-size:15px;transition:transform 120ms ease}
+  .ps-clientchev[aria-expanded="true"] i{transform:rotate(180deg)}
+  .ps-clientlist{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;max-height:236px;overflow:auto;padding:4px;border:1px solid var(--neutral-200);border-radius:12px;background:var(--popover);box-shadow:var(--shadow-lg)}
+  .ps-clientlist[hidden]{display:none}
+  .ps-clientrow{display:flex;align-items:center;gap:8px;min-width:0;padding:7px 8px;border-radius:8px;cursor:pointer}
+  .ps-clientrow:hover{background:var(--neutral-50)}
+  .ps-clientrow strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--neutral-900);font:500 13px/17px var(--font)}
+  .ps-clientrow .ck{margin-left:auto;flex:0 0 auto;color:var(--primary);font-size:15px}
+  .ps-clientempty{padding:14px 8px;text-align:center;color:var(--neutral-500);font:400 13px var(--font)}
+  .ps-clientpills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .ps-cpill{display:inline-flex;align-items:center;gap:6px;max-width:100%;min-width:0;height:30px;padding:0 10px 0 3px;border:1px solid var(--neutral-200);border-radius:999px;background:var(--white);color:var(--neutral-800);font:500 13px var(--font);cursor:pointer}
+  .ps-cpill span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ps-cpill:hover{border-color:var(--neutral-300);background:var(--neutral-50)}
+  .ps-cpill.on{border-color:#C9CAF8;background:#F3F3FE;color:var(--primary)}
+  .ps-cpill.on .rds-avatar{background:color-mix(in oklab,var(--primary) 16%,transparent);color:var(--primary)}
+
+/* ---- index.html 10676-10692 : property-detail save button + first-visit hint ---- */
+     Back → Address → Save. Never margin-left:auto — the address truncates first
+     (.pd-toptitle is min-width:0 + ellipsis) so the button stays beside it. */
+  .pd-topsave{flex:none;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--neutral-200);border-radius:var(--r-button);background:var(--white);font:500 12px var(--font);color:var(--neutral-900);cursor:pointer}
+  .pd-topsave:hover{background:var(--neutral-50)}
+  .pd-topsave i{font-size:14px}
+  .pd-topsave.on{border-color:#C9CAF8;background:#F3F3FE;color:var(--primary)}
+  .pd-topsave.on:hover{background:#EBEBFD}
+  /* first-visit intro to the shortlist. Absolutely positioned inside .pd-savewrap so it is
+     anchored to the button wherever the address truncation leaves it, and so dismissing it
+     shifts nothing below — a hint that reflows the page on close reads as a bug. */
+  .pd-savewrap{flex:none;position:relative;display:inline-flex}
+  .pd-hint{position:absolute;top:calc(100% + 10px);left:0;z-index:40;display:flex;align-items:flex-start;gap:8px;width:max-content;max-width:min(330px,calc(100vw - 32px));padding:9px 8px 9px 12px;border:1px solid #C9CAF8;border-radius:var(--r-card);background:#F7F7FE;box-shadow:var(--shadow-sm);font:400 12px/16px var(--font);color:var(--neutral-900)}
+  .pd-hint::before{content:"";position:absolute;top:-5px;left:22px;width:8px;height:8px;background:#F7F7FE;border-left:1px solid #C9CAF8;border-top:1px solid #C9CAF8;transform:rotate(45deg)}
+  .pd-hint[hidden]{display:none}
+  .pd-hintx{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:none;border-radius:var(--r-badge);background:none;color:var(--neutral-500);cursor:pointer}
+  .pd-hintx:hover{background:#E4E4FB;color:var(--neutral-900)}
+  .pd-hintx i{font-size:12px}

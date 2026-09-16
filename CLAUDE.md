@@ -8,6 +8,21 @@
 - **Before every change to `index.html`**: copy the current `index.html` over `backups/index.backup.html` (overwrite the previous one), then make the edit.
 - Nothing in the project references `backups/` — it is restore-only. Never link, import, or load from it.
 - To recover: copy `backups/index.backup.html` over `index.html`.
+- **A fresh backup before EVERY edit, not once per session.** One backup taken at the start of a long session is worthless — by the tenth edit it is ten edits stale, and restoring it silently destroys hours of approved work.
+- **Never restore a backup on your own initiative.** "You broke it" means fix the specific defect, not roll back. A restore is destructive and irreversible here; ask first, always, and say exactly what will be lost.
+- After any restore or bulk rewrite, **re-read the file and list what is actually present** before reporting state. Do not claim a change "survived" without verifying it in the file.
+
+## Transaction top section — layout invariants (learned the hard way)
+- **Never make a rule that hides or truncates CTA labels at some width.** A width breakpoint added to fix one request silently strips the labels the next time a column width changes. Fixed values only: the CTA row is ~630px, the left column is 667px (630 + 18px padding each side), and the labels always render in full.
+- **Top section height budget is 276px (photo min 276px, right card stretches to match).** The docs/envelopes columns are `position:sticky` with `max-height:calc(100vh - 288px)` — that offset is derived from the top-section height and **must be updated together with it**. Changing one without the other pushes the page into outer scroll and the section slides under the sticky columns.
+- The 1/12 badge, the carousel dots and the CTA row all end on the same right edge (19px inset). Changing the column width means re-checking all three.
+
+## Icons (STRICT — no exceptions)
+- **Phosphor only.** The Phosphor icon font is vendored at `src/regular/style.css` (already linked in `index.html`). Every icon is `<i class="ph ph-<name>" aria-hidden="true"></i>`.
+- **You have no right to custom-make icons or add Lucide icons.** No hand-drawn `<svg><path d="…">`, no inline path data, no Lucide, no Heroicons, no other set, no "equivalent" glyph you drew yourself. If a glyph seems missing, grep `src/regular/style.css` for the right `ph-` name — it has the full regular set.
+- The design system's `PhosphorIcon*` components are Lucide paths under a Phosphor name. Do not use them; use the font.
+- Size icons with `font-size` and colour them with `color` (they are text). Never `width`/`height`/`stroke`.
+- Brand marks (Radius logo, Mel mark) are real SVG assets in `assets/` — they are not icons and this rule does not apply to them.
 
 ## Editing rules for index.html
 - Never do blind offset/`indexOf` slicing on this file. Use exact-string replacements that are verified to match, or the editing tool.
@@ -187,3 +202,35 @@ Layout:
 - Radius UI 3.0 only. Indigo `#5A5FF2` primary. Mel gradient = Mel identity only.
 - Targeted exact-string edits. No blind offset slicing. No file rewrites.
 - One stage at a time. Verify. Stop. Wait.
+
+---
+
+# Saved shortlist (property search + detail) — 2026-09-16
+
+- `Save for later` lives in the property detail top bar **immediately after the address** (`.pd-savewrap` → `#pd-save`). Never `margin-left:auto`; the address truncates first so the button stays beside it. It is an agent triage control — it does **not** belong in the client-facing `Are you interested?` card (that card is Interested / Pass only).
+- Saved row caps at `SAVED_CAP=5`: 4 chips + "N others" when over, strict one line (`flex-wrap:nowrap`), `Share saved` on the right, overflow panel keeps open · share · remove.
+- First-visit hint `#pd-savehint` (`.pd-hint`) sits under the button, `position:absolute` so dismissing it shifts nothing. Shown once ever via `ps-savedhint` in localStorage; the flag is also set on the first real save and when a shortlist already exists.
+
+---
+
+# Share dialog — client picker (STRICT) — 2026-09-16
+
+Keep it stupid simple: **combobox → top-5 avatar pills → Share now.** Nothing else.
+
+- One input `#ps-clientsearch` (`role="combobox"`) with a search icon left and a chevron `#ps-clientchev` right.
+  Typing filters and opens; the chevron alone opens the full list. The list `#ps-clientlist` is
+  `position:absolute` under the input — **the only scroller in the dialog**. The dialog body never scrolls.
+- Below it, `#ps-clientpills`: the first `TOP_CLIENTS` (5) clients as `.ps-cpill` (24px `rds-avatar--xs`
+  + name, one tap to select, `aria-pressed`). Anyone picked from the dropdown who is not in that 5
+  is appended as a pill. **There is no separate "selected chips" row** — one row does both jobs, so
+  the two copies cannot drift. Selected pill = `#F3F3FE` wash / `#C9CAF8` border / `--primary` text.
+- No standing client list, no checkboxes, no `min-height` gap. Dialog is 460px, ~292px tall.
+
+## Traps hit here (do not repeat)
+- **Trap:** outside-click guard written as `e.target.closest('.ps-clientpick')`. Toggling a row
+  re-renders the list, so the clicked row is **detached** by the time the click bubbles and
+  `closest()` returns null — the dropdown closed on every pick. **Fix:** `stopPropagation()` on the
+  `.ps-clientpick` container, which is never re-rendered.
+- **Trap:** bubbling `keydown` listener for Esc. A document-level Esc handler elsewhere also closes
+  the overlay, so one press closed the dropdown *and* the dialog. **Fix:** capture-phase listener on
+  the modal + `stopPropagation()` while the dropdown is open. Esc unwinds one layer per press.
